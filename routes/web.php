@@ -50,8 +50,11 @@ Route::group(['prefix' => 'admin'], function () {
   Route::get('/mws/fba-inv', 'AdminFbaInventoriesController@index');
   Route::get('/research-shops', 'AdminResearchShopController@index');
   Route::resource('/rss-read','AdminRssController');
-
   Route::resource('/contact', 'AdminContactController', ['only' => ['index', 'store']]);
+  Route::resource('/terms', 'AdminTermsController', ['only' => ['index']]);
+  Route::resource('/privacy', 'AdminPrivacyController', ['only' => ['index']]);
+  Route::resource('/howto', 'AdminHowtoController', ['only' => ['index']]);
+  Route::resource('/qa', 'AdminQaController', ['only' => ['index']]);
 
   //jquery INLINE EDIT
   Route::any('/jquerypost', 'AdminFunctionController@postDB'); 
