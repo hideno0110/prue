@@ -167,6 +167,12 @@ return [
     'setting' => '設定',
     'merchant_setting' => '店舗設定',
     'contact_master' => 'お問い合わせ',
+    'terms' => '利用規約',
+    'privacy' => '個人情報について',
+    'howto' => 'ご利用ガイド',
+    'qa' => 'よくある質問',
+
+
     //問い合わせ
     'contact_text' => 'お問い合わせ内容',
     'contact_genre' => 'お問い合わせカテゴリ',
