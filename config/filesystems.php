@@ -4,10 +4,10 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Default Filesystem Disk
+    | デフォルトファイルシステムディスク
     |--------------------------------------------------------------------------
     |
-    | Here you may specify the default filesystem disk that should be used
+    | フレームワークにより使用されるべき、デフォルトのファイルシステムを
     | by the framework. The "local" disk, as well as a variety of cloud
     | based disks are available to your application. Just store away!
     |
@@ -17,12 +17,12 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Default Cloud Filesystem Disk
+    | デフォルトクラウドファイルシステムディスク
     |--------------------------------------------------------------------------
     |
-    | Many applications store files both locally and in the cloud. For this
-    | reason, you may specify a default "cloud" driver here. This driver
-    | will be bound as the Cloud disk implementation in the container.
+    | 多くのアプリケーションが、ローカルとクラウドの両方にファイルを保存します。
+    | このため、ここでデフォルトの「クラウド」ドライバーを指定できます。
+    | このドライバーはコンテナの中で、クラウドディスク実装として結合されます。
     |
     */
 
@@ -30,12 +30,12 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Filesystem Disks
+    | ファイルシステムディスク
     |--------------------------------------------------------------------------
     |
-    | Here you may configure as many filesystem "disks" as you wish, and you
-    | may even configure multiple disks of the same driver. Defaults have
-    | been setup for each driver as an example of the required options.
+    | ここで好きなだけ、ファイルシステム「ディスク」を設定できます。
+    | 同じドライバーに複数のディスクを設定することも可能です。指定が必要な
+    | オプションの例として、各ドライバーのデフォルトが用意されています。
     |
     | Supported Drivers: "local", "ftp", "s3", "rackspace"
     |

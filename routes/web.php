@@ -1,26 +1,11 @@
 <?php
 Route::get('sitemap', array('uses' => 'AdminSitemapController@getIndex', 'as' => 'sitemap'));
-//////////////////////////////////////////
-// Shopping Route
-//////////////////////////////////////////
-Auth::routes();
-Route::get('/home', 'HomeController@index');
-
-// Route::get('/', function () {
-//   $user = new App\Admin;
-//           $user->notify(new \App\Notifications\SlackPosted);
-// });
-Route::get('/', 'ShopIndexController@index');
-Route::post('/shop/{id}','ShopIndexController@item_insert');
-Route::get('/shop/cart','ShopCartController@index');
-Route::patch('/shop/cart/{id}', 'ShopCartController@update');
-Route::delete('/shop/cart/{id}', 'ShopCartController@delete');
-Route::post('/shop/cart/complete', 'ShopCartController@store');
 
 //////////////////////////////////////////
 // Admin Route
 //////////////////////////////////////////
 
+// Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
 Route::group(['prefix' => 'admin'], function () {
   //Admin Login
   Route::get('/login', 'AdminAuth\LoginController@showLoginForm');
@@ -41,17 +26,20 @@ Route::group(['prefix' => 'admin'], function () {
   Route::get('/', 'AdminDashboardController@index');
   //Admin users
   Route::resource('/merchant','AdminMerchantController');
-  Route::resource('/users','AdminUsersController');
-  Route::resource('/shops','AdminShopsController');
-  Route::resource('/shop_lists','AdminShopListController');
-  Route::resource('/inventories','AdminInventoriesController');
-  Route::resource('/items','AdminItemMasterController');
+  Route::resource('/users','AdminUsersController', ['except' => ['show']]);
+  Route::resource('/shops','AdminShopsController', ['except' => ['show']]);
+  Route::resource('/shop_lists','AdminShopListController', ['except' => ['show']]);
+  Route::resource('/inventories','AdminInventoriesController', ['except' => ['show']]);
+  Route::resource('/items','AdminItemMasterController', ['except' => ['show']]);
   //  Route::get('/mws/sell', 'AdminMwsSellsController@index');
   Route::get('/mws/fba-inv', 'AdminFbaInventoriesController@index');
-  Route::get('/research-shops', 'AdminResearchShopController@index');
-  Route::resource('/rss-read','AdminRssController');
-
+  Route::get('/research-shops', 'AdminResearchShopController@index', ['only' => ['index']]);
+  Route::resource('/rss-read','AdminRssController', ['except' => ['show']]);
   Route::resource('/contact', 'AdminContactController', ['only' => ['index', 'store']]);
+  Route::resource('/terms', 'AdminTermsController', ['only' => ['index']]);
+  Route::resource('/privacy', 'AdminPrivacyController', ['only' => ['index']]);
+  Route::resource('/howto', 'AdminHowtoController', ['only' => ['index']]);
+  Route::resource('/qa', 'AdminQaController', ['only' => ['index']]);
 
   //jquery INLINE EDIT
   Route::any('/jquerypost', 'AdminFunctionController@postDB'); 
@@ -101,6 +89,24 @@ Route::group(['prefix' => 'master'], function () {
 });
 
 
+//////////////////////////////////////////
+// Shopping Route
+//////////////////////////////////////////
+//Auth::routes();
+// Route::get('/home', 'HomeController@index');
+
+// Route::get('/', function () {
+//   $user = new App\Admin;
+//           $user->notify(new \App\Notifications\SlackPosted);
+// });
+Route::get('/', 'ShopIndexController@index');
+Route::post('/shop/{id}','ShopIndexController@item_insert');
+Route::get('/shop/cart','ShopCartController@index');
+Route::patch('/shop/cart/{id}', 'ShopCartController@update');
+Route::delete('/shop/cart/{id}', 'ShopCartController@delete');
+Route::post('/shop/cart/complete', 'ShopCartController@store');
+
+
 Route::get('/send', function () {
     Mail::raw('本文', function($message)
     {
@@ -109,4 +115,3 @@ Route::get('/send', function () {
             $message->to('hideno0110@gmail.com');
         });
 });
-

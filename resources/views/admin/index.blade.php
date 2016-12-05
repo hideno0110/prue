@@ -1,5 +1,5 @@
 @extends('vendor.adminlte.layouts.app')
-
+@section('content_breadcrumb','ダッシュボード')
 @section('contentheader_title')
     DashBoard
 @endsection

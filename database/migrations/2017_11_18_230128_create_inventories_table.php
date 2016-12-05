@@ -6,7 +6,7 @@ use Illuminate\Database\Migrations\Migration;
 class CreateInventoriesTable extends Migration
 {
     /**
-     * Run the migrations.
+     * マイグレーション実行
      *
      * @return void
      */
@@ -52,7 +52,7 @@ class CreateInventoriesTable extends Migration
     }
 
     /**
-     * Reverse the migrations.
+     * マイグレーションを戻す
      *
      * @return void
      */

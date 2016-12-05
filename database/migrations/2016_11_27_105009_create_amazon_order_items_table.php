@@ -7,7 +7,7 @@ use Illuminate\Database\Migrations\Migration;
 class CreateAmazonOrderItemsTable extends Migration
 {
     /**
-     * Run the migrations.
+     * マイグレーション実行
      *
      * @return void
      */
@@ -25,7 +25,7 @@ class CreateAmazonOrderItemsTable extends Migration
     }
 
     /**
-     * Reverse the migrations.
+     * マイグレーションを戻す
      *
      * @return void
      */

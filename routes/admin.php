@@ -1,6 +1,7 @@
 <?php
 
 Route::get('/admin', function () {
+
     $users[] = Auth::user();
     $users[] = Auth::guard()->user();
     $users[] = Auth::guard('admin')->user();
@@ -9,4 +10,3 @@ Route::get('/admin', function () {
 
     return view('admin.index');
 })->name('admin');
-

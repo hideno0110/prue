@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">
-                <div class="panel-heading">Merchants</div>
+                <div class="panel-heading">会社・事業者</div>
 
                 <div class="panel-body">
 
@@ -14,14 +14,14 @@
         <thead>
         <tr>
             <th>ID</th>
-            <th>Logo</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Tell</th>
-            <th>Address</th>
-            <th>Active</th>
-            <th>Created</th>
-            <th>Updated</th>
+            <th>ロゴ</th>
+            <th>会社・事業者</th>
+            <th>メールアドレス</th>
+            <th>電話番号</th>
+            <th>住所</th>
+            <th>有効フラグ</th>
+            <th>作成日</th>
+            <th>更新日</th>
         </tr>
         </thead>
         <tbody>

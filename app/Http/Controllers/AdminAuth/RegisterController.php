@@ -31,7 +31,7 @@ class RegisterController extends Controller
     protected $redirectTo = '/admin';
 
     /**
-     * Create a new controller instance.
+     * 新しいコントローラインスタンスの生成
      *
      * @return void
      */

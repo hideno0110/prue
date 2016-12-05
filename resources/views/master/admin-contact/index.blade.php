@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">
-                <div class="panel-heading">Contact</div>
+                <div class="panel-heading">お問い合わせ</div>
 
                 <div class="panel-body">
 
@@ -15,10 +15,10 @@
         <thead>
         <tr>
             <th>ID</th>
-            <th>corp</th>
-            <th>name</th>
-            <th>sub</th>
-            <th>content</th>
+            <th>会社・事業者</th>
+            <th>名前</th>
+            <th>カテゴリ</th>
+            <th>内容</th>
         </tr>
         </thead>
         <tbody>

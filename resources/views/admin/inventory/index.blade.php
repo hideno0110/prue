@@ -1,5 +1,5 @@
 @extends('vendor.adminlte.layouts.app')
-
+@section('content_breadcrumb',trans('adminlte_lang::message.inventories'))
 @section('contentheader_title')
   {{ trans('adminlte_lang::message.inventories') }}  {{ trans('adminlte_lang::message.search_result').' : ' }}{!! $count_inv !!}
 @endsection

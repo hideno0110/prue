@@ -30,13 +30,13 @@ class LoginController extends Controller
     public $redirectTo = '/admin';
 
     /**
-     * Create a new controller instance.
+     * 新しいコントローラインスタンスの生成
      *
      * @return void
      */
     public function __construct()
     {
-        $this->middleware('admin.guest', ['except' => 'logout']);
+      $this->middleware('admin.guest', ['except' => 'logout']);
     }
 
     /**

@@ -48,5 +48,3 @@ class SeleniumShopTest extends SeleniumTestCase
 
     }
 }
-
-

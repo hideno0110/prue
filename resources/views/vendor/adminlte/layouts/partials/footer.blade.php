@@ -2,12 +2,8 @@
 <footer class="main-footer">
     <!-- To the right -->
     <div class="pull-right hidden-xs">
-      <a href="https://github.com/acacha/adminlte-laravel">admin-lte-laravel</a>.
+      <strong>Copyright &copy; 2016 Prue.</strong> <a href="https://github.com/prue/">Github</a>
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2016 Prue.</strong> <a href="https://github.com/multiselling/">Github</a>
+      <a href="{{ url('/admin/terms') }}">利用規約</a>&nbsp;|&nbsp;<a href="{{ url('/admin/privacy') }}">個人情報について</a>&nbsp;|&nbsp;<a href="{{ url('/admin/howto') }}">ご利用ガイド</a> &nbsp;|&nbsp;<a href="{{ url('/admin/qa') }}">よくある質問</a>&nbsp;|&nbsp;<a href="{{ url('/admin/contact') }}">お問い合わせ</a>   
 </footer>
-
-
-
-

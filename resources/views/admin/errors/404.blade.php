@@ -1,7 +1,7 @@
 @extends('vendor.adminlte.layouts.app')
 
 @section('contentheader_title')
-	404 error
+    404 error
 @endsection
 @section('main-content')
 

@@ -19,5 +19,3 @@ class ShopMap extends Model
     'time',
   ];
 }
-
-

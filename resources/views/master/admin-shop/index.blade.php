@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">
-                <div class="panel-heading">Shop List</div>
+                <div class="panel-heading">店舗</div>
 
                 <div class="panel-body">
 
@@ -13,14 +13,14 @@
     <table class="table">
         <thead>
         <tr>
-            <th>Shop Id</th>
-            <th>Logo</th>
-            <th>Merchant</th>
-            <th>Shop</th>
-            <th>Shop Branch ID</th>
-            <th>Branch</th>
-            <th>Address</th>
-            <th>Created</th>
+            <th>店舗Id</th>
+            <th>ロゴ</th>
+            <th>会社・事業者</th>
+            <th>店舗</th>
+            <th>店舗（支店） ID</th>
+            <th>支店名</th>
+            <th>住所</th>
+            <th>作成日</th>
         </tr>
         </thead>
         <tbody>

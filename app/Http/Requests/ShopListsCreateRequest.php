@@ -28,4 +28,10 @@ class ShopListsCreateRequest extends Request
 
         ];
     }
+    public function attributes()
+    {
+        return [
+            'shop_name'    => trans('adminlte_lang::message.shop_lists'),
+        ];
+    }
 }

@@ -7,7 +7,7 @@ use Illuminate\Database\Migrations\Migration;
 class CreateRssUrlsTable extends Migration
 {
     /**
-     * Run the migrations.
+     * マイグレーション実行
      *
      * @return void
      */
@@ -22,7 +22,7 @@ class CreateRssUrlsTable extends Migration
     }
 
     /**
-     * Reverse the migrations.
+     * マイグレーションを戻す
      *
      * @return void
      */

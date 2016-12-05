@@ -10,7 +10,7 @@ class ForgotPasswordController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
-    | Password Reset Controller
+    | パスワードリセットコントローラ
     |--------------------------------------------------------------------------
     |
     | This controller is responsible for handling password reset emails and
@@ -22,7 +22,7 @@ class ForgotPasswordController extends Controller
     use SendsPasswordResetEmails;
 
     /**
-     * Create a new controller instance.
+     * 新しいコントローラインスタンスの生成
      *
      * @return void
      */

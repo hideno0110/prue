@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">
-                <div class="panel-heading">Shop Users</div>
+                <div class="panel-heading">ショッピング会員</div>
 
                 <div class="panel-body">
 
@@ -14,11 +14,11 @@
         <thead>
         <tr>
             <th>ID</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Active</th>
-            <th>Created</th>
-            <th>Updated</th>
+            <th>名前</th>
+            <th>メールアドレス</th>
+            <th>有効フラグ</th>
+            <th>作成日</th>
+            <th>更新日</th>
         </tr>
         </thead>
         <tbody>

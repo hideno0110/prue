@@ -111,16 +111,14 @@ class AdminItemMasterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id) {
+    public function update(ItemCreateRequest  $request, $id) {
 
       $input = $request->all();
 
         try {
           ItemMaster::findOrFail($id)->update($input); 
-
-
         } catch (Exception $e) {
-           return Redirect::back();
+          return Redirect::back();
         }
     
     

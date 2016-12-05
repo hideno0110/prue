@@ -95,24 +95,24 @@ class AdminFunctionController extends Controller
     }
 
     //画像ダウンロード
-	  public function download_file() {
+      public function download_file() {
 
 
-		$id = Input::get('id');
-		$files = glob('images/'.$id);
-		$zipfile = 'pics_'.$id.'.zip';
+        $id = Input::get('id');
+        $files = glob('images/'.$id);
+        $zipfile = 'pics_'.$id.'.zip';
 
 
-		$zipper = new Zipper();
-		$zipper->make($zipfile)->add($files);
+        $zipper = new Zipper();
+        $zipper->make($zipfile)->add($files);
 
-		$zipper = new Zipper();
-		$zipper->make($zipfile)->add($files);
-		// この方法はエラーになった
-		// Zipper::make('images/test.zip')->add($files);
+        $zipper = new Zipper();
+        $zipper->make($zipfile)->add($files);
+        // この方法はエラーになった
+        // Zipper::make('images/test.zip')->add($files);
 
- 		return response()->download(public_path($zipfile));
- 		//ziparchiveha	 試していない
+         return response()->download(public_path($zipfile));
+         //ziparchiveha     試していない
         // // Zipクラスロード
         // $zip = new ZipArchive();
         // // Zipファイル名
@@ -176,4 +176,3 @@ class AdminFunctionController extends Controller
 
 }
     
-

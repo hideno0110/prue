@@ -3,14 +3,14 @@
 abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
 {
     /**
-     * The base URL to use while testing the application.
+     * アプリケーションをテストするときのベースURL
      *
      * @var string
      */
     protected $baseUrl = 'http://localhost:8000';
 
     /**
-     * Creates the application.
+     * アプリケーションの生成
      *
      * @return \Illuminate\Foundation\Application
      */

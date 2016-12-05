@@ -1,4 +1,5 @@
 @extends('vendor.adminlte.layouts.app')
+@section('content_breadcrumb',trans('adminlte_lang::message.stocks'))
 @section('contentheader_title')
     amazon 在庫管理
 @endsection

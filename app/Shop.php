@@ -17,8 +17,8 @@ class Shop extends Model
       'city',
       'address',
       'address2',
-		  'is_active',       	
-		];
+          'is_active',           
+        ];
 
     protected $sortable = [
       'id',
