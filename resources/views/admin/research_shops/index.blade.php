@@ -32,13 +32,13 @@
         console.log(markerData[i]['lat']);
         //表示
         map.drawOverlay({
-  				lat: markerData[i]['lat'],
-  				lng: markerData[i]['lng'],
+                  lat: markerData[i]['lat'],
+                  lng: markerData[i]['lng'],
           layer: 'overlayLayer',
           content: '<div class="overlay' + markerData[i]['id'] + '">' + markerData[i]['name'] + '<div class="overlay_arrow' + markerData[i]['id'] + ' above"></div></div>',
           verticalAlign: 'top',
           horizontalAlign: 'center'
-  			});
+              });
       }
     });
   </script>
@@ -47,19 +47,19 @@
 
   <div class="col-sm-12 box">
     <!-- 地図を表示      -->
-		
+        
     @if($shop_lists)
 
-		<table id="foo-table" class="table" >
-			<thead>
+        <table id="foo-table" class="table" >
+            <thead>
         <th>{{ trans('adminlte_lang::message.shop_lists') }}</th>
         <th>{{ trans('adminlte_lang::message.category') }}</th>
-				<th>{{ trans('adminlte_lang::message.shops') }}</th>
+                <th>{{ trans('adminlte_lang::message.shops') }}</th>
         <th>{{ trans('adminlte_lang::message.postal_code') }}</th>
         <th>{{ trans('adminlte_lang::message.address') }}</th>
         <th>{{ trans('adminlte_lang::message.tel') }}</th>
-			</thead>
-			<tbody>
+            </thead>
+            <tbody>
        
       @foreach($shop_lists as $list) 
           <tr>
@@ -70,12 +70,12 @@
             <td>{{ $list->postal_code }}</td>
             <td>{{ $list->address1 }}</td>
             <td>{{ $list->tel }}</td>
-				 </tr>
+                 </tr>
       @endforeach
 
-		 </tbody> </table>
+         </tbody> </table>
 
-		@endif
-	</div>
+        @endif
+    </div>
 
 @stop

@@ -7,7 +7,7 @@ use Illuminate\Database\Migrations\Migration;
 class CreateAdminContactsTable extends Migration
 {
     /**
-     * Run the migrations.
+     * マイグレーション実行
      *
      * @return void
      */
@@ -24,7 +24,7 @@ class CreateAdminContactsTable extends Migration
     }
 
     /**
-     * Reverse the migrations.
+     * マイグレーションを戻す
      *
      * @return void
      */

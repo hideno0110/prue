@@ -6,7 +6,7 @@ use Illuminate\Database\Migrations\Migration;
 class CreateConditionsTable extends Migration
 {
     /**
-     * Run the migrations.
+     * マイグレーション実行
      *
      * @return void
      */
@@ -24,7 +24,7 @@ class CreateConditionsTable extends Migration
     }
 
     /**
-     * Reverse the migrations.
+     * マイグレーションを戻す
      *
      * @return void
      */

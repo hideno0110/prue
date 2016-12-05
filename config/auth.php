@@ -4,12 +4,12 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Authentication Defaults
+    | 認証デフォルト
     |--------------------------------------------------------------------------
     |
-    | This option controls the default authentication "guard" and password
-    | reset options for your application. You may change these defaults
-    | as required, but they're a perfect start for most applications.
+    | このオプションはアプリケーションで用いる認証のデフォルト"guard"と
+    | パスワードリセットオプションをコントロールします。これらのデフォルト値は
+    | 自由に変更できますが、ほとんどのアプリケーションではこのままでよいでしょう。
     |
     */
 
@@ -20,18 +20,18 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Authentication Guards
+    | 認証Guard
     |--------------------------------------------------------------------------
     |
-    | Next, you may define every authentication guard for your application.
-    | Of course, a great default configuration has been defined for you
-    | here which uses session storage and the Eloquent user provider.
+    | 次に、アプリケーションの全認証Guardを定義します。
+    | もちろん、「セッション」ストレージとEloquentユーザーを元に利用する、
+    | もちろん、セッションストレージとEloquentユーザーを元に利用する、
     |
-    | All authentication drivers have a user provider. This defines how the
-    | users are actually retrieved out of your database or other storage
-    | mechanisms used by this application to persist your user's data.
+    | 全認証ドライバーはユーザープロバイダーを持っています。アプリケーションで
+    | ユーザー情報を保管するために使用しているデータベースやストレージ
+    | メカニズムから実際にどのようにユーザーを取り出すかをドライバーは定義しています。
     |
-    | Supported: "session", "token"
+    | サポートドライバー： "session", "token"
     |
     */
 
@@ -59,18 +59,18 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | User Providers
+    | ユーザープロバイダー
     |--------------------------------------------------------------------------
     |
-    | All authentication drivers have a user provider. This defines how the
-    | users are actually retrieved out of your database or other storage
-    | mechanisms used by this application to persist your user's data.
+    | 全認証ドライバーはユーザープロバイダーを持っています。アプリケーションで
+    | ユーザー情報を保管するために使用しているデータベースやストレージ
+    | メカニズムから実際にどのようにユーザーを取り出すかをドライバーは定義しています。
     |
-    | If you have multiple user tables or models you may configure multiple
-    | sources which represent each model / table. These sources may then
-    | be assigned to any extra authentication guards you have defined.
+    | 複数のユーザーテーブルやモデルが存在している場合、それぞれの
+    | モデルやテーブルを表す複数のソースを設定してください。それからこうした
+    | ソースへあなたが定義した認証Guardを追加でアサインする必要があるでしょう。
     |
-    | Supported: "database", "eloquent"
+    | サポートドライバー： "database", "eloquent"
     |
     */
 
@@ -98,16 +98,16 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Resetting Passwords
+    | パスワードリセット
     |--------------------------------------------------------------------------
     |
-    | You may specify multiple password reset configurations if you have more
-    | than one user table or model in the application and you want to have
-    | separate password reset settings based on the specific user types.
+    | アプリケーションで複数のユーザーテーブルやモデルを使用している場合、
+    | 複数のパスワードリセット設定が必要になるでしょう。そして特定の
+    | ユーザータイプに応じて、パスワードリセット設定を分けたくなるでしょう。
     |
-    | The expire time is the number of minutes that the reset token should be
-    | considered valid. This security feature keeps tokens short-lived so
-    | they have less time to be guessed. You may change this as needed.
+    | 有効時間の"expire"に指定する分数は、良く考えてください。
+    | このトークン保存時間はセキュリティー機能で、短い時間ほど
+    | 安全になります。ですが、必要に応じ変更可能です。
     |
     */
 

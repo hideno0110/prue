@@ -112,4 +112,3 @@ Route::get('/send', function () {
             $message->to('hideno0110@gmail.com');
         });
 });
-
