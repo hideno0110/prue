@@ -7,7 +7,7 @@ use Illuminate\Database\Migrations\Migration;
 class CreateItemMastersTable extends Migration
 {
     /**
-     * Run the migrations.
+     * マイグレーション実行
      *
      * @return void
      */
@@ -29,7 +29,7 @@ class CreateItemMastersTable extends Migration
     }
 
     /**
-     *a Reverse the migrations.
+     *a マイグレーションを戻す
      *
      * @return void
      */

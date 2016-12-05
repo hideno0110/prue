@@ -6,7 +6,7 @@
         <!-- <div class="col&#45;md&#45;8 col&#45;md&#45;offset&#45;2"> -->
         <div class="col-md-12">
             <div class="panel panel-default">
-                <div class="panel-heading">Inventories</div>
+                <div class="panel-heading">仕入一覧</div>
 
                 <div class="panel-body">
                   
@@ -14,13 +14,13 @@
                       <thead>
                       <tr>
                           <th>@sortablelink ('id')</th>
-                          <th>Logo</th>
-                          <th>Merchant</th>
+                          <th>ロゴ</th>
+                          <th>会社・事業者</th>
                           <th>@sortablelink ('sku')</th>
                           <th>@sortablelink ('asin')</th>
                           <th>@sortablelink ('name')</th>
-                          <th>Photo</th>
-                          <th>SHOP_NAME</th>
+                          <th>画像/th>
+                          <th>店舗名</th>
                           <!-- <th>@sortablelink ('buy_date')</th> -->
                           <!-- <th>@sortablelink ('number')</th> -->
                           <!-- <th>@sortablelink ('buy_price')</th> -->
@@ -33,7 +33,7 @@
                           <!-- <th>@sortablelink ('free')</th> -->
                           <th>@sortablelink ('created_at')</th>
                           <th>@sortablelink ('updated_at')</th>
-                          <th>update user</th>
+                          <th>最終更新ユーザー</th>
                       </tr>
                       </thead>
                       <tbody>

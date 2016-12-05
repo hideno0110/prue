@@ -12,7 +12,7 @@ use App\Task\RssCron;
 class Kernel extends ConsoleKernel
 {
     /**
-     * The Artisan commands provided by your application.
+     * アプリケーションで提供するArtisanコマンド
      *
      * @var array
      */
@@ -22,7 +22,7 @@ class Kernel extends ConsoleKernel
     ];
 
     /**
-     * Define the application's command schedule.
+     * アプリケーションのコマンド実行スケジュール定義
      *
      * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
      * @return void
@@ -55,7 +55,7 @@ class Kernel extends ConsoleKernel
 
     
     /**
-     * Register the Closure based commands for the application.
+     * アプリケーションのクロージャベースコマンドの登録
      *
      * @return void
      */

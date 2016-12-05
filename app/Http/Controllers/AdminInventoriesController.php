@@ -67,7 +67,6 @@ class AdminInventoriesController extends Controller
         //もしskuがあれば
         if(!empty($sku)){
             $query->Where('sku','like','%'.$sku.'%')->orWhere('sku2','like','%'.$sku.'%');
-
         }
         //もしnameがあれば
         if(!empty($name)){
@@ -139,7 +138,6 @@ class AdminInventoriesController extends Controller
 
         $merchant_id = Merchant::merchantUserCheck();
         
-
         //結果を取得
         $inventories = $query
           ->sortable()
@@ -292,23 +290,24 @@ class AdminInventoriesController extends Controller
         }
 
         //amazon APIにてamazonデータを取得し格納する
-        try {
-            $obj = new AmazonProductList("myStore"); //store name matches the array key in the config file
-            $obj->setIdTYpe("ASIN"); //tells the object to automatically use tokens right away
-            $obj->setProductIds($item->asin); //tells the object to automatically use tokens right away
-            $item_detail = $obj->fetchProductList(); //this is what actually sends the request
+        if($inventory->asin != ''){ 
+          try {
+              $obj = new AmazonProductList("myStore"); //store name matches the array key in the config file
+              $obj->setIdTYpe("ASIN"); //tells the object to automatically use tokens right away
+              $obj->setProductIds($item->asin); //tells the object to automatically use tokens right away
+              $item_detail = $obj->fetchProductList(); //this is what actually sends the request
 
-            $item->name = $item_detail->GetMatchingProductForIdResult->Products->Product->AttributeSets->ItemAttributes->Title;
-            $item->category = $item_detail->GetMatchingProductForIdResult->Products->Product->SalesRankings->SalesRank->ProductCategoryId[0];
-            $item->rank = $item_detail->GetMatchingProductForIdResult->Products->Product->SalesRankings->SalesRank->Rank[0];
-            $item->file = $item_detail->GetMatchingProductForIdResult->Products->Product->AttributeSets->ItemAttributes->SmallImage->URL;
-        
-            $item->save();
+              $item->name = $item_detail->GetMatchingProductForIdResult->Products->Product->AttributeSets->ItemAttributes->Title;
+              $item->category = $item_detail->GetMatchingProductForIdResult->Products->Product->SalesRankings->SalesRank->ProductCategoryId[0];
+              $item->rank = $item_detail->GetMatchingProductForIdResult->Products->Product->SalesRankings->SalesRank->Rank[0];
+              $item->file = $item_detail->GetMatchingProductForIdResult->Products->Product->AttributeSets->ItemAttributes->SmallImage->URL;
+          
+              $item->save();
 
-        } catch (Exception $ex) {
-            echo 'There was a problem with the Amazon library. Error: '.$ex->getMessage();
+          } catch (Exception $ex) {
+              echo 'There was a problem with the Amazon library. Error: '.$ex->getMessage();
+          }
         }
-
 
         if (Input::get('new')){
             return redirect('/admin/inventories')->with('flash_message',trans('adminlte_lang::message.created_msg'));
@@ -375,7 +374,7 @@ class AdminInventoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */     
-    public function update(Request $request, $id)
+    public function update(InventoriesCreateRequest $request, $id)
     {
       $input = $request->all();
 
@@ -411,7 +410,6 @@ class AdminInventoriesController extends Controller
            DB::rollBack();
            return Redirect::back();
         }
-
         
         if (Input::get('list')){
             return redirect('/admin/inventories')->with('flash_message',trans('adminlte_lang::message.updated_msg'));
@@ -419,7 +417,6 @@ class AdminInventoriesController extends Controller
             return redirect('/admin/inventories/'.$id.'/edit')->with('flash_message',trans('adminlte_lang::message.updated_msg'));
         }
     }
-
 
 
     /**
@@ -430,17 +427,10 @@ class AdminInventoriesController extends Controller
      */
     public function destroy($id)
     {
-        //
-
         $inventory = Inventory::findOrFail($id);
-
         // unlink(public_path() . $inventory->inv_photo->file);
-
         $inventory->delete();
-
         return redirect('/admin/inventories')->with('flash_message',trans('adminlte_lang::message.deleted_msg'));
-
-
     }
 
 

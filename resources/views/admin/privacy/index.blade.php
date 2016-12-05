@@ -1,6 +1,7 @@
 @extends('vendor.adminlte.layouts.app')
+@section('content_breadcrumb',trans('adminlte_lang::message.privacy'))
 @section('contentheader_title')
-	{{ trans('adminlte_lang::message.privacy') }}
+    {{ trans('adminlte_lang::message.privacy') }}
 @endsection
 @section('main-content')
 

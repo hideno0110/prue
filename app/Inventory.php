@@ -65,11 +65,11 @@ class Inventory extends Model
     }
 
     public function inv_photo() {
-   	  return $this->hasMany('App\InvPhoto');
+         return $this->hasMany('App\InvPhoto');
     }
     
     public function shop() {
-    	return $this->belongsTo('App\Shop');
+        return $this->belongsTo('App\Shop');
     }
     
     public function shop_branch() {

@@ -10,8 +10,8 @@ class ShopList extends Model
     use  Sortable;
     
     protected $fillable = ['shop_name',
-			'is_active'     	
-		];
+            'is_active'         
+        ];
 
     protected $sortable = [
         'id',

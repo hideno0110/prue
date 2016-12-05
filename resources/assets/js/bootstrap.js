@@ -2,9 +2,9 @@
 window._ = require('lodash');
 
 /**
- * We'll load jQuery and the Bootstrap jQuery plugin which provides support
- * for JavaScript based Bootstrap features such as modals and tabs. This
- * code may be modified to fit the specific needs of your application.
+ * モーダルやタブのような基本的なBootstrap機能をサポートしている
+ * jQueryとBootstrap jQueryプラグインをロードします。このコードは
+ * アプリケーション独自の必要に応じて、変更されることになります。
  */
 
 window.$ = window.jQuery = require('jquery');
@@ -15,18 +15,18 @@ window.toastr = require('toastr');
 require('icheck');
 
 /**
- * Vue is a modern JavaScript library for building interactive web interfaces
- * using reactive data binding and reusable components. Vue's API is clean
- * and simple, leaving you to focus on building your next great project.
+ * VueはモダンなJavaScriptライブラリで、リアクティブなデータ結合と
+ * 再利用可能なコンポーネントを使用し、インタラクティブなWebインターフェイスを構築できます。
+ * VueのAPIはクリーンかつシンプルで、次の素晴らしいプロジェクト構築へ集中させてくれます。
  */
 
 window.Vue = require('vue');
 require('vue-resource');
 
 /**
- * We'll register a HTTP interceptor to attach the "CSRF" header to each of
- * the outgoing requests issued by this application. The CSRF middleware
- * included with Laravel will automatically verify the header's value.
+ * このアプリケーションから外へ向けて送る各リクエストへヘッダに、
+ * "CSRF"ヘッダを付けるため、HTTPインターセプタを登録します。Laravelに
+ * 含まれるCSRFヘッダが自動的に、ヘッダ中の値の正当性を調べます。
  */
 
 Vue.http.interceptors.push((request, next) => {
@@ -36,12 +36,12 @@ Vue.http.interceptors.push((request, next) => {
 });
 
 /**
- * Echo exposes an expressive API for subscribing to channels and listening
- * for events that are broadcast by Laravel. Echo and event broadcasting
- * allows your team to easily build robust real-time web applications.
+ * Echoはチャンネルを購入したり、Laravelによりブロードキャストされるイベントをリスニング
+ * するための、記述的なAPIを提供しています。Echoとイベントブロードキャストにより、
+ * あなたのチームは堅牢なリアルタイムWebアプリを簡単に構築できるでしょう。
  */
 
-// import Echo from "laravel-echo"
+// "laravel-echo"からEchoをインポート
 
 // window.Echo = new Echo({
 //     broadcaster: 'pusher',

@@ -1,6 +1,7 @@
 @extends('vendor.adminlte.layouts.app')
+@section('content_breadcrumb',trans('adminlte_lang::message.terms'))
 @section('contentheader_title')
-	{{ trans('adminlte_lang::message.terms') }}
+    {{ trans('adminlte_lang::message.terms') }}
 @endsection
 @section('main-content')
 

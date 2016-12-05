@@ -21,7 +21,8 @@
         "modelizer/selenium": "~1.0",
         "roumen/sitemap": "^2.6",
         "davejamesmiller/laravel-breadcrumbs": "^3.0",
-        "prettus/l5-repository": "^2.6"
+        "prettus/l5-repository": "^2.6",
+        "laravel-ja/comja5": "^1.0"
     },
     "require-dev": {
         "mockery/mockery": "0.9.*",

@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">
-                <div class="panel-heading">Admin Users</div>
+                <div class="panel-heading">登録者一覧（サブユーザー含む）</div>
 
                 <div class="panel-body">
 
@@ -14,15 +14,15 @@
         <thead>
         <tr>
             <th>ID</th>
-            <th>Logo</th>
-            <th>Merchant</th>
-            <th>Photo</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Role</th>
-            <th>Active</th>
-            <th>Created</th>
-            <th>Updated</th>
+            <th>ロゴ</th>
+            <th>会社・事業者</th>
+            <th>画像</th>
+            <th>お名前</th>
+            <th>メールアドレス</th>
+            <th>権限</th>
+            <th>有効フラグ</th>
+            <th>作成日</th>
+            <th>更新日</th>
         </tr>
         </thead>
         <tbody>

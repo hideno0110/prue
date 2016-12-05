@@ -1,7 +1,7 @@
 @extends('adminlte::layouts.auth')
 
 @section('htmlheader_title')
-    Password reset
+    {{ trans('adminlte_lang::message.passwordreset') }}
 @endsection
 
 @section('content')

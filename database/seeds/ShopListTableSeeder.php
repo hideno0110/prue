@@ -8,7 +8,7 @@ use Faker\Factory as Faker;
 class ShopListTableSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
+     * データベース初期値設定実行
      *
      * @return void
      */

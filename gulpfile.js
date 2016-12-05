@@ -4,12 +4,12 @@ require('laravel-elixir-vue-2');
 
 /*
  |--------------------------------------------------------------------------
- | Elixir Asset Management
+ | Elixirアセット管理
  |--------------------------------------------------------------------------
  |
- | Elixir provides a clean, fluent API for defining some basic Gulp tasks
- | for your Laravel application. By default, we are compiling the Less
- | file for our application, as well as publishing vendor resources.
+ | ElixirはLaravelアプリケーションなのための、基本的なGulpタスクを
+ | 定義する、美しく流暢なAPIを提供します。デフォルトでも、アプリケーションの
+ | Sassファイルをコンパイルし、同時にベンダーのリソースを発行します。
  |
  */
 

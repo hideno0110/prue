@@ -32,7 +32,7 @@ return [
 
     /*
      * You may wish for all e-mails sent with Mailgun to be sent from
-     * the same address. Here, you may specify a name and address that is
+     * アプリケーションから送信される全メールの送信元名とアドレスはここで
      * used globally for all e-mails that are sent by this application through Mailgun.
      *
      */

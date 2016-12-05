@@ -1,4 +1,5 @@
 @extends('vendor.adminlte.layouts.app')
+@section('content_breadcrumb',trans('adminlte_lang::message.fba_stocks'))
 @section('contentheader_title')
     FBA在庫管理
 @endsection

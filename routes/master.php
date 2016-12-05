@@ -9,4 +9,3 @@ Route::get('/master', function () {
 
     return view('master');
 })->name('master');
-

@@ -7,7 +7,3 @@
     <!-- Default to the left -->
       <a href="{{ url('/admin/terms') }}">利用規約</a>&nbsp;|&nbsp;<a href="{{ url('/admin/privacy') }}">個人情報について</a>&nbsp;|&nbsp;<a href="{{ url('/admin/howto') }}">ご利用ガイド</a> &nbsp;|&nbsp;<a href="{{ url('/admin/qa') }}">よくある質問</a>&nbsp;|&nbsp;<a href="{{ url('/admin/contact') }}">お問い合わせ</a>   
 </footer>
-
-
-
-

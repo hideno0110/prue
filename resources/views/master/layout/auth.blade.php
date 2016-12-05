@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -35,7 +35,7 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/master') }}">
-                    Prue: Master
+                    Prue: 管理者画面
                 </a>
             </div>
 
@@ -46,23 +46,24 @@
                   @if (!Auth::guest())
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            Admin Menu <span class="caret"></span>
+                            会社・事業者管理 <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" role="menu">
-                          <li><a href="{{ url('/master/admin-merchant') }}">Merchants</a></li>
-                          <li><a href="{{ url('/master/admin-user') }}">Users</a></li>
-                          <li><a href="{{ url('/master/admin-inventory') }}">Inventories</a></li>
-                          <li><a href="{{ url('/master/admin-shop') }}">Shops</a></li>
+                          <li><a href="{{ url('/master/admin-merchant') }}">会社・事業者</a></li>
+                          <li><a href="{{ url('/master/admin-user') }}">登録者</a></li>
+                          <!-- <li><a href="{{ url('/master/admin&#45;item') }}">商品マスタ</a></li> -->
+                          <li><a href="{{ url('/master/admin-inventory') }}">仕入</a></li>
+                          <li><a href="{{ url('/master/admin-shop') }}">店舗</a></li>
                           <li><a href="{{ url('/master/admin-rss') }}">Rss</a></li>
-                          <li><a href="{{ url('/master/admin-contact') }}">Contact</a></li>
+                          <li><a href="{{ url('/master/admin-contact') }}">お問い合わせ</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            ShopUser Menu <span class="caret"></span>
+                            ショッピング会員管理 <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" role="menu">
-                          <li><a href="{{ url('/master/shop-user') }}">Shop Users</a></li>
+                          <li><a href="{{ url('/master/shop-user') }}">会員</a></li>
                         </ul>
                     </li>
                   @endif
@@ -82,7 +83,7 @@
                                     <a href="{{ url('/master/logout') }}"
                                         onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
-                                        Logout
+                                        ログアウト
                                     </a>
                                     <form id="logout-form" action="{{ url('/master/logout') }}" method="POST" style="display: none;">
                                         {{ csrf_field() }}

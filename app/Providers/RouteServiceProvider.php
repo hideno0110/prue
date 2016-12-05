@@ -8,16 +8,16 @@ use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvi
 class RouteServiceProvider extends ServiceProvider
 {
     /**
-     * This namespace is applied to your controller routes.
+     * この名前空間はコントローラルートへ適用されます。
      *
-     * In addition, it is set as the URL generator's root namespace.
+     * さらに、URLジェネレーターのルート名前空間としても設定されます。
      *
      * @var string
      */
     protected $namespace = 'App\Http\Controllers';
 
     /**
-     * Define your route model bindings, pattern filters, etc.
+     * ルートモデル結合、パターンフィルターなどを定義
      *
      * @return void
      */
@@ -29,7 +29,7 @@ class RouteServiceProvider extends ServiceProvider
     }
 
     /**
-     * Define the routes for the application.
+     * アプリケーションのルートを定義
      *
      * @return void
      */
@@ -49,7 +49,7 @@ class RouteServiceProvider extends ServiceProvider
     /**
      * Define the "admin" routes for the application.
      *
-     * These routes all receive session state, CSRF protection, etc.
+     * これらのルートではすべて、セッション状態、CSRF保護などを受ける
      *
      * @return void
      */
@@ -68,7 +68,7 @@ class RouteServiceProvider extends ServiceProvider
     /**
      * Define the "master" routes for the application.
      *
-     * These routes all receive session state, CSRF protection, etc.
+     * これらのルートではすべて、セッション状態、CSRF保護などを受ける
      *
      * @return void
      */
@@ -85,9 +85,9 @@ class RouteServiceProvider extends ServiceProvider
     }
 
     /**
-     * Define the "web" routes for the application.
+     * アプリケーションの"Web"ルート定義
      *
-     * These routes all receive session state, CSRF protection, etc.
+     * これらのルートではすべて、セッション状態、CSRF保護などを受ける
      *
      * @return void
      */
@@ -102,9 +102,9 @@ class RouteServiceProvider extends ServiceProvider
     }
 
     /**
-     * Define the "api" routes for the application.
+     * アプリケーションの"api"ルート定義
      *
-     * These routes are typically stateless.
+     * 通常、これらのルートはステートレス
      *
      * @return void
      */
