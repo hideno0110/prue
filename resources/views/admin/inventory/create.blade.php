@@ -5,10 +5,10 @@
 
 @section('main-content')
   <div class="col-sm-6 box">
-      @if(session('flash_message'))
-          <div class="alert alert-success" onlcick="this.classlist.add('hidden')">{{ session('flash_message') }}</div>
-      @endif
-      <!-- end flash msg -->
+      <!-- @if(session('flash_message')) -->
+      <!--     <div class="alert alert&#45;success" onlcick="this.classlist.add('hidden')">{{ session('flash_message') }}</div> -->
+      <!-- @endif -->
+      <!-- <!&#45;&#45; end flash msg &#45;&#45;> -->
       <div class="row">
           @include('includes.form_error')
       </div>
@@ -16,12 +16,16 @@
 
       {!! Form::open(['method'=>'POST','action'=>'AdminInventoriesController@store','files'=>true, 'id'=>"inventory-create"]) !!}
             <div class="form-group">
-                {!! Form::label('asin','ASIN:') !!} <span class='label label-danger'>必須</span>
+                {!! Form::label('asin',trans('adminlte_lang::message.asin').' :') !!} <span class='label label-danger'>ASIN,JAN,商品コードいずれか必須</span>
                 {!! Form::text('asin',null,['class'=>'form-control']) !!}
             </div>
             <div class="form-group">
-                {!! Form::label('jan_code','JAN:') !!}
+                {!! Form::label('jan_code',trans('adminlte_lang::message.jan_code').' :') !!}
                 {!! Form::text('jan_code',null,['class'=>'form-control']) !!}
+            </div>
+            <div class="form-group">
+                {!! Form::label('item_code',trans('adminlte_lang::message.item_code').' :') !!}
+                {!! Form::text('item_code',null,['class'=>'form-control']) !!}
             </div>
                 {!! Form::hidden('sku','') !!}
                 {!! Form::hidden('sku2','') !!}

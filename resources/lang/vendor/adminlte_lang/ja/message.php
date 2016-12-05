@@ -151,6 +151,7 @@ return [
     //サイドバー
     'dashboard'  => 'ダッシュボード',
     'items' => '商品マスタ',
+    'item_master_id' => '商品マスタID',
     'create_item' => '商品登録',
     'inventories' => '仕入',
     'create_inventory' => '仕入登録',
@@ -175,7 +176,7 @@ return [
 
     //問い合わせ
     'contact_text' => 'お問い合わせ内容',
-    'contact_genre' => 'お問い合わせカテゴリ',
+    'contact_genre' => 'お問い合わせジャンル',
     'contact_genre0' => 'Prueの機能について',
     'contact_genre1' => 'amazonAPIについて',
     'contact_genre2' => '金額について',
@@ -184,6 +185,7 @@ return [
 
     //商品
     'item_name' => '商品名',
+    'asin' => 'ASIN',
     'choose_condition' => 'コンディション選択',
     'condition' => 'コンディション',
     'choose_saleplace' => '販売先選択',
@@ -191,6 +193,7 @@ return [
     'buy_date' => '購入日',
     'memo' => 'メモ',
     'freee' => 'freee',
+    'freee_memo' => 'freeeメモ',
     'dl_inv' => 'Amazon登録csv',
     'dl_fba' => 'AmazonFBA登録csv',
     'item_pic' => '商品画像',
@@ -200,7 +203,7 @@ return [
     'buy_price' => '購入価格',
     'sell_price' => '販売価格(予定)',
     'sale_place' => '販売先',
-    'item_code' => '商品コード(任意)',
+    'item_code' => '商品コード',
     'ranking' => '商品ランキング',
     'item_detail' => '商品詳細',
     'jan_code' => 'JANコード',
@@ -218,6 +221,10 @@ return [
     'address2' => '建物名',
     'tel' => '電話番号',
     
+    //お問い合わせ
+    'before_contact' => 'よくある質問に対する回答をご用意しております。
+わからないことがありましたら、お問い合わせの前に、まずこちらをご覧ください。',
+    'goto_qa' =>'よくある質問はこちら', 
     
     
     

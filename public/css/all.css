@@ -13593,6 +13593,7 @@ body {
   min-height: 100%;
   background-color: #fff;
   z-index: 800;
+  overflow: hidden;
 }
 .main-footer {
   background: #fff;

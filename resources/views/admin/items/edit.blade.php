@@ -12,6 +12,7 @@
     <div class="row">
         @include('includes.form_error')
     </div>
+    <!-- end error msg -->
 
     {!! Form::model($item, ['method'=>'PATCH','action'=>['AdminItemMasterController@update', $item->id],'files'=>true]) !!}
     <!-- left side -->

@@ -47,6 +47,6 @@
         @endif
         </tbody>
     </table>
-    <a href="{{route('users.create')}}">{{ trans('adminlte_lang::message.create_user') }}</a>
+    <a href="{{route('users.create')}}"><input class="btn btn-primary col-sm-6" type="submit" name="new" value="{{ trans('adminlte_lang::message.create_user') }}"></a>
 </div>
 @stop

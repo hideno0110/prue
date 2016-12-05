@@ -13,7 +13,13 @@
         @include('includes.form_error')
     </div>
     <!-- end error msg -->
-
+    <div class="row">
+      {{ trans('adminlte_lang::message.before_contact') }}
+    
+      <a href="/admin/qa"><input class="btn btn-primary col-sm-6" type="submit" name="new" value="{{ trans('adminlte_lang::message.goto_qa') }}"></a>
+    </div>
+    <div class="row"><br></div>
+    <div class="row">
     {!! Form::open(['method'=>'POST','action'=>'AdminContactController@store', 'id'=>"contact"]) !!}
       {{ csrf_field() }}
       <div class="form-group">
@@ -29,6 +35,7 @@
       <div class="form-group">
           {!! Form::label('subject',trans('adminlte_lang::message.contact_genre').' :') !!}
           {!! Form::select('subject', [
+            ''  => trans('adminlte_lang::message.choose'),
             '0' => trans('adminlte_lang::message.contact_genre0'),
             '1' => trans('adminlte_lang::message.contact_genre1'),
             '2' => trans('adminlte_lang::message.contact_genre2'),
@@ -43,6 +50,7 @@
           <input class="btn btn-primary col-sm-6" type="submit" name="new" value="送信する">
       </div>
       {!! Form::close() !!}
+      </div>
   
   </div>
 @stop

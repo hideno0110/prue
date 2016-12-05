@@ -5,9 +5,9 @@
 
 @section('main-content')
   <div class="col-sm-12 box">
-    @if(session('flash_message'))
-        <div class="alert alert-success" onlcick="this.classlist.add('hidden')">{{ session('flash_message') }}</div>
-    @endif
+    <!-- @if(session('flash_message')) -->
+    <!--     <div class="alert alert&#45;success" onlcick="this.classlist.add('hidden')">{{ session('flash_message') }}</div> -->
+    <!-- @endif -->
     <!-- end flash msg -->
     <div class="row">
         @include('includes.form_error')

@@ -33,10 +33,10 @@ class AdminContactRequest extends FormRequest
     public function attributes()
     {
         return [
-            'name'    => 'お名前',
-            'email'   => 'メールアドレス',
-            'subject' => '件名',
-            'content' => '内容',
+            'name'    => trans('adminlte_lang::message.fullname'),
+            'email'   => trans('adminlte_lang::message.email'),
+            'subject' => trans('adminlte_lang::message.contact_genre'),
+            'content' => trans('adminlte_lang::message.contact_text'),
         ];
 
     }

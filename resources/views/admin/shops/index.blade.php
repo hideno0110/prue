@@ -4,12 +4,18 @@
 @endsection
 
 @section('main-content')
+  <div class="col-sm-12 box">
+      @if(session('flash_message'))
+          <div class="alert alert-success" onlcick="this.classlist.add('hidden')">{{ session('flash_message') }}</div>
+      @endif
+      <!-- end flash msg -->
+      <div class="row">
+          @include('includes.form_error')
+      </div>
+      <!-- end error msg -->
 
-
-<div class="row">
-    <div class="col-sm-12 box">
-
-<div class="col-sm-3">
+      <div class="col-sm-3">
+        <h4>店舗（支店）新規作成</h4>
         {!! Form::open(['method'=>'POST', 'action'=>'AdminShopsController@store']) !!}
             <div class="form-group">
                 {!! Form::label('shop_list_id',trans('adminlte_lang::message.shop_lists').' :' ) !!}
@@ -49,6 +55,7 @@
             </div>
         {!! Form::close() !!}
 
+        <h4>店舗新規作成</h4>
         {!! Form::open(['method'=>'POST', 'action'=>'AdminShopListController@store']) !!}
         <div class="form-group">
             {!! Form::label('shop_name',trans('adminlte_lang::message.shop_lists').' :' ) !!}
@@ -58,51 +65,25 @@
                 {!! Form::submit(trans('adminlte_lang::message.create'), ['class'=>'btn btn-primary']) !!}
         </div>
         {!! Form::close() !!}
-
-    <div class="row">
-        @include('includes.form_error')
     </div>
-
-</div>
-
-<div class="col-sm-9">
-    {{--{!! Form::open(['method'=>'GET','action'=>'AdminShopsController@index','class'=>'form-inline']) !!}--}}
-    {{--<div class="form-group">--}}
-        {{--{!! Form::text('shop_name', $shop_name ? $shop_name : null,array('class'=>'form-control', 'placeholder'=>'店名')) !!}--}}
-    {{--</div>--}}
-    {{--<div class="form-group">--}}
-        {{--{!! Form::text('shop_branch_name',$shop_branch_name ? $shop_branch_name : null,array('class'=>'form-control', 'placeholder'=>'支店名')) !!}--}}
-    {{--</div>--}}
-    {{--<div class="form-group">--}}
-        {{--{!! Form::text('prefecture',$prefecture ? $prefecture : null,array('class'=>'form-control', 'placeholder'=>'都道府県')) !!}--}}
-    {{--</div>--}}
-    {{--<div class="form-group">--}}
-        {{--{!! Form::text('prefecture',$prefecture ? $prefecture : null,array('class'=>'form-control', 'placeholder'=>'最終購入日')) !!}--}}
-    {{--</div>--}}
-
-
-    {{--<button type="submit" class="btn btn-primary">Search</button>--}}
-
-
-    {{--{!! Form::close() !!}--}}
-
-    {{--<div class="col-sm-6 col-sm-offset-5">--}}
-        {{--{{$shops->render()}}--}}
-    {{--</div>--}}
-    @if($shops)
+    <!-- end left  -->
+    
+    <div class="col-sm-9">
+    
+      @if($shops)
         <table class="table  table-hover" id="foo-table">
-            <thead>
+          <thead>
             <th>id</th>
-      <th>{{ trans('adminlte_lang::message.shop_lists') }}</th>
-      <th>{{ trans('adminlte_lang::message.shops') }}</th>
-      <th>{{ trans('adminlte_lang::message.prefecture') }}</th>
-      <th>{{ trans('adminlte_lang::message.city') }}</th>
+            <th>{{ trans('adminlte_lang::message.shop_lists') }}</th>
+            <th>{{ trans('adminlte_lang::message.shops') }}</th>
+            <th>{{ trans('adminlte_lang::message.prefecture') }}</th>
+            <th>{{ trans('adminlte_lang::message.city') }}</th>
             {{--<th>購入数</th>--}}
             {{--<th>最終購入日</th>--}}
-      <th>{{ trans('adminlte_lang::message.active_flg') }}</th>
-      <th>{{ trans('adminlte_lang::message.created_at') }}</th>
-            </thead>
-            <tbody>
+            <th>{{ trans('adminlte_lang::message.active_flg') }}</th>
+            <th>{{ trans('adminlte_lang::message.created_at') }}</th>
+          </thead>
+          <tbody>
             @foreach($shops as $shop)
                 <tr class="shop">
                     <td class="id">{{ $shop->id }}</td>
@@ -116,16 +97,14 @@
                     <td>{{ $shop->created_at ? $shop->created_at->diffForHumans() : 'no date' }}</td>
                 </tr>
             @endforeach
-            </tbody>
+          </tbody>
         </table>
     @endif
         {{--<div class="col-sm-6 col-sm-offset-5">--}}
             {{--{{$shops->render()}}--}}
         {{--</div>--}}
-
+  </div>
+  <!-- end right -->
 </div>
-</div>
-</div>
-
 
 @stop
