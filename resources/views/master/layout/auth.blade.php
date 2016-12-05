@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -51,7 +51,7 @@
                         <ul class="dropdown-menu" role="menu">
                           <li><a href="{{ url('/master/admin-merchant') }}">会社・事業者</a></li>
                           <li><a href="{{ url('/master/admin-user') }}">登録者</a></li>
-                          <li><a href="{{ url('/master/admin-item') }}">商品マスタ</a></li>
+                          <!-- <li><a href="{{ url('/master/admin&#45;item') }}">商品マスタ</a></li> -->
                           <li><a href="{{ url('/master/admin-inventory') }}">仕入</a></li>
                           <li><a href="{{ url('/master/admin-shop') }}">店舗</a></li>
                           <li><a href="{{ url('/master/admin-rss') }}">Rss</a></li>
