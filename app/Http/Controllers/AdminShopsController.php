@@ -81,24 +81,11 @@ class AdminShopsController extends Controller
     {
       try {
           Shop::create($request->all());
-          
         } catch (Exception $e) {
             return Redirect::back();
         }
 
         return redirect('/admin/shops')->with('flash_message',trans('adminlte_lang::message.created_msg'));
-
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**
@@ -127,7 +114,7 @@ class AdminShopsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ShopsCreateRequest $request, $id)
     {
         $shop = Shop::findOrFail($id);
 

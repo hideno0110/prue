@@ -5,6 +5,13 @@
 @section('main-content')
 
     <div class="col-sm-12 box">
+    @if(session('flash_message'))
+        <div class="alert alert-success" onlcick="this.classlist.add('hidden')">{{ session('flash_message') }}</div>
+    @endif
+    <!-- end flash msg -->
+    <div class="row">
+        @include('includes.form_error')
+    </div>
 
     {!! Form::model($item, ['method'=>'PATCH','action'=>['AdminItemMasterController@update', $item->id],'files'=>true]) !!}
     <!-- left side -->
@@ -60,9 +67,6 @@
         </div>
     </div>
 
-    <div class="row">
-        @include('includes.form_error')
-    </div>
 <div class="col-sm-10">
   
  <table class="table table-striped table-bordered  table-hover" id="edit-table">

@@ -41,15 +41,15 @@ Route::group(['prefix' => 'admin'], function () {
   Route::get('/', 'AdminDashboardController@index');
   //Admin users
   Route::resource('/merchant','AdminMerchantController');
-  Route::resource('/users','AdminUsersController');
-  Route::resource('/shops','AdminShopsController');
-  Route::resource('/shop_lists','AdminShopListController');
-  Route::resource('/inventories','AdminInventoriesController');
-  Route::resource('/items','AdminItemMasterController');
+  Route::resource('/users','AdminUsersController', ['except' => ['show']]);
+  Route::resource('/shops','AdminShopsController', ['except' => ['show']]);
+  Route::resource('/shop_lists','AdminShopListController', ['except' => ['show']]);
+  Route::resource('/inventories','AdminInventoriesController', ['except' => ['show']]);
+  Route::resource('/items','AdminItemMasterController', ['except' => ['show']]);
   //  Route::get('/mws/sell', 'AdminMwsSellsController@index');
   Route::get('/mws/fba-inv', 'AdminFbaInventoriesController@index');
-  Route::get('/research-shops', 'AdminResearchShopController@index');
-  Route::resource('/rss-read','AdminRssController');
+  Route::get('/research-shops', 'AdminResearchShopController@index', ['only' => ['index']]);
+  Route::resource('/rss-read','AdminRssController', ['except' => ['show']]);
   Route::resource('/contact', 'AdminContactController', ['only' => ['index', 'store']]);
   Route::resource('/terms', 'AdminTermsController', ['only' => ['index']]);
   Route::resource('/privacy', 'AdminPrivacyController', ['only' => ['index']]);

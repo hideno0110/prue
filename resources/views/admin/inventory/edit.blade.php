@@ -4,15 +4,9 @@
 @endsection
 @section('main-content')
 
-    <div class="col-sm-12 box">
+  <div class="col-sm-12 box">
 
-        {{--テキスト形式で取得はできる--}}
-        {{--{!! Form::text('search_text', null, array('placeholder' => 'Search Shops','class' => 'form-control','id'=>'search_text')) !!}--}}
-        {{--shop-idと紐付けたいため、セレクト形式で表示したい--}}
-        {{--{!! Form::select('search_text',[''=>'Choose Shops'] + $shops,null,['class'=>'form-control']) !!}--}}
-        
     {!! Form::model($inventory, ['method'=>'PATCH','action'=>['AdminInventoriesController@update', $inventory->id],'files'=>true]) !!}
-    <!-- left side -->
         <div class="col-sm-3">
             <div class="form-group">
                 {!! Form::label('id','ID:') !!}
@@ -75,8 +69,8 @@
                 </div>
             </div>
         </div>
-        <!-- right side -->
-    <div class="col-sm-6">
+        <!-- end left side -->
+        <div class="col-sm-6">
             <div class="form-group">
                 {!! Form::label('name','Name:') !!}
                 {!! Form::text('name',null,['class'=>'form-control']) !!}
@@ -133,15 +127,9 @@
             </div>
         {!! Form::close() !!}
         </div>
+        <!-- end right side -->
     </div>
-
-
-
-
-    <div class="row">
-        @include('includes.form_error')
-    </div>
-
+    <!-- end form -->
     <script>
         $(document).ready(function() {
             console.log(' start');
@@ -163,15 +151,11 @@
                     });
                 },
                 min_length: 3,
-
             });
         });
     </script>
 
-
-
     <script type="text/javascript">
-
         function price() {
             var buy_price = document.getElementById('buy_price').value;
             var sell_price = document.getElementById('sell_price').value;
@@ -188,16 +172,9 @@
                 document.getElementById('ans').style.color = "black";
                 document.getElementById('est_profit').style.color = "black";
             }
-
         }
 
 
     </script>
-
-    {{--<input type="text" value="0" name="num0" size="10" id="num0" onfocus="price()" onkeyup="price()" />--}}
-    {{--<input type="text" value="0" name="num0" size="10" id="num1" onfocus="price()" onkeyup="price()" />--}}
-
-
-
 
 @stop
