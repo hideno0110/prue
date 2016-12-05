@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">
-                <div class="panel-heading">Rss Lists</div>
+                <div class="panel-heading">Rss</div>
 
                 <div class="panel-body">
 
@@ -13,11 +13,11 @@
                     <thead>
                       <tr>
                           <th>ID</th>
-                          <th>Logo</th>
-                          <th>Merchant</th>
-                          <th>Admin Id</th>
+                          <th>ロゴ</th>
+                          <th>会社・事業者名</th>
+                          <th>ユーザーID</th>
                           <th>Rss URL</th>
-                          <th>Created</th>
+                          <th>作成日</th>
                       </tr>
                       </thead>
                       <tbody>
