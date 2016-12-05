@@ -1,4 +1,5 @@
 @extends('vendor.adminlte.layouts.app')
+@section('content_breadcrumb',trans('adminlte_lang::message.merchant_setting'))
 @section('contentheader_title')
   {{ trans('adminlte_lang::message.merchant_setting') }}
 @endsection

@@ -1,16 +1,14 @@
 @extends('vendor.adminlte.layouts.app')
+@section('content_breadcrumb',trans('adminlte_lang::message.users'))
 @section('contentheader_title')
-    User
+{{ trans('adminlte_lang::message.users') }}
 @endsection
 
 @section('main-content')
-
 <div class="col-sm-12 box">
 
     @if(Session::has('deleted_user'))
-
         <p class="bg-danger">{{ session('deleted_user') }}</p>
-
     @endif
 
     <table class="table">

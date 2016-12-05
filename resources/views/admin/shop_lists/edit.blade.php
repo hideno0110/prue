@@ -1,4 +1,5 @@
 @extends('vendor.adminlte.layouts.app')
+@section('content_breadcrumb',trans('adminlte_lang::message.shop_lists'))
 @section('contentheader_title')
     {{$shop_list->shop_name}}
 @endsection

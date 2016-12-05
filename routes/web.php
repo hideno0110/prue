@@ -1,26 +1,11 @@
 <?php
 Route::get('sitemap', array('uses' => 'AdminSitemapController@getIndex', 'as' => 'sitemap'));
-//////////////////////////////////////////
-// Shopping Route
-//////////////////////////////////////////
-Auth::routes();
-Route::get('/home', 'HomeController@index');
-
-// Route::get('/', function () {
-//   $user = new App\Admin;
-//           $user->notify(new \App\Notifications\SlackPosted);
-// });
-Route::get('/', 'ShopIndexController@index');
-Route::post('/shop/{id}','ShopIndexController@item_insert');
-Route::get('/shop/cart','ShopCartController@index');
-Route::patch('/shop/cart/{id}', 'ShopCartController@update');
-Route::delete('/shop/cart/{id}', 'ShopCartController@delete');
-Route::post('/shop/cart/complete', 'ShopCartController@store');
 
 //////////////////////////////////////////
 // Admin Route
 //////////////////////////////////////////
 
+// Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
 Route::group(['prefix' => 'admin'], function () {
   //Admin Login
   Route::get('/login', 'AdminAuth\LoginController@showLoginForm');
@@ -102,6 +87,24 @@ Route::group(['prefix' => 'master'], function () {
   Route::resource('/shop-user', 'MasterShopUserController');
 
 });
+
+
+//////////////////////////////////////////
+// Shopping Route
+//////////////////////////////////////////
+//Auth::routes();
+// Route::get('/home', 'HomeController@index');
+
+// Route::get('/', function () {
+//   $user = new App\Admin;
+//           $user->notify(new \App\Notifications\SlackPosted);
+// });
+Route::get('/', 'ShopIndexController@index');
+Route::post('/shop/{id}','ShopIndexController@item_insert');
+Route::get('/shop/cart','ShopCartController@index');
+Route::patch('/shop/cart/{id}', 'ShopCartController@update');
+Route::delete('/shop/cart/{id}', 'ShopCartController@delete');
+Route::post('/shop/cart/complete', 'ShopCartController@store');
 
 
 Route::get('/send', function () {
