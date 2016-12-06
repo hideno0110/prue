@@ -222,6 +222,7 @@ class AdminInventoriesController extends Controller
         //新規商品登録の際に、商品マスタがない場合、amazonよりデータの取得を行う。
         //取得に失敗する可能性もあるので、transactionの外に置く
         $amazon_get_flg = 0;
+        $item='';
         
         //フォームから新規商品入力値を取得
         $input = $request->all();
@@ -240,8 +241,8 @@ class AdminInventoriesController extends Controller
 
             //新規商品をDBに登録
             $inventory = Inventory::create($input);
-
-
+            
+            //ItemMasterにitem_master_idとして商品マスタが登録済みか確認
             $query = ItemMaster::query();
 
              if(!empty($inventory->asin)){
@@ -260,16 +261,6 @@ class AdminInventoriesController extends Controller
               ->where('merchant_id', $merchant_id)->first();
 
   
-            //inventoryのIDが入ったSKU（商品番号）を作成
-            // if($inventory->condition_id == 11) {
-            //
-            //   if($inventory->asin) {
-            //     $inventory->sku = $inventory->asin.'-'.$inventory->condition_id;
-            //
-            // } else {
-            //
-            //   if($inventory->asin) {
-            //     $inventory->sku =$inventory->asin.'-'.$inventory->condition
 
             //item master に商品マスタがあるかどうかを確認し、ある場合は、item_master_idをセット
             //ない場合は、商品マスタをASINをもとに新規作成
@@ -278,7 +269,7 @@ class AdminInventoriesController extends Controller
              //inventoryのasin or jan or item_codeがマスタに存在するか確認 
 
               //商品マスタに存在すれば存在すれば既存商品マスタのIDを取得
-              if(isset($item_master)) {
+            if(isset($item_master->id)) {
                   $inventory->item_master_id = $item_master->id;
                 //商品マスタに存在しない場合、商品マスタを新規作成し、IDを取得
                 } else {
@@ -291,6 +282,15 @@ class AdminInventoriesController extends Controller
                   $inventory->item_master_id = $item->id;
                 }
             // }  
+
+            //SKU（商品番号）を作成
+            //SKU = Item_masterID + condition + (usedの場合No.)
+            if($inventory->condition->type == 11) {
+                $inventory->sku = $inventory->item_master_id.'-'.$inventory->condition->type;
+            } else { //used item
+                $inventory->sku =$inventory->item_master_id.'-'.$inventory->condition->type.'-'.$inventory->id;
+            }
+            
             //SKU,item_master_idを追加更新
             $inventory->save();
 
@@ -312,19 +312,21 @@ class AdminInventoriesController extends Controller
             }
             //コミット
             DB::commit();
-
         } catch (Exception $e) {
             DB::rollBack();
             return Redirect::back();
         }
 
         //amazon APIにてamazonデータを取得し格納する
-        if($inventory->asin != ''){ 
+        if(($inventory->asin != ''|| $inventory->jan_code != '') && $item){ 
           try {
               $obj = new AmazonProductList("myStore"); //store name matches the array key in the config file
-              $obj->setIdTYpe("ASIN"); //tells the object to automatically use tokens right away
-              $obj->setProductIds($item_master->asin); //tells the object to automatically use tokens right away
-
+              $obj->setIdTYpe("ASIN","JAN"); //tells the object to automatically use tokens right away
+              if($inventory->asin != '') { 
+                $obj->setProductIds($item->asin); //tells the object to automatically use tokens right away
+              } else {
+                $obj->setProductIds($item->jan_code); //tells the object to automatically use tokens right away
+              }  
               $item_detail = $obj->fetchProductList(); //this is what actually sends the request
               // if(isset($item_detail->GetMatchingProductForIdResult->Error->Code)) {
               //    // dont save 

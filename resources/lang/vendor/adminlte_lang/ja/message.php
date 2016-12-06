@@ -186,6 +186,7 @@ return [
     //商品
     'item_name' => '商品名',
     'asin' => 'ASIN',
+    'sku' => 'SKU',
     'choose_condition' => 'コンディション選択',
     'condition' => 'コンディション',
     'choose_saleplace' => '販売先選択',
