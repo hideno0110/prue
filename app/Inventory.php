@@ -102,7 +102,7 @@ class Inventory extends Model
       return $this->belongsTo('App\ItemMaster');
       
     }
-    public function monthly_purchase_price() {
+    public function monthly_purchase_price($merchant_id) {
       //仕入れ比較
       $monthly_purchase = DB::select("
           SELECT
@@ -110,6 +110,7 @@ class Inventory extends Model
              sum(number) as num,
              FORMAT(SUM(buy_price),0 )as price 
           FROM inventories 
+          where merchant_id = $merchant_id
           GROUP BY month order by month DESC ");
       return $monthly_purchase;
     }
@@ -134,28 +135,29 @@ class Inventory extends Model
       return $fba_data;
     }
   
-    public function inv_expect_profit($this_month) {
+    public function inv_expect_profit($this_month, $merchant_id) {
       //仕入れ予想利益
       $profit = DB::selectOne("
             SELECT cast(sum(case when buy_date like '%$this_month%' 
                then sell_price *0.85 - buy_price else 0 end) as SIGNED)as a 
-               from inventories");
+               from inventories
+               where merchant_id = $merchant_id");
       return  number_format($profit->a);
     }
 
-    public function inv_count() {
+    public function inv_count($merchant_id) {
       //これまで仕入れた商品の数
-      $inv_count = Inventory::where('is_active', 1)->count();
+      $inv_count = Inventory::where('is_active', 1)->where('merchant_id', $merchant_id)->count();
       return $inv_count;
     }
   
-    public function inv_month_num($this_month) {
-      $inv_month_num = Inventory::where('buy_date','like', '%'.$this_month.'%')->count();
+    public function inv_month_num($this_month, $merchant_id) {
+      $inv_month_num = Inventory::where('buy_date','like', '%'.$this_month.'%')->where('merchant_id', $merchant_id)->count();
       return $inv_month_num;
     }
   
-    public function inv_month_money($this_month) {
-      $inv_month_money = Inventory::where('buy_date', 'like', '%'.$this_month.'%')->sum('buy_price');
+    public function inv_month_money($this_month, $merchant_id) {
+      $inv_month_money = Inventory::where('buy_date', 'like', '%'.$this_month.'%')->where('merchant_id',$merchant_id)->sum('buy_price');
       return $inv_month_money;
     }
 
