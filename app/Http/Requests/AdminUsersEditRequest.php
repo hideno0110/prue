@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class UsersRequest extends Request
+class AdminUsersEditRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,13 +24,10 @@ class UsersRequest extends Request
     public function rules()
     {
         return [
-            //
             'name' => 'required',
             'email'=>'required',
             'role_id'=>'required',
             'is_active'=>'required',
-            'password'=>'required'
-
         ];
     }
 
@@ -40,7 +37,6 @@ class UsersRequest extends Request
             'name'    => trans('adminlte_lang::message.fullname'),
             'email'   => trans('adminlte_lang::message.email'),
             'role_id' => trans('adminlte_lang::message.role'),
-            'password'=> trans('adminlte_lang::message.password')
         ];
 
     }

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UsersRequest;
-use App\Http\Requests\UsersEditRequest;
+use App\Http\Requests\AdminUsersRequest;
+use App\Http\Requests\AdminUsersEditRequest;
 use App\Photo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
@@ -56,7 +56,7 @@ class AdminUsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UsersRequest $request)
+    public function store(AdminUsersRequest $request)
     {
         $input = $request->all();
         
@@ -133,7 +133,7 @@ class AdminUsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UsersEditRequest $request, $id)
+    public function update(AdminUsersEditRequest $request, $id)
     {
         $user = Admin::findOrFail($id);
         $input =  $request->all();

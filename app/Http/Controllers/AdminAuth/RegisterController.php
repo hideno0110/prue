@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\AdminAuth;
 
 use App\Admin;
+use App\Merchant;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -63,11 +64,15 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return Admin::create([
+      $merchant = Merchant::create();
+         
+      return Admin::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-        ]);
+            'merchant_id' => $merchant->id,
+      ]);
+
     }
 
     /**

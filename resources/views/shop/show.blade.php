@@ -1,6 +1,8 @@
 @extends('layouts.shopDefault')
 
-@section('title', '購入確認ページ')
+@section('title', $item->name)
+@section('header-right')
+@endsection
 
 @section('content')
 
@@ -38,10 +40,10 @@
           <h4>{{ number_format($item->sell_price) }}円</h4>
       </div>
       <div class="purchase">
-        <form method="post" action="/shop/cart/complete/{{ $item->id }}" class="purchase">
-          {{ csrf_field() }}
+        <form method="get" action="{{ url('/shop/cart/2') }}" class="purchase">
+ <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
           <input type="hidden" value="{{ $item->id }}" name="id" class="btn">     
-          <input type="submit" value="購入する" id="purchase" class="btn">
+          <input type="submit" value="確認して購入する" id="purchase" class="btn">
         </form>
       </div>
 
