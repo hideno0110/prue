@@ -12,7 +12,7 @@ return [
     |
     */
     
-    'key'       => 'ADD YOUR SERVICE KEY HERE',
+    'key'       => env('GOOGLE_MAP_API', null),
         
     /*
     |--------------------------------------------------------------------------

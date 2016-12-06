@@ -28,8 +28,8 @@ class ShopList extends Model
       return $this->hasMany('App\Shop');
     }
 
-    public function shop_list_count() {
-      $shop_list_count = ShopList::where('is_active', 1)->count();
+    public function shop_list_count($merchant_id) {
+      $shop_list_count = ShopList::where('is_active', 1)->where('merchant_id',$merchant_id)->count();
       return $shop_list_count;
     }
 
