@@ -98,6 +98,12 @@ class AdminItemMasterController extends Controller
         if($merchant_id == $item_merchant_id) {
           $item = ItemMaster::findOrFail($id);
 
+
+          $url = 'https://d1ge0kk1l5kms0.cloudfront.net';
+          $html_code = $item->file;
+          $item->file = preg_replace("/http:\/\/ecx.images-amazon.com/", $url, $html_code);
+
+
           return view('admin.items.edit',compact('item'));
         } else {
           return view('admin.errors.404'); 

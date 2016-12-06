@@ -38,7 +38,7 @@ class Shop extends Model
       return $this->hasMany('App\Inventory');
     }
 
-    public function shop_count() {
+    public function shop_count($merchant_id) {
       $shops = Shop::where('is_active', 1)->count();
       return $shops;
     }

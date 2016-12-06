@@ -23,9 +23,8 @@
     <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
     
     {{--google map--}}
-    <script src="http://maps.google.com/maps/api/js?key=AIzaSyDY3plks7RAekRdZ70FWj-TkHEM6qttg4w"></script>
     <script src="https://rawgit.com/HPNeo/gmaps/master/gmaps.js"></script>
-
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAP_API') }}&callback=initMap" type="text/javascript"></script>
     {{-- chart.js --}}
     <script src="{{asset("/plugins/chartjs/Chart.min.js")}}" type="text/javascript"></script>
     
