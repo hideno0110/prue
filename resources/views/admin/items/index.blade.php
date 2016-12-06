@@ -14,6 +14,7 @@
             <thead>
             <th>ID</th>
       <th>ASIN</th>
+      <th>{{ trans('adminlte_lang::message.jan_code') }}</th>
       <th>{{ trans('adminlte_lang::message.item_code') }}</th>
       <th>{{ trans('adminlte_lang::message.item_pic') }}</th>
       <th>{{ trans('adminlte_lang::message.item_name') }}</th>
@@ -24,6 +25,7 @@
                 <tr class="item">
                     <td><a href="{{ route('items.edit',$item->id) }}">{{ $item->id }}</a></td>
           <td><a href="{{ route('items.edit',$item->id) }}">{{ $item->asin }}</a></td>
+          <td><a href="{{ route('items.edit',$item->id) }}">{{ $item->jan_code }}</a></td>
           <td><a href="{{ route('items.edit',$item->id) }}">{{ $item->item_code }}</a></td>
           <td><a href="{{ route('items.edit',$item->id) }}"><img src="{{ $item->file }}"></a></td>
           <td><a href="{{ route('items.edit',$item->id) }}">{{ $item->name }}</a></td>       

@@ -222,6 +222,7 @@ class AdminInventoriesController extends Controller
         //新規商品登録の際に、商品マスタがない場合、amazonよりデータの取得を行う。
         //取得に失敗する可能性もあるので、transactionの外に置く
         $amazon_get_flg = 0;
+        $item='';
         
         //フォームから新規商品入力値を取得
         $input = $request->all();
@@ -240,28 +241,56 @@ class AdminInventoriesController extends Controller
 
             //新規商品をDBに登録
             $inventory = Inventory::create($input);
+            
+            //ItemMasterにitem_master_idとして商品マスタが登録済みか確認
+            $query = ItemMaster::query();
 
-            //inventoryのIDが入ったSKU（商品番号）を作成
-            $inventory->sku =$inventory->asin.'-'.date('Ymd',strtotime($inventory->buy_date)).'-'.$inventory->id;
+             if(!empty($inventory->asin)){
+                 $query->where('asin',$inventory->asin);
+             }
+             if(!empty($inventory->jan_code)){
+                 $query->where('jan_code',$inventory->jan_code);
+             }
+             if(!empty($inventory->item_code)){
+                 $query->where('item_code',$inventory->item_code);
+             }
+
+            $merchant_id = Merchant::merchantUserCheck();
+            //結果を取得
+            $item_master = $query
+              ->where('merchant_id', $merchant_id)->first();
+
+  
 
             //item master に商品マスタがあるかどうかを確認し、ある場合は、item_master_idをセット
             //ない場合は、商品マスタをASINをもとに新規作成
-            if($inventory->item_master_id == 0 && isset($inventory->asin)) {
+            // if($inventory->item_master_id == 0 && isset($inventory->asin)) {
 
-             //inventoryのasinがマスタに存在するか確認 
-              $item = ItemMaster::where('asin',$inventory->asin)->first();
-                //商品マスタに存在すれば存在すれば商品マスタのIDを取得
-              if(isset($item)) {
-                  $inventory->item_master_id = $item->id;
+             //inventoryのasin or jan or item_codeがマスタに存在するか確認 
+
+              //商品マスタに存在すれば存在すれば既存商品マスタのIDを取得
+            if(isset($item_master->id)) {
+                  $inventory->item_master_id = $item_master->id;
                 //商品マスタに存在しない場合、商品マスタを新規作成し、IDを取得
                 } else {
                   $item_input['asin'] = $inventory->asin;
+                  $item_input['jan_code'] = $inventory->jan_code;
+                  $item_input['item_code'] = $inventory->item_code;
                   $item_input['merchant_id'] = $inventory->merchant_id;
                   $item = ItemMaster::create($item_input);
-                  echo $item->id;
+                  //新規作成した商品マスタから商品マスタIDを取得
                   $inventory->item_master_id = $item->id;
                 }
-            }  
+            // }  
+
+            //SKU（商品番号）を作成
+            //SKU = Item_masterID + condition + (usedの場合No.)
+            if($inventory->condition->type == 11) {
+                $inventory->sku = $inventory->item_master_id.'-'.$inventory->condition->type;
+            } else { //used item
+                $inventory->sku =$inventory->item_master_id.'-'.$inventory->condition->type.'-'.$inventory->id;
+            }
+            
             //SKU,item_master_idを追加更新
             $inventory->save();
 
@@ -283,26 +312,32 @@ class AdminInventoriesController extends Controller
             }
             //コミット
             DB::commit();
-
         } catch (Exception $e) {
             DB::rollBack();
             return Redirect::back();
         }
 
         //amazon APIにてamazonデータを取得し格納する
-        if($inventory->asin != ''){ 
+        if(($inventory->asin != ''|| $inventory->jan_code != '') && $item){ 
           try {
               $obj = new AmazonProductList("myStore"); //store name matches the array key in the config file
-              $obj->setIdTYpe("ASIN"); //tells the object to automatically use tokens right away
-              $obj->setProductIds($item->asin); //tells the object to automatically use tokens right away
+              $obj->setIdTYpe("ASIN","JAN"); //tells the object to automatically use tokens right away
+              if($inventory->asin != '') { 
+                $obj->setProductIds($item->asin); //tells the object to automatically use tokens right away
+              } else {
+                $obj->setProductIds($item->jan_code); //tells the object to automatically use tokens right away
+              }  
               $item_detail = $obj->fetchProductList(); //this is what actually sends the request
-
-              $item->name = $item_detail->GetMatchingProductForIdResult->Products->Product->AttributeSets->ItemAttributes->Title;
-              $item->category = $item_detail->GetMatchingProductForIdResult->Products->Product->SalesRankings->SalesRank->ProductCategoryId[0];
-              $item->rank = $item_detail->GetMatchingProductForIdResult->Products->Product->SalesRankings->SalesRank->Rank[0];
-              $item->file = $item_detail->GetMatchingProductForIdResult->Products->Product->AttributeSets->ItemAttributes->SmallImage->URL;
-          
-              $item->save();
+              // if(isset($item_detail->GetMatchingProductForIdResult->Error->Code)) {
+              //    // dont save 
+              // dd($item_master->asin);
+              // } else {  
+                 $item->name = $item_detail->GetMatchingProductForIdResult->Products->Product->AttributeSets->ItemAttributes->Title;
+                 $item->category = $item_detail->GetMatchingProductForIdResult->Products->Product->SalesRankings->SalesRank->ProductCategoryId[0];
+                 $item->rank = $item_detail->GetMatchingProductForIdResult->Products->Product->SalesRankings->SalesRank->Rank[0];
+                 $item->file = $item_detail->GetMatchingProductForIdResult->Products->Product->AttributeSets->ItemAttributes->SmallImage->URL;
+                  $item->save();
+              // }
 
           } catch (Exception $ex) {
               echo 'There was a problem with the Amazon library. Error: '.$ex->getMessage();

@@ -14,11 +14,15 @@
         </div>
         {!! Form::open(['method'=>'POST','action'=>'AdminItemMasterController@store','files'=>true, 'id'=>"item-create"]) !!}
             <div class="form-group">
-                {!! Form::label('asin','ASIN:') !!} <span class='label label-danger'>{{ trans('adminlte_lang::message.require_icon') }}</span>
+                {!! Form::label('asin','ASIN:') !!} <span class='label label-danger'>{{ trans('adminlte_lang::message.require_asin_jan_itme') }}</span>
                 {!! Form::text('asin',null,['class'=>'form-control']) !!}
             </div>
             <div class="form-group">
-                {!! Form::label('item code',trans('adminlte_lang::message.item_code').' :' ) !!} 
+                {!! Form::label('jan_code',trans('adminlte_lang::message.jan_code').' :' ) !!} 
+                {!! Form::text('jan_code',null,['class'=>'form-control']) !!}
+            </div>
+            <div class="form-group">
+                {!! Form::label('item_code',trans('adminlte_lang::message.item_code').' :' ) !!} 
                 {!! Form::text('item_code',null,['class'=>'form-control']) !!}
             </div>
             <div class="form-group">
