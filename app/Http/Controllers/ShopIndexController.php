@@ -28,6 +28,15 @@ class ShopIndexController extends Controller
     return view('shop.index',['items'=>$items]);
   }
 
+
+  public function show($id) {
+    $item = Inventory::findOrFail($id);
+
+    return view('shop.show',compact('item'));
+  }
+
+
+
   public function item_insert(Request $request, $id) {
 
     //カートに追加する

@@ -31,8 +31,10 @@
                             <!-- The user image in the navbar-->
                             <img src="{{ $user->photo ?  url('').$user->photo->file :Gravatar::get($user->email) }}" class="user-image" alt="User Image"/>
                             <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                           <span class="hidden-xs">{{ Auth::guard('admin')->user()->merchant->name}} {{ Auth::guard('admin')->user()->name }}</span>
-                        </a>
+                      {{--      @if(Auth::guard('admin')->user())
+                              <span class="hidden-xs">{{ Auth::guard('admin')->user()->merchant->name}} {{ Auth::guard('admin')->user()->name }}</span>
+                            @endif
+                       --}} </a>
                         <ul class="dropdown-menu">
                             <!-- The user image in the menu -->
                             <li class="user-header">

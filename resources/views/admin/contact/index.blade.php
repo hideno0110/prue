@@ -17,7 +17,8 @@
     <div class="row">
       {{ trans('adminlte_lang::message.before_contact') }}
     
-      <a href="/admin/qa"><input class="btn btn-primary col-sm-6" type="submit" name="new" value="{{ trans('adminlte_lang::message.goto_qa') }}"></a>
+    <div class="row"><br></div>
+      <a href="/admin/qa"><button class="btn btn-primary col-sm-6">{{ trans('adminlte_lang::message.goto_qa') }}</button></a>
     </div>
     <div class="row"><br></div>
     <div class="row">
