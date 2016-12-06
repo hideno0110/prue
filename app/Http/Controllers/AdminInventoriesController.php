@@ -302,7 +302,8 @@ class AdminInventoriesController extends Controller
                 $i = 1;
                 foreach ($files as $file) {
                     $name = time() . $file->getClientOriginalName();
-                    $file->move('images/inv/'.$inventory->id.'/',$name);
+                    // $file->move('images/inv/'.$inventory->id.'/',$name);
+                    $file->move('images/inv/',$name);
                     $photo = InvPhoto::create(['file'=>$name,
                         'type'=> 1,
                         'inventory_id'=>$inventory->id,
@@ -328,16 +329,15 @@ class AdminInventoriesController extends Controller
                 $obj->setProductIds($item->jan_code); //tells the object to automatically use tokens right away
               }  
               $item_detail = $obj->fetchProductList(); //this is what actually sends the request
-              // if(isset($item_detail->GetMatchingProductForIdResult->Error->Code)) {
-              //    // dont save 
-              // dd($item_master->asin);
-              // } else {  
+              if(isset($item_detail->GetMatchingProductForIdResult->Error->Code)) {
+                 // dont save 
+              } else {  
                  $item->name = $item_detail->GetMatchingProductForIdResult->Products->Product->AttributeSets->ItemAttributes->Title;
                  $item->category = $item_detail->GetMatchingProductForIdResult->Products->Product->SalesRankings->SalesRank->ProductCategoryId[0];
                  $item->rank = $item_detail->GetMatchingProductForIdResult->Products->Product->SalesRankings->SalesRank->Rank[0];
                  $item->file = $item_detail->GetMatchingProductForIdResult->Products->Product->AttributeSets->ItemAttributes->SmallImage->URL;
                   $item->save();
-              // }
+              }
 
           } catch (Exception $ex) {
               echo 'There was a problem with the Amazon library. Error: '.$ex->getMessage();
@@ -427,7 +427,7 @@ class AdminInventoriesController extends Controller
             $i = 1;
             foreach ($files as $file) { 
                 $name = time() . $file->getClientOriginalName();
-                $file->move('images/inv/'.$inventory->id.'/',$name);
+                $file->move('images/inv/',$name);
                 $photo = InvPhoto::create(['file'=>$name,
                     'type'=> 1,
                     'inventory_id'=>$id,
