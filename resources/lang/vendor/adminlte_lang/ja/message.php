@@ -172,7 +172,7 @@ return [
     'privacy' => '個人情報について',
     'howto' => 'ご利用ガイド',
     'qa' => 'よくある質問',
-
+    'require_asin_jan_itme' => 'ASIN,JAN,商品コードいずれか必須',
 
     //問い合わせ
     'contact_text' => 'お問い合わせ内容',
@@ -186,6 +186,7 @@ return [
     //商品
     'item_name' => '商品名',
     'asin' => 'ASIN',
+    'sku' => 'SKU',
     'choose_condition' => 'コンディション選択',
     'condition' => 'コンディション',
     'choose_saleplace' => '販売先選択',

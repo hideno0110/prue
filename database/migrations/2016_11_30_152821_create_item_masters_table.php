@@ -17,6 +17,7 @@ class CreateItemMastersTable extends Migration
             $table->increments('id');
             $table->string('item_code');
             $table->string('asin');
+            $table->string('jan_code');
             $table->string('name');
             $table->text('item_detail');
             $table->string('category');

@@ -30,4 +30,17 @@ class UsersEditRequest extends Request
             'is_active'=>'required',
         ];
     }
+
+    public function attributes()
+    {
+        return [
+            'name'    => trans('adminlte_lang::message.fullname'),
+            'email'   => trans('adminlte_lang::message.email'),
+            'role_id' => trans('adminlte_lang::message.role'),
+        ];
+
+    }
+
+
+
 }

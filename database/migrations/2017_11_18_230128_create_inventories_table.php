@@ -19,6 +19,7 @@ class CreateInventoriesTable extends Migration
             $table->integer('photo_id')->unsigned()->index()->default(0);
             $table->string('asin');
             $table->string('jan_code');
+            $table->string('item_code');
             $table->string('sku')->default('');
             $table->string('name')->nullable();
             $table->integer('shop_id')->index()->unsigned()->nullable();

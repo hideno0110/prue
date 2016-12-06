@@ -10,6 +10,7 @@ class ItemMaster extends Model
   protected $fillable = [
     'item_code',
     'asin',
+    'jan_code',
     'name',
     'item_detail',
     'category',

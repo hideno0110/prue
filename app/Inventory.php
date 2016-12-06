@@ -12,6 +12,7 @@ class Inventory extends Model
     protected $fillable = [
         'asin',
         'jan_code',
+        'item_code',
         'sku',
         'sku2',
         'name',
