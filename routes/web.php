@@ -92,26 +92,17 @@ Route::group(['prefix' => 'master'], function () {
 //////////////////////////////////////////
 // Shopping Route
 //////////////////////////////////////////
-//Auth::routes();
-// Route::get('/home', 'HomeController@index');
+Auth::routes();
+Route::get('/home', 'HomeController@index');
 
 // Route::get('/', function () {
 //   $user = new App\Admin;
 //           $user->notify(new \App\Notifications\SlackPosted);
 // });
 Route::get('/', 'ShopIndexController@index');
-Route::post('/shop/{id}','ShopIndexController@item_insert');
-Route::get('/shop/cart','ShopCartController@index');
-Route::patch('/shop/cart/{id}', 'ShopCartController@update');
-Route::delete('/shop/cart/{id}', 'ShopCartController@delete');
-Route::post('/shop/cart/complete', 'ShopCartController@store');
+Route::get('/{id}', 'ShopIndexController@show');
+// Route::post('/shop/{id}','ShopIndexController@item_insert');
+Route::get('/shop/cart/{id}','ShopCartController@index');
+Route::post('/shop/cart/complete/{id}', 'ShopCartController@store');
 
 
-Route::get('/send', function () {
-    Mail::raw('本文', function($message)
-    {
-            $message->from('multi.manage.shopping@gmail.com', '差出人名称');
-    
-            $message->to('hideno0110@gmail.com');
-        });
-});

@@ -1,5 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.shopDefault')
 
+i
 @section('content')
 <div class="container">
     <div class="row">

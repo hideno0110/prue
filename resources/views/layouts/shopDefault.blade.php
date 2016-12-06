@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <title>@yield('title')</title>
+  <title>Prue - どこよりもお店から安く買えるサイト</title>
   <meta charset="utf-8">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/4.1.0/sanitize.css">"
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -66,7 +66,7 @@
   {{-- main-wrapper end  --}}
 
   <footer>
-    <p>&copy; NORI All Rights Reserved. </p>
+    <p>&copy; Prue All Rights Reserved. </p>
   </footer>
   {{-- footer end  --}}
   </div>

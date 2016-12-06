@@ -6,8 +6,9 @@
 
 @section('content')
 
-  <div class="items_wrapper">
+  <div class="items-wrapper">
     @foreach($items as $item) 
+      <a href="{{ url('/',$item->id) }}">
       <div class="item">
         <div class="item_pic">
           @if($item->number != 0)
@@ -19,6 +20,7 @@
         <div class="item_name">{{ $item->name }}</div>
         <div class="item_price">{{ number_format($item->sell_price) }}円</div>
       </div>
+      </a>
     @endforeach
   </div>
 

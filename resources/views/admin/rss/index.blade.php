@@ -42,7 +42,7 @@
       @foreach($items_lists as $list) 
           <tr>
             <td>{{ $list['date'] }}</td>
-            <td><a href="{{ $list['link'] }}" target="_blank">{{ $list['title'] }}</a></td>
+            <td><a href="{{ $list['url'] }}" target="_blank">{{ $list['title'] }}</a></td>
             <td>{{ $list['site'] }}</td>
                  </tr>
       @endforeach
