@@ -17,7 +17,7 @@
 
       {!! Form::open(['method'=>'POST','action'=>'AdminInventoriesController@store','files'=>true, 'id'=>"inventory-create"]) !!}
             <div class="form-group">
-                {!! Form::label('asin',trans('adminlte_lang::message.asin').' :') !!} <span class='label label-danger'>ASIN,JAN,商品コードいずれか必須</span>
+                {!! Form::label('asin',trans('adminlte_lang::message.asin').' :') !!} <span class='label label-danger'>{{ trans('adminlte_lang::message.require_asin_jan_itme') }}</span>
                 {!! Form::text('asin',null,['class'=>'form-control']) !!}
             </div>
             <div class="form-group">
