@@ -57,26 +57,26 @@
     <table class="table table-striped table-bordered  table-hover" id="edit-table">
         <thead>
           <tr>
-            <th>@sortablelink ('id')</th>
+            <th>@sortablelink ('id',trans('adminlte_lang::message.id'))</th>
 
-            <th>@sortablelink ('sku')</th>
-            <th>@sortablelink ('asin')</th>
-            <th>@sortablelink ('name')</th>
-            <th>Photo</th>
-            <th>SHOP_NAME</th>
-            <th>@sortablelink ('buy_date')</th>
-            <th>@sortablelink ('number')</th>
-            <th>@sortablelink ('buy_price')</th>
-            <th>@sortablelink ('sell_price')</th>
-            <th>@sortablelink ('payment')</th>
-            <th>@sortablelink ('sale_place')</th>
-            <th>@sortablelink ('condition')</th>
-            <th>@sortablelink ('DESCRIPTION')</th>
-            <th>@sortablelink ('MEMO')</th>
-            <th>@sortablelink ('item_master_id')</th>
-            <th>@sortablelink ('free')</th>
-            <th>@sortablelink ('created_at')</th>
-            <th>@sortablelink ('updated_at')</th>
+            <th>@sortablelink ('sku', trans('adminlte_lang::message.sku'))</th>:
+            <th>@sortablelink ('asin',trans('adminlte_lang::message.asin'))</th>
+            <th>{{ trans('adminlte_lang::message.item_name') }}</th>
+            <th>{{ trans('adminlte_lang::message.item_pic') }} </th>
+            <th>{{ trans('adminlte_lang::message.shops') }}</th>
+            <th>{{ trans('adminlte_lang::message.buy_date') }}</th>
+            <th>{{ trans('adminlte_lang::message.buy_item_num') }}</th>
+            <th>{{ trans('adminlte_lang::message.buy_price') }}</th>
+            <th>{{ trans('adminlte_lang::message.sell_price') }}</th>
+            <th>{{ trans('adminlte_lang::message.payment') }}</th>
+            <!-- <th>{{ trans('adminlte_lang::message.sale_place') }}</th> -->
+            <th>{{ trans('adminlte_lang::message.condition') }}</th>
+            <!-- <th>{{ trans('adminlte_lang::message.description') }}</th> -->
+            <th>{{ trans('adminlte_lang::message.memo') }}</th>
+            <th>{{ trans('adminlte_lang::message.item_master_id') }}</th>
+            <!-- <th>@sortablelink ('free')</th> -->
+            <th>{{ trans('adminlte_lang::message.created_at') }}</th>
+            <th>{{ trans('adminlte_lang::message.updated_at') }}</th>
            </tr>
         </thead>
         <tbody>
@@ -108,7 +108,7 @@
             </td>
             <td>{{ $inventory->sell_price }}</td>
             <td>{{ $inventory->payment_id ? $inventory->payment->name : '' }}</td>
-            <td>{{ $inventory->sale_place_id ? $inventory->sale_place->name : '' }}</td>
+            {{-- <td>{{ $inventory->sale_place_id ? $inventory->sale_place->name : '' }}</td> --}}
             <td>@if ($inventory->condition_id == 11)
                     <span class="label label-success">{{ $inventory->condition->name}}</span>
                 @elseif ($inventory->condition_id == 1)
@@ -123,10 +123,10 @@
                     {{ $inventory->condition_id ? $inventory->condition->name : '' }}
                 @endif
             </td>
-            <td>{{ $inventory->description }}</td>
+            {{-- <td>{{ $inventory->description }}</td> --}}
             <td class="memo">{{ $inventory->memo }}</td>
             <td><a href="{{ route('items.edit',$inventory->item_master_id)}}" alt="" target="_blank">{{ $inventory->item_master_id }}</a></td>
-            <td class="free">{{ $inventory->free }}</td>
+            {{-- <td class="free">{{ $inventory->free }}</td> --}}
             <td>{{ $inventory->created_at->diffForHumans() }}</td>
             <td>{{ $inventory->updated_at->diffForHumans() }}</td>
           </tr>
