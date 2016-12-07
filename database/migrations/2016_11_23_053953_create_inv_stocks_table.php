@@ -15,8 +15,9 @@ class CreateInvStocksTable extends Migration
     {
         Schema::create('inv_stocks', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('sku')->unsigned();
+            $table->string('sku');
             $table->integer('stock');
+            $table->integer('merchant_id');
             $table->timestamps();
         
             // $table->foreign('inventory_id')
