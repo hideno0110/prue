@@ -146,6 +146,7 @@ return [
     'updated_msg' => '更新しました',
     'deleted_msg' => '削除しました',
     'created_msg' => '作成しました',
+    'no_result' => '結果がみつかりません',
 
     //ユーザー
     'profile_pic' => 'プロフィール画像',
