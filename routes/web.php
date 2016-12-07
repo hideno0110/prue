@@ -1,12 +1,17 @@
 <?php
 Route::get('sitemap', array('uses' => 'AdminSitemapController@getIndex', 'as' => 'sitemap'));
 
+
+//////////////////////////////////////////
+// Lp
 //////////////////////////////////////////
 // Admin Route
 //////////////////////////////////////////
 
 // Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
 Route::group(['prefix' => 'admin'], function () {
+  //lp
+  Route::get('/lp', 'LpController@index');
   //Admin Login
   Route::get('/login', 'AdminAuth\LoginController@showLoginForm');
   Route::post('/login', 'AdminAuth\LoginController@login');

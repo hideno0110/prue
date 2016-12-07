@@ -209,8 +209,6 @@ class AdminInventoriesController extends Controller
         return view('admin.inventory.create',$compacted);
     }
 
-
-
     /**
      * Store a newly created resource in storage.
      *
@@ -260,11 +258,8 @@ class AdminInventoriesController extends Controller
             $item_master = $query
               ->where('merchant_id', $merchant_id)->first();
 
-  
-
             //item master に商品マスタがあるかどうかを確認し、ある場合は、item_master_idをセット
             //ない場合は、商品マスタをASINをもとに新規作成
-            // if($inventory->item_master_id == 0 && isset($inventory->asin)) {
 
              //inventoryのasin or jan or item_codeがマスタに存在するか確認 
 
@@ -281,7 +276,6 @@ class AdminInventoriesController extends Controller
                   //新規作成した商品マスタから商品マスタIDを取得
                   $inventory->item_master_id = $item->id;
                 }
-            // }  
 
             //SKU（商品番号）を作成
             //SKU = Item_masterID + condition + (usedの場合No.)
@@ -311,6 +305,29 @@ class AdminInventoriesController extends Controller
                     $i++;
                 }
             }
+
+            //在庫数を追加する
+            $stock = InvStock::where('sku','like','%'.$inventory->sku.'%')->first();             
+            var_dump($stock);
+            var_dump($inventory->sku);
+
+            if(isset($stock->id)) {
+                $stock->stock += $inventory->number;
+                $stock->save();
+                $inventory->inv_stock_id = $stock->id;
+
+            } else {
+               $stock = new InvStock; 
+                $stock['stock'] = $inventory->number;
+                $stock['sku']   = $inventory->sku;
+                $stock->merchant_id = $inventory->merchant_id;
+                $stock->save();
+                $inventory->inv_stock_id = $stock->id;
+            }
+
+            //stock_idを追加更新
+            $inventory->save();
+
             //コミット
             DB::commit();
         } catch (Exception $e) {
