@@ -22,6 +22,10 @@
             </thead>
             <tbody>
             @foreach($items as $item)
+<?php  $url = 'https://d1ge0kk1l5kms0.cloudfront.net';
+          $html_code = $item->file;
+          $item->file = preg_replace("/http:\/\/ecx.images-amazon.com/", $url, $html_code);
+?>
                 <tr class="item">
                     <td><a href="{{ route('items.edit',$item->id) }}">{{ $item->id }}</a></td>
           <td><a href="{{ route('items.edit',$item->id) }}">{{ $item->asin }}</a></td>

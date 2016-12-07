@@ -308,8 +308,8 @@ class AdminInventoriesController extends Controller
 
             //在庫数を追加する
             $stock = InvStock::where('sku','like','%'.$inventory->sku.'%')->first();             
-            var_dump($stock);
-            var_dump($inventory->sku);
+            // var_dump($stock);
+            // var_dump($inventory->sku);
 
             if(isset($stock->id)) {
                 $stock->stock += $inventory->number;
