@@ -30,6 +30,7 @@ class CreateInventoriesTable extends Migration
             $table->integer('payment_id')->unsigned()->index()->nullable();
             $table->integer('condition_id')->unsigned()->index()->nullable();
             $table->integer('sale_place_id')->unsigned()->index()->nullable();
+            $table->integer('inv_stock_id')->unsigned()->index();
             $table->text('description')->nullable();
             $table->text('description_1')->nullable();
             $table->text('description_2')->nullable();

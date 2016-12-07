@@ -10,6 +10,7 @@ use Auth;
 use App\Admin;
 use App\Http\Requests;
 // use App\Inventory;
+use App\Merchant;
 use DB;
 use Illuminate\Support\Facades\Input;
 
@@ -99,9 +100,12 @@ class AdminShopsController extends Controller
 
       $shop = Shop::findOrFail($id);
       $shop_list = ShopList::pluck('shop_name','id')->all();
-        
+      
+      $merchant_id = Merchant::merchantUserCheck(); 
+
       $inventories = DB::select("
-               select id,sku,name,buy_date from inventories where shop_id = $id
+               select id,sku,name,buy_date from inventories 
+                where shop_id = $id and merchant_id = $merchant_id
                ");
 
       return view('admin.shops.edit', compact('shop','shop_list','inventories'));

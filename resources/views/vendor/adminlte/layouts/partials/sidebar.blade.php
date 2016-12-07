@@ -28,7 +28,7 @@
             <li class="treeview">
                 <a href="#"><i class='fa fa-archive'></i> <span>{{ trans('adminlte_lang::message.stocks') }}</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
-                    <li><a href="{{ url('admin/mws/fba-inv') }}">{{ trans('adminlte_lang::message.stocks') }}</a></li>
+                    <li><a href="{{ url('admin/stocks') }}">{{ trans('adminlte_lang::message.stocks') }}</a></li>
                 </ul>
                 <ul class="treeview-menu">
                     <li><a href="{{ url('admin/mws/fba-inv') }}">{{ trans('adminlte_lang::message.fba_stocks') }}</a></li>

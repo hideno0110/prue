@@ -1,0 +1,37 @@
+/*　モバイル向けレイアウト */
+@media all and (max-width: 670px) {
+  
+.header-top {
+  width:100%;
+}
+
+.header-right {
+  display:none;
+}
+
+.header-left {
+  float: none;
+  margin: 0 auto;
+  width:100%;
+  text-align:center;
+}
+
+.service-wrapper, .contents, .company-wrapper, .footer-nav  {
+  width:100%;
+}
+
+.content {
+  width:100%;
+}
+
+form {
+  width:100%;
+}
+
+textarea {
+  height:100px;
+  width:300px;
+}
+
+
+}

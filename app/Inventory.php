@@ -24,6 +24,7 @@ class Inventory extends Model
         'sell_price',
         'payment_id',
         'sale_place_id',
+        'stock_id',
         'condition_id',
         'description',
         'description_1',
@@ -98,10 +99,13 @@ class Inventory extends Model
     }
     
     public function item_master() {
-
       return $this->belongsTo('App\ItemMaster');
-      
     }
+    
+    public function inv_stock() {
+      return $this->belongsTo('App\InvStock');
+    }
+    
     public function monthly_purchase_price($merchant_id) {
       //仕入れ比較
       $monthly_purchase = DB::select("
