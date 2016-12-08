@@ -74,6 +74,13 @@ h1 {
   transition:2s;
 }
 
+.alert.alert-success {
+  background-color: #CCFFCC;
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+}
+
 /*header end*/
 
 .carousel-wrapper {
@@ -85,14 +92,14 @@ h1 {
 }
 
 .carousel-wrapper .inner {
-    padding-top: 210px;
+    padding-top: 225px;
     /* padding-bottom: 150px; */
     background-color: rgba(0, 0, 0, 0.6);
 }
 
 
 .carousel-wrapper .inner p {
-  font-size: 48px;
+  font-size: 40px;
   margin-bottom: 30px;
   font-weight: 400;
 }

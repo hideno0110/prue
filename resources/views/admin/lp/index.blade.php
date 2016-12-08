@@ -33,8 +33,8 @@
   </script>
 </head>
 <body>
-  <div class="container">
-    <header>
+ <header> 
+    <div class="container">
       <div class="header-top">
         <div class="header-left">
           <a href="/admin/lp"><h1><img src="/lp/structure/logo.png" class="logo"></h1></a>
@@ -64,6 +64,9 @@
         </div>
       </div>
 
+        @if(session('flash_message'))
+          <div class="alert alert-success">{{ session('flash_message') }}</div>
+        @endif   
       <div class="service-wrapper" id="service">
         <h1>サービス</h1>
         <div class="contents">
@@ -162,12 +165,13 @@
       <!-- /.carousel-wrapper -->
       <div class="inquery-wrapper" id="inquery">
         <h1>お問い合わせ</h1>
-        <form action="">
+        {!! Form::open(['method'=>'POST','action'=>'LpController@store', 'id'=>"lp-contact"]) !!}
+          {{ csrf_field() }}
           <input type="text" name="name" placeholder="お名前" size="40" class="input">
-          <input type="text" name="mailaddress" placeholder="メールアドレス" size="40" class="input">
+          <input type="text" name="email" placeholder="メールアドレス" size="40" class="input">
           <textarea name="content" placeholder="お問い合わせ内容"   class="input"></textarea>
-          <input type="submit" class="submit">
-        </form>
+          <input type="submit" class="submit" value="送信する">
+        {!! Form::close() !!}
       </div>
       <!-- /.inquiry -->
       <div class="clear-fix"></div>
