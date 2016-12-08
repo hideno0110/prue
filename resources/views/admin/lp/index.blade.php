@@ -23,6 +23,7 @@
         // 移動先を数値で取得
         var position = target.offset().top;
         // スムーススクロール
+        // $('html, body').animate({'scrollTop':position},500);       
         $('body,html').animate({scrollTop:position}, speed, 'swing');
         return false;
      });
@@ -53,15 +54,17 @@
         <!-- <a href="/admin/login">Prue販売管理へ</a> -->
         <!-- <a href="/">Prueショッピングへ</a> -->
         <!-- <a href="/masterlogin">管理者画面へ</a> -->
-
-        <p>シンプルにマルチ販売機能を実現する世界へ<br>
-        <a href="/admin/login">Prue販売管理へ</a><br>
-        <a href="/">Prueショッピングへ</a><br>
-        <a href="/masterlogin">管理者画面へ</a>
-        </p>
+        <div class="inner">
+          <p>シンプルにマルチ販売機能を実現する世界へ</p>
+          <div class="btns">
+            <a href="/admin/login" class="btn btn-top-white btn-lg" terget="_blank">Prue販売管理へ</a>
+            <a href="/" class="btn btn-top-white btn-lg" terget="_blank">Prueショッピングへ</a>
+            <a href="/master/login" class="btn btn-top-white btn-lg" terget="_blank">管理者画面へ</a>
+          </div>       
+        </div>
       </div>
 
-      <div class="service-wrapper" id="technology">
+      <div class="service-wrapper" id="service">
         <h1>サービス</h1>
         <div class="contents">
           <div class="content">

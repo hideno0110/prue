@@ -359,7 +359,11 @@ class AdminInventoriesController extends Controller
                  $item->category = $item_detail->GetMatchingProductForIdResult->Products->Product->SalesRankings->SalesRank->ProductCategoryId[0];
                  $item->rank = $item_detail->GetMatchingProductForIdResult->Products->Product->SalesRankings->SalesRank->Rank[0];
                  $item->file = $item_detail->GetMatchingProductForIdResult->Products->Product->AttributeSets->ItemAttributes->SmallImage->URL;
-                  $item->save();
+                 //ssl用にURLを変換
+                 $url = 'https://d1ge0kk1l5kms0.cloudfront.net';
+                 $html_code = $item->file;
+                 $item->file = preg_replace("/http:\/\/ecx.images-amazon.com/", $url, $html_code);
+                 $item->save();
               }
 
           } catch (Exception $ex) {

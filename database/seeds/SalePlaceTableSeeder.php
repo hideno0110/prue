@@ -14,9 +14,15 @@ class SalePlaceTableSeeder extends Seeder
     {
 
          $sale_places = [
+            [ 'name' => 'Prue' ],
+            [ 'name' => 'amazonJP-FBA' ],
+            [ 'name' => 'amazonJP-MBA' ],
+            [ 'name' => 'yahooショッピング' ],
             [ 'name' => 'JP_FBA' ],
             [ 'name' => 'メルカリ' ],
-            [ 'name' => 'ヤフオク' ]
+            [ 'name' => 'ヤフオク' ],
+            [ 'name' => 'ebay' ],
+            [ 'name' => 'BASE' ]
         ];
         foreach( $sale_places as $sale_place ) {
           $place = new SalePlace();
