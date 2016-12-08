@@ -63,10 +63,23 @@ textarea {
 }
 
 
-
-
 .content p{
   padding: 25px;
 }
+
+
+/* technology wrapper end  */
+
+form {
+ padding: 20px;
+
+}
+
+input, textarea, submit {
+  width: 100%;
+  text-align: center;
+}
+
+/* inquery wrapper end */
 
 }
