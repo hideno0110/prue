@@ -63,6 +63,7 @@
             <th>@sortablelink ('asin',trans('adminlte_lang::message.asin'))</th>
             <th>{{ trans('adminlte_lang::message.item_name') }}</th>
             <th>{{ trans('adminlte_lang::message.item_pic') }} </th>
+            <th>{{ trans('adminlte_lang::message.item_pic') }} </th>
             <th>{{ trans('adminlte_lang::message.shops') }}</th>
             <th>{{ trans('adminlte_lang::message.buy_date') }}</th>
             <th>{{ trans('adminlte_lang::message.buy_item_num') }}</th>
@@ -89,7 +90,10 @@
 
             <td> @if($inventory->sku2) {{$inventory->sku2 }}<br>(旧:{{$inventory->sku }}) @else {{$inventory->sku }} @endif</td>
             <td><a href="{{ route('inventories.edit',$inventory->id)}}" alt="">{{ $inventory->asin }}</a></td>
-            <td><a href="{{ route('inventories.edit',$inventory->id)}}" alt="">{{ $inventory->name}}</a></td>
+            <td><a href="{{ route('inventories.edit',$inventory->id)}}" alt="">{{ $inventory->item_master->name}}</a></td>
+            <td>
+      
+            <td><a href="{{ route('inventories.edit',$inventory->id)}}" alt=""><img src="{{ $inventory->item_master->file }}"></a></td>
             <td>
               @foreach($inventory->inv_photo as $photo)
                 @if($photo->number == 1)
