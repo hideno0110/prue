@@ -15,14 +15,13 @@ class ShopIndexController extends Controller
 
 
     $name = Input::get('name');
-    $items = Inventory::all();
+    $query = Inventory::query();
 
-    //dd($items->inv_photo->first()->file);
-    // if(!empty($name)){
-    //   $query->where('name','like','%'.$name.'%');
-    // } 
-    //
-    // $items = $query->orderBy('id','desc')->paginate(15);
+    if(!empty($name)){
+      $query->where('name','like','%'.$name.'%');
+    } 
+
+    $items = $query->orderBy('id','desc')->paginate(15);
 
 
     return view('shop.index',['items'=>$items]);

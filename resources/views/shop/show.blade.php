@@ -9,6 +9,21 @@
   <div class="items-wrapper">
     <div class="item-detail-wrapper">
       <div class="item_left">
+          @if($item->number != 0)
+            <img src="  
+              @if($item->inv_photo->first()) 
+                {{  $item->inv_photo->first()->file }}
+              @elseif($item->item_master->file) 
+                {{  $item->item_master->file }}
+              @else
+                {{ 'http://placehold.it/220x220' }}
+              @endif
+            ">
+          @else
+            <img src="{{  $item->inv_photo->first() ? $item->inv_photo->first()->file : 'http://placehold.it/220x220'  }}" class="sold">
+          @endif
+
+{{--      @if($item->inv_photo)
         @foreach($item->inv_photo as $photo)
           @if($photo->number == 1)
             <img src="{{ $photo->file }}" alt="{{ $item->name }} " class="item-pic-first">
@@ -16,6 +31,14 @@
             <img src="{{ $photo->file }}" alt="{{ $item->name }} " class="item-pic-other">
           @endif
         @endforeach
+      @else
+        @if($item->item_master->file) 
+          {{  $item->item_master->file }}
+        @else
+          'http://placehold.it/220x220'
+        @endif
+      @endif
+--}}
       </div>
       <!-- left end  -->
       <div class="item_right">

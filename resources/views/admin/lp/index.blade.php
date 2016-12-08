@@ -210,8 +210,6 @@
 $(function(){
   $('#menu').slicknav({
     label: '', //デフォルトは'MENU'
-     duration: 750, //アニメーションのスピード
-    prependTo: "#menu", //指定した要素内にメニュー表示 デフォルトはbody 
   });
 });
 </script>
