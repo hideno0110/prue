@@ -1,0 +1,137 @@
+/*　モバイル向けレイアウト */
+@media all and (max-width: 670px) {
+
+.header-menu {
+  width: 100%;
+}
+.header-menu ul {
+  margin: 0 auto;
+  width: 100%;
+}
+.header-menu li {
+  width: 20%;
+  text-align: center;
+}
+
+.logo {
+  width: 100px;
+}
+
+.search_box {
+  line-height:60px;
+  float: left;
+  padding:0 40px;
+}
+
+input {
+  border: 1px solid #ccc;
+  padding: 8px 10px;
+}
+
+input.search_item {
+  width:250px;
+}
+
+
+/* header end */
+
+.main-wrapper {
+  width: 100%;
+  margin: 100px auto 0;
+}
+
+.items-wrapper {
+  padding-top: 20px;
+}
+
+.item {
+  float: left;
+  width: 50%;
+  text-align: center;
+  position: relative;
+  vertical-align:middle;
+  margin: 0 0 20px 0;
+}
+
+.item_pic {
+  height: 150px;
+} 
+
+.item_pic img {
+  max-width: 80%;
+  max-height: 150px;
+  /* width: auto; */
+  /* height: auto; */
+  vertical-align:middle;
+}
+
+.item_name {
+  font-size:14px;
+  overflow: hidden;
+  padding: 10px 0;
+  width: 50%;
+  height: 30px;
+}
+/* items  wrapper end */
+
+.item-detail-wrapper {
+  width: 100%;
+  margin: 0 auto;
+  padding-top: 0;
+}
+
+.item_left {
+  margin: 0 auto;
+  width: 80%;
+  float: none;
+
+}
+
+.item_right {
+  margin: 0 auto;
+  width: 100%;
+  float: none;
+}
+
+.item-pic-first {
+  max-width: 100%;
+  max-height: 500px;
+  width: 100%;
+  padding: 10px;
+}
+
+.item-pic-other {
+    
+  max-width: 50px;
+  max-height: 50px;
+}
+
+table.item-table {
+    width: 90%;
+    margin: 0 auto;
+}
+
+div.purchase{
+  margin:0 auto;
+  width: 90%;
+}
+
+input#purchase {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+
+
+
+
+
+
+/* item detail end */
+
+/*  responsive  */
+}
+
+
+
