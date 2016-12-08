@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <title>Prue - どこよりもお店から安く買えるサイト</title>
   <meta charset="utf-8">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/4.1.0/sanitize.css">"
+  <title>Prue - どこよりもお店から安く買えるサイト</title>
+  <meta name="description" content="Prueなら出品料が格安なためどこよりも安く買えます。" />
+  <meta name="keywords" content="" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- css -->
+  <link rel="stylesheet" href="/lp/css/sanitize.css">"
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="/css/shop.css">
+  <link rel="stylesheet" href="/css/shop_sp.css">
 </head>
 <body>
   <div class="container">
@@ -47,10 +52,10 @@
    </div>
    <div class="header-menu">
       <ul>
-        <li><a href="">カテゴリ１<span class="menu_icon">▼</span></a></li>
-        <li><a href="">カテゴリ２<span class="menu_icon">▼</span></a></li>
-        <li><a href="">カテゴリ３<span class="menu_icon">▼</span></a></li>
-        <li><a href="">カテゴリ４<span class="menu_icon">▼</span></a></li>
+        <li><a href="">家電</a></li>
+        <li><a href="">ゲーム</a></li>
+        <li><a href="">本</a></li>
+        <li><a href="">おもちゃ</a></li>
       </ul>
    </div>
  
