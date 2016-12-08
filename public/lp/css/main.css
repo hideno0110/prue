@@ -109,7 +109,7 @@ h1 {
   transition: all .3s;
 }
 
-.btns a {
+a.btn {
 text-decoration: none ;
 }
 
