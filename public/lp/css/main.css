@@ -79,8 +79,16 @@ h1 {
   padding: 10px;
   text-align: center;
   font-weight: bold;
+  color: #008000;
 }
 
+.alert.alert-error {
+  background-color: #FFCCCC;
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+  color: red;
+}
 /*header end*/
 
 .carousel-wrapper {

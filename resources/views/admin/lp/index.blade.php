@@ -64,9 +64,16 @@
         </div>
       </div>
 
-        @if(session('flash_message'))
-          <div class="alert alert-success">{{ session('flash_message') }}</div>
-        @endif   
+    <div class="row">
+      @if(session('flash_message'))
+          <div class="alert alert-success" onlcick="this.classlist.add('hidden')">{{ session('flash_message') }}</div>
+      @endif
+      @if(count($errors) > 0)
+        @foreach($errors->all() as $error)
+          <div class="alert alert-error" onlcick="this.classlist.add('hidden')">{{ $error }}</div>
+        @endforeach
+      @endif   
+    </div>
       <div class="service-wrapper" id="service">
         <h1>サービス</h1>
         <div class="contents">
