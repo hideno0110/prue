@@ -34,6 +34,9 @@ h1 {
   padding: 0;
 }
 
+ .slicknav_menu {
+  display:none;
+}
 
 .header-top {
   width: 1020px;
@@ -50,6 +53,7 @@ h1 {
 
 .header-right {
   float: right;
+  z-index: 100;
 }
 
 .header-right li {
@@ -153,7 +157,7 @@ text-decoration: none ;
 
 }
 
-.service-wrapper h1, .company-wrapper h1, .inquery-wrapper h1 {
+.service-wrapper h2, .company-wrapper h2, .inquery-wrapper h2 {
   text-align: center;
   font-size: 30px;
 }
@@ -231,20 +235,11 @@ text-decoration: none ;
   margin: auto;
 }
 
-.content .tech:hover {
-  background-color: #e96656;
+.content .tech {
+  background-color: #EEEEEE;
   transition: 0.5s ;
 }
 
-.content .carry:hover {
-  background-color: #34d293;
-  transition: 0.5s ;
-}
-
-.content .consulting:hover {
-  background-color: #3ab0e2;
-  transition: 0.5s ;
-}
 
 .content .curled-inner {
   border-radius: 50%;
@@ -306,11 +301,11 @@ text-decoration: none ;
 }
 
 
-.content h2 {
+.content h3 {
   margin-top: 20px;
 }
 
-.content h2  {
+.content h3  {
   font-size: 20px;
   padding-bottom: 3px;
   /* border-bottom: 3px solid #000; */
@@ -367,7 +362,7 @@ text-decoration: none ;
 /*background-color: black;*/
 }
 
-.inquery-wrapper h1 {
+.inquery-wrapper h2 {
   color: white;
 }
 
@@ -478,3 +473,8 @@ footer {
   margin-top:-50px;
   padding-top:50px;
 }
+
+
+
+
+ 

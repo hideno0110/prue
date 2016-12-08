@@ -17,6 +17,23 @@
 }
 
 
+.js #menu {
+display:none;
+}
+
+#menu ul {
+  background-color:white;
+}
+
+.js .slicknav_menu {
+  z-index: 100;
+  display:block;
+  position: fixed;
+  top: 0px;
+  right: 0px
+}
+
+
 /*  header end */
 .carousel-wrapper {
   background: url(../structure/background1.png);
