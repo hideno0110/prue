@@ -79,7 +79,6 @@ h1 {
 .carousel-wrapper {
   height:400px;
   background: url(../structure/background1.png);
-  text-align:center;
   color: white;
   margin: 0 auto 20px;
   text-align: center;
@@ -302,18 +301,6 @@ text-decoration: none ;
   /* border-bottom: 3px solid #000; */
 }
 
-/* .content h2 .carry { */
-/*   font-size: 20px; */
-/*   padding-bottom: 3px; */
-/*   border-bottom: 3px solid #34d293; */
-/* } */
-/*  */
-/* .content h2 .consulting { */
-/*   font-size: 20px; */
-/*   padding-bottom: 3px; */
-/*   border-bottom: 3px solid #3ab0e2; */
-/* } */
-/*  */
 .content p {
  padding: 10px 10px;
 }
@@ -391,14 +378,14 @@ textarea {
 }
 
 .submit {
-  padding: 8px 100px;
+  padding: 10px 100px;
   color: white;
   display: block;
   opacity: 0.8;
   border-radius: 4px;
   text-align: center;
   background-color: gray;
-  margin: auto;
+  margin: auto 10px;
   cursor:pointer;
 }
 
