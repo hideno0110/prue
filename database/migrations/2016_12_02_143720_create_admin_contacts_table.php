@@ -17,6 +17,10 @@ class CreateAdminContactsTable extends Migration
             $table->increments('id');
             $table->integer('merchant_id');
             $table->integer('admin_id');
+            $table->string('name');
+            $table->string('email');
+
+
             $table->string('subject');
             $table->text('content');
             $table->timestamps(); 

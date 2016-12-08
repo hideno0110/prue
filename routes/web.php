@@ -12,6 +12,7 @@ Route::get('sitemap', array('uses' => 'AdminSitemapController@getIndex', 'as' =>
 Route::group(['prefix' => 'admin'], function () {
   //lp
   Route::get('/lp', 'LpController@index');
+  Route::post('/lp', 'LpController@store');
   //Admin Login
   Route::get('/login', 'AdminAuth\LoginController@showLoginForm');
   Route::post('/login', 'AdminAuth\LoginController@login');
