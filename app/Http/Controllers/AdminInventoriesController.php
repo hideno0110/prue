@@ -363,7 +363,6 @@ class AdminInventoriesController extends Controller
                  $url = 'https://d1ge0kk1l5kms0.cloudfront.net';
                  $html_code = $item->file;
                  $item->file = preg_replace("/http:\/\/ecx.images-amazon.com/", $url, $html_code);
-                 
                  $item->save();
               }
 

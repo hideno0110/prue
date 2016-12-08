@@ -62,6 +62,7 @@
             <th>@sortablelink ('sku', trans('adminlte_lang::message.sku'))</th>:
             <th>@sortablelink ('asin',trans('adminlte_lang::message.asin'))</th>
             <th>{{ trans('adminlte_lang::message.item_name') }}</th>
+            <th>{{ trans('adminlte_lang::message.item_master_id') }}</th>
             <th>{{ trans('adminlte_lang::message.item_pic') }} </th>
             <th>{{ trans('adminlte_lang::message.item_pic') }} </th>
             <th>{{ trans('adminlte_lang::message.shops') }}</th>
@@ -74,7 +75,6 @@
             <th>{{ trans('adminlte_lang::message.condition') }}</th>
             <!-- <th>{{ trans('adminlte_lang::message.description') }}</th> -->
             <th>{{ trans('adminlte_lang::message.memo') }}</th>
-            <th>{{ trans('adminlte_lang::message.item_master_id') }}</th>
             <!-- <th>@sortablelink ('free')</th> -->
             <th>{{ trans('adminlte_lang::message.created_at') }}</th>
             <th>{{ trans('adminlte_lang::message.updated_at') }}</th>
@@ -91,10 +91,9 @@
             <td> @if($inventory->sku2) {{$inventory->sku2 }}<br>(旧:{{$inventory->sku }}) @else {{$inventory->sku }} @endif</td>
             <td><a href="{{ route('inventories.edit',$inventory->id)}}" alt="">{{ $inventory->asin }}</a></td>
             <td><a href="{{ route('inventories.edit',$inventory->id)}}" alt="">{{ $inventory->item_master->name}}</a></td>
-            <td>
-      
-            <td><a href="{{ route('inventories.edit',$inventory->id)}}" alt=""><img src="{{ $inventory->item_master->file }}"></a></td>
-            <td>
+            <td><a href="{{ route('items.edit',$inventory->item_master_id)}}" alt="" target="_blank">{{ $inventory->item_master_id }}</a></td>
+            <td align="center"><a href="{{ route('inventories.edit',$inventory->id)}}" alt=""><img src="{{ $inventory->item_master->file }}"></a></td>
+            <td align="center">
               @foreach($inventory->inv_photo as $photo)
                 @if($photo->number == 1)
                   <a href="{{ route('inventories.edit',$inventory->id)}}" alt=""><img height="50" src="{{ $photo->file ? $photo->file : 'http://placehold.it/50x50' }}" alt="" class="img-rounded"></a>
@@ -129,7 +128,6 @@
             </td>
             {{-- <td>{{ $inventory->description }}</td> --}}
             <td class="memo">{{ $inventory->memo }}</td>
-            <td><a href="{{ route('items.edit',$inventory->item_master_id)}}" alt="" target="_blank">{{ $inventory->item_master_id }}</a></td>
             {{-- <td class="free">{{ $inventory->free }}</td> --}}
             <td>{{ $inventory->created_at->diffForHumans() }}</td>
             <td>{{ $inventory->updated_at->diffForHumans() }}</td>

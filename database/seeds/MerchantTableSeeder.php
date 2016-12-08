@@ -181,7 +181,6 @@ class MerchantTableSeeder extends Seeder
             //     }
             // }
             //
-            echo $j.'set';
             //在庫数を追加する
             $stock = InvStock::where('sku','like','%'.$inventory->sku.'%')->first();             
             // var_dump($stock);
@@ -201,12 +200,10 @@ class MerchantTableSeeder extends Seeder
                 $inventory->inv_stock_id = $stock->id;
             }
 
-            echo $j.'set';
             //stock_idを追加更新
             $inventory->save();
 
 
-            echo $j.'set';
 
         //amazon APIにてamazonデータを取得し格納する
         if(($inventory->asin != ''|| $inventory->jan_code != '') && $item){ 
@@ -226,6 +223,10 @@ class MerchantTableSeeder extends Seeder
                  $item->category = $item_detail->GetMatchingProductForIdResult->Products->Product->SalesRankings->SalesRank->ProductCategoryId[0];
                  $item->rank = $item_detail->GetMatchingProductForIdResult->Products->Product->SalesRankings->SalesRank->Rank[0];
                  $item->file = $item_detail->GetMatchingProductForIdResult->Products->Product->AttributeSets->ItemAttributes->SmallImage->URL;
+                 //ssl用にURLを変換
+                 $url = 'https://d1ge0kk1l5kms0.cloudfront.net';
+                 $html_code = $item->file;
+                 $item->file = preg_replace("/http:\/\/ecx.images-amazon.com/", $url, $html_code);
                   $item->save();
               }
 
