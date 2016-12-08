@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\AdminContact;
 use Mail;
+use App\Http\Requests\LpRequest;
 
 class LpController extends Controller
 {
@@ -13,7 +14,7 @@ class LpController extends Controller
   }
 
 
-  public function store(Request $request) {
+  public function store(LpRequest $request) {
 
 
     try {
