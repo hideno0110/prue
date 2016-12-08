@@ -21,7 +21,7 @@
   <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144-precomposed">
   <link rel="icon" type="image/png" href="/android-chrome-144x144.png" sizes="192x192">
 
-<script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
   <!-- js   -->
   <script type="text/javascript" src="/lp/jquery.1.9.0.js"></script>
   <script type="text/javascript" src="/lp/jquery.slicknav.js"></script>
