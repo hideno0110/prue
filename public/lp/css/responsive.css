@@ -16,6 +16,35 @@
   text-align:center;
 }
 
+
+/*  header end */
+.carousel-wrapper {
+  background: url(../structure/background1.png);
+}
+
+.carousel-wrapper .inner {
+  padding-top: 145px;
+  /* padding-bottom: 150px; */
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.carousel-wrapper .inner p {
+  font-size: 18px;
+} 
+
+.btn {
+  margin:10px;
+   font-size: 16px;
+   font-weight:normal;
+}
+
+a.btn {
+  width: 80%;
+}
+
+
+/*  carousel wrapper end */
+
 .service-wrapper, .contents, .company-wrapper, .footer-nav  {
   width:100%;
 }
@@ -33,5 +62,11 @@ textarea {
   width:300px;
 }
 
+
+
+
+.content p{
+  padding: 25px;
+}
 
 }

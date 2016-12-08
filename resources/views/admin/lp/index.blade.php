@@ -55,7 +55,7 @@
         <!-- <a href="/">Prueショッピングへ</a> -->
         <!-- <a href="/masterlogin">管理者画面へ</a> -->
         <div class="inner">
-          <p>シンプルにマルチ販売機能を実現する世界へ</p>
+          <p>シンプルにマルチ販売を実現する世界へ</p>
           <div class="btns">
             <a href="/admin/login" class="btn btn-top-white btn-lg" terget="_blank">Prue販売管理へ</a>
             <a href="/" class="btn btn-top-white btn-lg" terget="_blank">Prueショッピングへ</a>
