@@ -71,6 +71,7 @@
   {{-- main-wrapper end  --}}
 
   <footer>
+    <p>利用規約 |  個人情報について </p>
     <p>&copy; Prue All Rights Reserved. </p>
   </footer>
   {{-- footer end  --}}

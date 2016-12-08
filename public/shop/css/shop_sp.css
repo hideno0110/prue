@@ -68,9 +68,10 @@ input.search_item {
 .item_name {
   font-size:14px;
   overflow: hidden;
-  padding: 10px 0;
-  width: 50%;
+  padding: 10px 10px;
+  width: 100%;
   height: 30px;
+  text-align: center;
 }
 /* items  wrapper end */
 
@@ -82,13 +83,13 @@ input.search_item {
 
 .item_left {
   margin: 0 auto;
-  width: 80%;
+  width: 100%;
   float: none;
-
+  text-align: center;
 }
 
 .item_right {
-  margin: 0 auto;
+  margin: 10px auto;
   width: 100%;
   float: none;
 }
@@ -110,6 +111,9 @@ table.item-table {
     width: 90%;
     margin: 0 auto;
 }
+
+
+
 
 div.purchase{
   margin:0 auto;

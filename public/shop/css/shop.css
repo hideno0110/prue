@@ -132,6 +132,7 @@ color: #fff;
 .main-wrapper {
   width: 960px;
   margin: 100px auto 0;
+  padding-top: 20px;
 }
 
 /* main wrapper end */
@@ -328,6 +329,12 @@ footer {
   padding-top: 50px;
 }
 
+
+.item-name-wrapper h1 {
+  text-align:center;
+  margin-bottom:20px;
+}
+
 .item_left {
   float: left;
   width:320px;
@@ -350,7 +357,11 @@ footer {
 }
 
 table.item-table {
-  width:340px
+  width:340px;
+}
+
+table.item-table.seller {
+  margin-top: 20px;
 }
 
 table.item-table td, th {
@@ -364,6 +375,15 @@ table.item-table th {
   background: #fafafa;
   text-align:left;
   font-weight:normal;
+}
+
+table.item-table th.title {
+  text-align: center;
+}
+
+.merchant-logo {
+
+  max-width:100px;
 }
 
 .item-detail-wrapper .item-price {
