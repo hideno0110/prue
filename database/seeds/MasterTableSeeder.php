@@ -13,8 +13,8 @@ class MasterTableSeeder extends Seeder
     public function run()
     {
            Master::create([
-            'name' => "I am Master", 
-            'email' => "master@m.com",
+            'name' => "管理者太郎", 
+            'email' => "m@m.com",
             'is_active' => 1,
             'password' => Hash::make('master')
           ]);
