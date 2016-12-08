@@ -18,12 +18,12 @@ caption{
 }
 
 /* initilize  end */
-
 .error {
   color: tomato;
   font-size: 14px;
-
 }
+
+/* error msg  end */
 
 header {
   border-bottom: 0.5px solid #ccc;
@@ -36,10 +36,8 @@ header {
 }
 
 .header-wrapper {
-
   width: 960px;
   margin: 0 auto;
-
 }
 
 .header-title {
@@ -75,7 +73,6 @@ header a {
 }
 
 
-/* header end */
 p.flash_message {
   display:block;
   text-align:center;
@@ -85,20 +82,8 @@ p.flash_message {
   top: 80px;
   width: 100%;
   z-index:8;
-  
 }
 
-
-.main-wrapper {
-  width: 960px;
-  margin: 100px auto 0;
-}
-
-.items-wrapper {
-  margin: 0 auto;
-  width:100%;
-  font-size:14px;
-}
 
 .search_box {
   line-height:60px;
@@ -140,6 +125,20 @@ background-color: #000;
 color: #fff;
 }
 
+/* header end */
+
+.main-wrapper {
+  width: 960px;
+  margin: 100px auto 0;
+}
+
+/* main wrapper end */
+
+.items-wrapper {
+  margin: 0 auto;
+  width:100%;
+  font-size:14px;
+}
 
 .item {
   float: left;
@@ -152,10 +151,8 @@ color: #fff;
 
 .item:hover {
   background-color:#fffafa;
-
 }
 
-  float: left;
 .item_pic {
   height: 220px;
   /* vertical-align:middle; */
@@ -163,8 +160,6 @@ color: #fff;
 }
 
 .item_pic .sold {
-  
-
 }
 
 .item_pic img {
@@ -184,7 +179,7 @@ color: #fff;
   height: 30px;
 }
 
-
+/* items wrapper end */
 
 
 span.sold {
