@@ -131,7 +131,6 @@ class MerchantTableSeeder extends Seeder
             $item_master = $query
               ->where('merchant_id', $merchant_id)->first();
 
-            echo $j.'ppp';
             //item master に商品マスタがあるかどうかを確認し、ある場合は、item_master_idをセット
             //ない場合は、商品マスタをASINをもとに新規作成
 
@@ -226,8 +225,9 @@ class MerchantTableSeeder extends Seeder
                  //ssl用にURLを変換
                  $url = 'https://d1ge0kk1l5kms0.cloudfront.net';
                  $html_code = $item->file;
-                 $item->file = preg_replace("/http:\/\/ecx.images-amazon.com/", $url, $html_code);
-                  $item->save();
+                 $html_code = preg_replace("/http:\/\/ecx.images-amazon.com/", $url, $html_code);
+                 $item->file = preg_replace("_SL75_", "_SL300_", $html_code);
+                 $item->save();
               }
 
           } catch (Exception $ex) {
