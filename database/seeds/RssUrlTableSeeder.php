@@ -12,7 +12,7 @@ class RssUrlTableSeeder extends Seeder
     public function run()
     {
         $rss_urls = [
-            [ 'admin_id' => 1, 'url' => 'http://news.yahoo.co.jp/pickup/science/rss.xml' ],
+            [ 'admin_id' => 1, 'url' => 'http://www.amazon.co.jp/rss/bestsellers/books?tag=assoc-tag' ],
             [ 'admin_id' => 1, 'url' => 'http://headlines.yahoo.co.jp/rss/zdn_mkt-dom.xml' ],
             [ 'admin_id' => 2, 'url' => 'http://news.yahoo.co.jp/pickup/computer/rss.xml' ]
            // [ 'admin_id' => 1, 'url' => 'https://manablog.org/feed/' ],

@@ -123,6 +123,7 @@ return [
     'logo_ja'=> 'プルー',
 
   // 共通
+    'id' => 'ID',
     'merchant_name' => '会社・事業者名',
     'role' => '権限',
     'active_flg' => '有効フラグ',
@@ -145,6 +146,7 @@ return [
     'updated_msg' => '更新しました',
     'deleted_msg' => '削除しました',
     'created_msg' => '作成しました',
+    'no_result' => '結果がみつかりません',
 
     //ユーザー
     'profile_pic' => 'プロフィール画像',

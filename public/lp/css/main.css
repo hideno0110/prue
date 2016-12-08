@@ -78,22 +78,58 @@ h1 {
 
 .carousel-wrapper {
   height:400px;
-  background: url(../structure/background1.jpeg) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  margin-bottom:50px;
+  background: url(../structure/background1.png);
+  text-align:center;
+  color: white;
+  margin: 0 auto 20px;
+  text-align: center;
 }
 
-.carousel-wrapper p {
-  width: 100%;
-  margin: auto;
-  z-index: 100;
-  padding: 200px;
-  color: white;
-  font-size: 50px;
+.carousel-wrapper .inner {
+    padding-top: 210px;
+    /* padding-bottom: 150px; */
+    background-color: rgba(0, 0, 0, 0.6);
 }
+
+
+.carousel-wrapper .inner p {
+  font-size: 48px;
+  margin-bottom: 30px;
+  font-weight: 400;
+}
+
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 20px;
+  font-weight: 600;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all .3s;
+}
+
+.btns a {
+text-decoration: none ;
+}
+
+.btn:hover {
+  color: #fff;
+}
+
+.btn-top-white {
+  background: rgba(250, 250, 250, 0.06);
+  border: 1px solid rgba(250, 250, 250, 0.15);
+  color: rgba(250, 250, 250, 0.9);
+}
+
+.btn-top-white:hover {
+  border: 1px solid rgba(250, 250, 250, 0.8);
+}
+
+
+
+
 
 /*carousel-wrapper end*/
 
@@ -436,7 +472,7 @@ footer {
 }
 
 
-#company, #service, #inquery { /*jquery 高さ調整用*/
+#company, #service, #technology, #inquery { /*jquery 高さ調整用*/
   margin-top:-50px;
   padding-top:50px;
 }

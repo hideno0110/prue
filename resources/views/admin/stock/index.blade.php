@@ -27,7 +27,6 @@
             <tr>
                 <td> {{ $stock->id }} </td>
                 <td> {{ $stock->sku }} </td>
-                <td> {{ $stock->inventory->name }} </td>
                 <td> {{ $stock->stock }} </td>
 
 

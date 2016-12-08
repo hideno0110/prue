@@ -25,7 +25,7 @@ class AdminTableSeeder extends Seeder
             
             Admin::create([
             'name' => $faker->name.$i, 
-            'email' => "admin".$i."@a.com",
+            'email' => "a".$i."@a.com",
             'merchant_id' => 1,
             'role_id' => 1,
             'is_active' => 1,
@@ -35,7 +35,7 @@ class AdminTableSeeder extends Seeder
         } else {
              Admin::create([
             'name' => $faker->name.$i, 
-            'email' => "admin".$i."@a.com",
+            'email' => "a".$i."@a.com",
             'merchant_id' => rand(2,4), 
             'role_id' => 1,
             'is_active' => 1,

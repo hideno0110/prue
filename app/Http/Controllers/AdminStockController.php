@@ -25,11 +25,10 @@ class AdminStockController extends Controller
     {
       $merchant_id = Merchant::merchantUserCheck();
       $stocks = InvStock::where('merchant_id', $merchant_id)->get();
-
-      $inventory = Inventory::where('merchant_id', $merchant_id)->get();
-      foreach ($inventory as $inv) {
-        print  $inv->inv_stocks->stock;
-      } 
+      // $inventory = Inventory::where('merchant_id', $merchant_id)->get();
+      // foreach ($inventory as $inv) {
+      //   print  $inv->inv_stocks->stock;
+      // } 
 
         return view('admin.stock.index', compact('stocks'));
     }

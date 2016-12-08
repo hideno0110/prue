@@ -22,6 +22,9 @@ class PaymentTableSeeder extends Seeder
         $pament2->name = "クレジットカード";
         $pament2->save();       
 
+        $pament3 = new Payment;
+        $pament3->name = "ポイントカード";
+        $pament3->save();    
        //
     }
 }

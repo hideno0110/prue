@@ -40,8 +40,11 @@ class AdminInventoriesController extends Controller
      */
     public function index()
     {
-        $clear = Input::get('clear');
+        //店舗IDを取得
+        $merchant_id = Merchant::merchantUserCheck();
 
+        //検索でクリアを押した場合 
+        $clear = Input::get('clear');
         if($clear == 'clear') {
             return redirect('/admin/inventories');
         }
@@ -57,14 +60,15 @@ class AdminInventoriesController extends Controller
         $buy_date = Input::get('buy_date');
         $free = Input::get('free');
         $memo = Input::get('memo');
-        //query
+
+        //Inventoryのインスタン化、queryメソッド
         $query = Inventory::query();
 
         //もしasinがあれば
         if(!empty($asin)){
             $query->where('asin','like','%'.$asin.'%');
         }
-        //もしskuがあれば
+        //もしsku,sku2があれば
         if(!empty($sku)){
             $query->Where('sku','like','%'.$sku.'%')->orWhere('sku2','like','%'.$sku.'%');
         }
@@ -119,10 +123,19 @@ class AdminInventoriesController extends Controller
                 }
             }
         }
+
+        //検索結果を取得
+        $inventories = $query
+          ->sortable()
+          ->where('merchant_id', $merchant_id)
+          ->orderBy('inventories.id','desc')
+          ->paginate(100);
         
+        //結果数（検索結果数）を取得 
+        $count_inv = $inventories->count();
+      
+
         //検索用
-        $shop_branch = ShopList::pluck('shop_name','id')->all();
-        $shops = Shop::pluck('shop_branch_name','id')->all();
         $payment = Payment::pluck('name','id')->all();
         $condition = Condition::pluck('name','type')->all();
         $sale_place = SalePlace::pluck('name','id')->all();
@@ -135,17 +148,7 @@ class AdminInventoriesController extends Controller
             $fba = Self::makefba_csv($query);
             return  $fba;
         }
-
-        $merchant_id = Merchant::merchantUserCheck();
         
-        //結果を取得
-        $inventories = $query
-          ->sortable()
-          ->where('merchant_id', $merchant_id)
-          ->orderBy('inventories.id','desc')
-          ->paginate(100);
-        
-        $count_inv = $inventories->count();
 
         $compacted = compact(
           'inventories',
@@ -180,9 +183,10 @@ class AdminInventoriesController extends Controller
      */
     public function create()
     {
+        //merchant_idを取得
+        $merchant_id = Merchant::merchantUserCheck();
+        
         //リスト表示用
-        $shops = Shop::pluck('shop_branch_name','id')->all();
-        $shop_lists = ShopList::pluck('shop_name','id')->all();  
         $payment = Payment::pluck('name','id')->all();
         $condition = Condition::pluck('name','id')->all();
         $sale_place = SalePlace::pluck('name','id')->all();
@@ -191,7 +195,9 @@ class AdminInventoriesController extends Controller
                         shops.id as id, 
                         CONCAT(shop_lists.shop_name,shops.shop_branch_name) as shop 
                         from shops 
-                        left join shop_lists on shops.shop_list_id = shop_lists.id  ORDER BY  shop_lists.shop_name ASC');
+                        left join shop_lists on shops.shop_list_id = shop_lists.id 
+                        where shop_lists.merchant_id ='. $merchant_id. '
+                        ORDER BY  shop_lists.shop_name ASC');
 
         $shops = array();
         foreach($shops_objs as $shops_obj) {
@@ -308,8 +314,8 @@ class AdminInventoriesController extends Controller
 
             //在庫数を追加する
             $stock = InvStock::where('sku','like','%'.$inventory->sku.'%')->first();             
-            var_dump($stock);
-            var_dump($inventory->sku);
+            // var_dump($stock);
+            // var_dump($inventory->sku);
 
             if(isset($stock->id)) {
                 $stock->stock += $inventory->number;
@@ -353,7 +359,11 @@ class AdminInventoriesController extends Controller
                  $item->category = $item_detail->GetMatchingProductForIdResult->Products->Product->SalesRankings->SalesRank->ProductCategoryId[0];
                  $item->rank = $item_detail->GetMatchingProductForIdResult->Products->Product->SalesRankings->SalesRank->Rank[0];
                  $item->file = $item_detail->GetMatchingProductForIdResult->Products->Product->AttributeSets->ItemAttributes->SmallImage->URL;
-                  $item->save();
+                 //ssl用にURLを変換
+                 $url = 'https://d1ge0kk1l5kms0.cloudfront.net';
+                 $html_code = $item->file;
+                 $item->file = preg_replace("/http:\/\/ecx.images-amazon.com/", $url, $html_code);
+                 $item->save();
               }
 
           } catch (Exception $ex) {
@@ -394,8 +404,10 @@ class AdminInventoriesController extends Controller
                           shops.id as id, 
                           CONCAT(shop_lists.shop_name,shops.shop_branch_name) as shop 
                           from shops 
-                          left join shop_lists on shops.shop_list_id = shop_lists.id  ORDER BY shop_lists.shop_name ASC');
-  
+                          left join shop_lists on shops.shop_list_id = shop_lists.id  
+                          where shop_lists.merchant_id ='. $merchant_id. '
+                          ORDER BY shop_lists.shop_name ASC');
+
           $shops = array();
           foreach($shops_objs as $shops_obj) {
               $shops[$shops_obj->id] = $shops_obj->shop;
