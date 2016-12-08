@@ -1,25 +1,101 @@
 /*　モバイル向けレイアウト */
 @media all and (max-width: 670px) {
+  
+.header-top {
+  width:100%;
+}
 
-.header-menu {
+.header-right {
+  display:none;
+}
+
+.header-left {
+  float: none;
+  margin: 0 auto;
+  width:100%;
+  text-align:center;
+}
+
+
+.js #menu {
+display:none;
+}
+
+#menu ul {
+  background-color:white;
+}
+
+.js .slicknav_menu {
+  z-index: 100;
+  display:block;
+  position: fixed;
+  top: 0px;
+  right: 0px
+}
+
+
+/*  header end */
+.carousel-wrapper {
+  background: url(../structure/background1.png);
+}
+
+.carousel-wrapper .inner {
+  padding-top: 145px;
+  /* padding-bottom: 150px; */
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.carousel-wrapper .inner p {
+  font-size: 18px;
+} 
+
+.btn {
+  margin:10px;
+   font-size: 16px;
+   font-weight:normal;
+}
+
+a.btn {
+  width: 80%;
+}
+
+
+/*  carousel wrapper end */
+
+.service-wrapper, .contents, .company-wrapper, .footer-nav  {
+  width:100%;
+}
+
+.content {
+  width:100%;
+}
+
+form {
+  width:100%;
+}
+
+textarea {
+  height:100px;
+  width:300px;
+}
+
+
+.content p{
+  padding: 25px;
+}
+
+
+/* technology wrapper end  */
+
+form {
+ padding: 20px;
+
+}
+
+input, textarea, submit {
   width: 100%;
 }
 
-.main-wrapper {
-  width: 100%;
-  margin: 100px auto 0;
-}
-
-.item {
-  float: left;
-  width: 220px;
-  text-align: center;
-  position: relative;
-  vertical-align:middle;
-  margin: 0 0 20px 20px;
-}
-
-
-/* items  wrapper end */
+/* inquery wrapper end */
 
 }
