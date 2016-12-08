@@ -14,6 +14,14 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+
+    {{-- favicon --}}
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144-precomposed">
+    <link rel="icon" type="image/png" href="/android-chrome-144x144.png" sizes="192x192">
+    
     {{--住所取得--}}
     <script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
    
