@@ -362,7 +362,9 @@ class AdminInventoriesController extends Controller
                  //ssl用にURLを変換
                  $url = 'https://d1ge0kk1l5kms0.cloudfront.net';
                  $html_code = $item->file;
-                 $item->file = preg_replace("/http:\/\/ecx.images-amazon.com/", $url, $html_code);
+
+                 $html_code = preg_replace("/http:\/\/ecx.images-amazon.com/", $url, $html_code);
+                 $item->file = preg_replace("_SL75_", "_SL300_", $html_code);
                  $item->save();
               }
 

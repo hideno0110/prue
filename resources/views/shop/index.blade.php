@@ -12,19 +12,31 @@
       <div class="item">
         <div class="item_pic">
           @if($item->number != 0)
-            <img src="{{  $item->inv_photo->first() ? $item->inv_photo->first()->file : 'http://placehold.it/220x220'  }}">
+            <img src="  
+              @if($item->inv_photo->first()) 
+                {{  $item->inv_photo->first()->file }}
+              @elseif($item->item_master->file) 
+                {{  $item->item_master->file }}
+              @else
+                {{ 'http://placehold.it/220x220' }}
+              @endif
+            ">
           @else
             <img src="{{  $item->inv_photo->first() ? $item->inv_photo->first()->file : 'http://placehold.it/220x220'  }}" class="sold">
           @endif
         </div>
-        <div class="item_name">{{ $item->name }}</div>
+        <div class="item_name">{{ $item->item_master->name }}</div>
         <div class="item_price">{{ number_format($item->sell_price) }}円</div>
       </div>
       </a>
     @endforeach
   </div>
+  <div class="">
+    <p> {{$items->render()}}</p>
+  </div>
 
-  <script>
+
+<script>
 jQuery(function($) {
   $('.item_name').each(function() {
     var $target = $(this);
