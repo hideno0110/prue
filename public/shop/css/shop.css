@@ -50,7 +50,9 @@ h1 {
   font-size: 24px;
   margin:0;
 }
-
+.logo {
+  width: 100px;
+}
 header a {
   color: #000;
   text-decoration:none;
@@ -263,7 +265,7 @@ span.total_price {
   font-weight: bold;
 }
 
-div.purcahse{
+div.purchase{
   margin:0 auto;
   width: 90%;
 }
@@ -323,6 +325,7 @@ footer {
 .item-detail-wrapper {
   width:680px;
   margin: 0 auto;
+  padding-top: 50px;
 }
 
 .item_left {

@@ -7,17 +7,17 @@
   <meta name="keywords" content="" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- css -->
-  <link rel="stylesheet" href="/lp/css/sanitize.css">"
+  <link rel="stylesheet" href="/lp/css/sanitize.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="/css/shop.css">
-  <link rel="stylesheet" href="/css/shop_sp.css">
+  <link rel="stylesheet" href="/shop/css/shop.css">
+  <link rel="stylesheet" href="/shop/css/shop_sp.css">
 </head>
 <body>
   <div class="container">
   <header>
     <div class="header-wrapper">
      <div class="header-title">
-       <a href="/"><h1>Prue</h1></a>
+       <a href="/"><h1><img src="/shop/images/logo.png" class="logo" alt="Prue - どこよりもお店から安く買えるサイト"></h1></a>
      </div>
      <div class="search_box">
       <form action="{{ action('ShopIndexController@index') }}" method="get">
