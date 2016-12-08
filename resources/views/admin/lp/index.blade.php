@@ -6,6 +6,14 @@
   <link rel="stylesheet" type="text/css" href="/lp/css/sanitize.css">
   <link rel="stylesheet" type="text/css" href="/lp/css/main.css">
   <link rel="stylesheet" type="text/css" href="/lp/css/responsive.css">
+  
+  {{-- favicon --}}
+  <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+  <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144-precomposed">
+  <link rel="icon" type="image/png" href="/android-chrome-144x144.png" sizes="192x192">
+    
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
