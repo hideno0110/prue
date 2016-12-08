@@ -194,7 +194,7 @@
       <div class="clear-fix"></div>
       <footer>
         <div class="footer-nav">
-          <p><a href="#service">サービス</a>&nbsp;|&nbsp;<a href="#inquery">お問い合わせ</a></p>
+        <p><a href="#service">サービス</a>&nbsp;&nbsp;<a href="#technology">機能と利用技術</a>&nbsp;&nbsp;<a href="#">利用規約</a>&nbsp;&nbsp;<a href="#">個人情報について</a></p>
           <p>&copy;2016&nbsp;prue.</p>
         <!-- /.footer-nav -->
         </div>
@@ -210,6 +210,8 @@
 $(function(){
   $('#menu').slicknav({
     label: '', //デフォルトは'MENU'
+     duration: 750, //アニメーションのスピード
+    prependTo: "#menu", //指定した要素内にメニュー表示 デフォルトはbody 
   });
 });
 </script>
