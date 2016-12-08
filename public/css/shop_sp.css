@@ -12,14 +12,28 @@
 
 .item {
   float: left;
-  width: 220px;
+  width: 50%;
   text-align: center;
   position: relative;
   vertical-align:middle;
-  margin: 0 0 20px 20px;
+  margin: 0 0 20px 0;
 }
 
+.item_pic img {
+  max-width: 80%;
+  max-height: 220px;
+  /* width: auto; */
+  /* height: auto; */
+  vertical-align:middle;
+}
 
+.item_name {
+  font-size:14px;
+  overflow: hidden;
+  padding: 10px 0;
+  width: 50%;
+  height: 30px;
+}
 /* items  wrapper end */
 
 }
