@@ -40,12 +40,12 @@ class Kernel extends ConsoleKernel
         //スクレイピング
         $schedule->call(function () {
             ShopMapCron::shop_map();
-        })->hourly();
+        })->everyFiveMinutes();
         
         // // スクレイピングしたデータの緯度経度を取得する
-        $schedule->call(function () {
-            ShopMapCron::shop_map_latlnt();
-        })->everyFiveMinutes();
+        // $schedule->call(function () {
+        //     ShopMapCron::shop_map_latlnt();
+        // })->everyfiveminutes();
 
         //amazonOrderGet
         // $schedule->call(function () {

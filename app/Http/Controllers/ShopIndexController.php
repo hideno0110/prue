@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Inventory;
 use App\Item_stock;
 use App\Cart;
+use DB;
+use App\ItemMaster;
 use Illuminate\Support\Facades\Input;
 
 class ShopIndexController extends Controller
@@ -18,14 +20,18 @@ class ShopIndexController extends Controller
     $query = Inventory::query();
 
     if(!empty($name)){
-      $query->where('name','like','%'.$name.'%');
-    } 
+      $query->where('item_masters.name','like','%'.$name.'%')
+                 ->leftJoin('item_masters', 'inventories.item_master_id', '=', 'item_masters.id')
+                  ->orderBy('item_masters.id','desc');
+    $items = $query->paginate(20);
+    } else {
 
-    $items = $query->orderBy('id','desc')->paginate(15);
+          $items = $query->orderBy('id','desc')->paginate(20);
 
+    }    
 
     return view('shop.index',['items'=>$items]);
-  }
+}
 
 
   public function show($id) {
