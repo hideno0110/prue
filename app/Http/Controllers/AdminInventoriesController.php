@@ -359,6 +359,8 @@ class AdminInventoriesController extends Controller
                  $item->category = $item_detail->GetMatchingProductForIdResult->Products->Product->SalesRankings->SalesRank->ProductCategoryId[0];
                  $item->rank = $item_detail->GetMatchingProductForIdResult->Products->Product->SalesRankings->SalesRank->Rank[0];
                  $item->file = $item_detail->GetMatchingProductForIdResult->Products->Product->AttributeSets->ItemAttributes->SmallImage->URL;
+                 $item->item_detail = $item_detail->GetMatchingProductForIdResult->Products->Product->AttributeSets->ItemAttributes->Feature[0];
+
                  //ssl用にURLを変換
                  $url = 'https://d1ge0kk1l5kms0.cloudfront.net';
                  $html_code = $item->file;
