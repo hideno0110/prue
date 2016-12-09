@@ -40,7 +40,7 @@ class Kernel extends ConsoleKernel
         //スクレイピング
         $schedule->call(function () {
             ShopMapCron::shop_map();
-        })->daily();
+        })->hourly();
         
         // // スクレイピングしたデータの緯度経度を取得する
         $schedule->call(function () {
