@@ -1,7 +1,7 @@
 @extends('vendor.adminlte.layouts.app')
 @section('content_breadcrumb',trans('adminlte_lang::message.inventories'))
 @section('contentheader_title')
-    {{$inventory->sku }} : {{$inventory->name }}
+    {{$inventory->sku }} : {{$inventory->item_master->name }}
 @endsection
 @section('main-content')
 
@@ -81,7 +81,7 @@
         <!-- end left side -->
         <div class="col-sm-6">
             <div class="form-group">
-                {!! Form::label('name',trans('adminlte_lang::message.item_name').' :') !!}
+                {!! Form::label('name',trans('adminlte_lang::message.item_name').'(中古説明用) :') !!}
                 {!! Form::text('name',null,['class'=>'form-control']) !!}
             </div>
             <div class="form-group">

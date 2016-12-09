@@ -92,7 +92,7 @@
             <td><a href="{{ route('inventories.edit',$inventory->id)}}" alt="">{{ $inventory->asin }}</a></td>
             <td><a href="{{ route('inventories.edit',$inventory->id)}}" alt="">{{ $inventory->item_master->name}}</a></td>
             <td><a href="{{ route('items.edit',$inventory->item_master_id)}}" alt="" target="_blank">{{ $inventory->item_master_id }}</a></td>
-            <td align="center"><a href="{{ route('inventories.edit',$inventory->id)}}" alt=""><img src="{{ $inventory->item_master->file }}"></a></td>
+            <td align="center"><a href="{{ route('inventories.edit',$inventory->id)}}" alt=""><img src="{{ $inventory->item_master->file }}" height="50"></a></td>
             <td align="center">
               @foreach($inventory->inv_photo as $photo)
                 @if($photo->number == 1)

@@ -31,7 +31,7 @@
       </a>
     @endforeach
   </div>
-  <div class="">
+  <div class="render">
     <p> {{$items->render()}}</p>
   </div>
 

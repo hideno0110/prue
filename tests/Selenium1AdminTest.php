@@ -15,7 +15,7 @@ class SeleniumAdminTest extends SeleniumTestCase
     public function testLoginForm()
     {
         $loginInput = [
-            'email' => 'admin1@a.com',
+            'email' => 'a1@a.com',
             'password' => 'admin1'
         ];
 
@@ -57,8 +57,8 @@ class SeleniumAdminTest extends SeleniumTestCase
           // ->seePageIs('/admin/inventories')
 
           ->visit('/admin/inventories/')
-          ->click('test_asin')
-          ->see('test_asin')
+          // ->click('test_asin')
+          // ->see('test_asin')
 
           //遷移確認 
           ->visit('/admin/shops')

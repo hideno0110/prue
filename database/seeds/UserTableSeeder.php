@@ -15,7 +15,7 @@ class UserTableSeeder extends Seeder
         for ($i=1; $i < 10; $i++) {
           
           User::create([
-            'name' => "u".$i, 
+            'name' => "プルー".$i."太郎", 
             'email' => "u".$i."@u.com",
             'is_active' => 1,
             'password' => Hash::make('user'.$i)
