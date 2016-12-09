@@ -27,7 +27,9 @@ class AdminItemMasterController extends Controller
     {
       $merchant_id = Merchant::merchantUserCheck();
 
-      $items = ItemMaster::where('merchant_id',$merchant_id)->get();
+      $items = ItemMaster::where('merchant_id',$merchant_id)
+        ->orderBy('id','desc')
+        ->get();
       return view('admin.items.index',compact('items'));
     
     }

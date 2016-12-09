@@ -62,12 +62,13 @@
                 <input class="btn btn-success  col-sm-4 " type="submit" name="edit" value="{{ trans('adminlte_lang::message.update') }}">
             </div>
         {!! Form::close() !!}
-
+{{--
         {!! Form::open(['method'=>'DELETE', 'action'=>['AdminItemMasterController@destroy',$item->id]]) !!}
             <div class="form-group">
                 {!! Form::submit(trans('adminlte_lang::message.delete'), ['class'=>'btn btn-danger col-sm-4']) !!}
             </div>
         {!! Form::close() !!}
+--}}
         </div>
     </div>
 
