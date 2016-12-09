@@ -38,7 +38,7 @@
                 {!! Form::hidden('free',0) !!}
                 {!! Form::hidden('free_memo','') !!}
             <div class="form-group">
-                {!! Form::label('name',trans('adminlte_lang::message.item_name').' :') !!} 
+                {!! Form::label('name',trans('adminlte_lang::message.item_name').' (中古説明用) :') !!} 
                 {!! Form::text('name',null,['class'=>'form-control']) !!}
             </div>
             <div class="form-group">

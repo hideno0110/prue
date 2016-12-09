@@ -40,8 +40,19 @@ class MerchantTableSeeder extends Seeder
 
 
         $asin = array(
-          'B000050GET', 'B00005BPJ4', 'B00005OULE', 'B00005OULX', 'B00005OUM5', 'B00005OUM6', 'B00005OURY', 'B00005OVIH', 'B00005OVKE', 'B00005OVNM', 'B00005OVNP', 'B00005OVNS', 'B00005OVNV', 'B00005OVS6', 'B00005OVS9', 'B00005OVSB', 'B00005OVSS', 'B00005OVST', 'B00005OVSU', 'B00005OVTR', 'B00005OVTV', 'B00005OVUG', 'B00005OVUO', 'B00005OVUR', 'B00005OVUZ', 'B00005OVV0', 'B00005OVV3', 'B00005OVV5', 'B00005OVVU', 'B00005OVWF', 'B00005OVWV', 'B00005OVXQ', 'B00005OVXR', 'B00005QBBC', 'B00005QBBZ', 'B00005QBK2', 'B00005QBKJ', 'B00005QBLX', 'B00005QBM6', 'B00005QBP5', 'B00005QBPW', 'B00005QHO7', 'B00005QHO8', 'B00005QHOM', 'B00005QHP6', 'B00005RIUQ', 'B00005RIV7', 'B00005RIVF', 'B00005RIVU', 'B00005RIVW', 'B00005RIVX', 'B00005RIWA', 'B00005RTUA', 'B00005S021', 'B00005S6YI', 'B00005S89T', 'B00005U0MA', 'B00005U0MP', 'B00005U0MQ', 'B00005UF1S', 'B00005UF65', 'B00005UF6A', 'B00005UF6Q', 'B00005UF6T', 'B00005UF77', 'B00005ULZX', 'B00005UNAM', 'B00005UOHQ', 'B00005UOHV', 'B00005UOI7', 'B00005UOM9', 'B00005UPL9', 'B00005V1ZP', 'B00005V8WK', 'B00005V8XI', 'B00005V8XJ', 'B0000634MP', 'B0000634MX', 'B0000634MZ', 'B000063DJC', 'B000063DJD', 'B000063X1Z', 'B000063X28', 'B0000645M8', 'B000065C7S', 'B000065U0K', 'B00006657C', 'B00006657H', 'B0000668UK', 'B000067JK2', 'B000067JK4', 'B000067OVI', 'B000067OWA', 'B000067OWD', 'B000067OWL', 'B000067OZS', 'B000068QF0', 'B000068QF4', 'B000068TJJ', 'B000068UO9'
+          'B01LC99ERC', 'B01H1EWOG0', 'B01IEMPJAQ', 'B01LPTFJLO', 'B01J2XM0R6', 'B01IO57DAM', 'B01IEMPJMO', 'B01N8PFLQJ', 'B001KZGZVW', 'B0106XFCPI', 'B00NFCCUNK', 'B01N8RFIAA', 
+          'B00005OVNV', 'B00005OVS6', 'B00005OVS9', 'B00005OVSB', 'B00005OVSS', 'B00005OVST', 'B00005OVSU', 'B00005OVTR', 'B00005OVTV', 'B00005OVUG', 'B00005OVUO', 'B00005OVUR', 
+          'B01MYW8W47', 'B01N1LNSYL', 'B01NBHXDNA', 'B017JX0ETM', 'B01LXGP4UP', 'B00B8OBHHM', 'B01KUKDH7W', 'B01M4PSZS8', 'B01N4B8PS9', 'B01K19IM8G', 'B00HK8ETE8', 'B01DQEV15O', 
+          'B01J7JNHXQ', 'B01MAV51SD', 'B01N7FJJA1', 'B01J7JN5ME', 'B01N4BN3AW', 'B002TKLMM4', 'B00N9NKTOC', 'B00IJ46SB4', 'B00IJ46SB4', 'B018VOBCJY', 'B005HMMBYE', 'B010AE5OZG', 
+          'B00005OVUZ', 'B00005OVV0', 'B00005OVV3', 'B00005OVV5', 'B00005OVVU', 'B00005OVWF', 'B00005OVWV', 'B00005OVXQ', 'B00005OVXR', 'B00005QBBC', 'B00005QBBZ', 'B00005QBK2', 
+          'B01I0WV9TA', 'B013SEKBIU', 'B004VC7VCS', 'B00DVDIODI', 'B00BSK1QPO', 'B019W1E89Q', 'B01JRFR4FC', 'B011REIANG', 'B00NSKYG2M', 'B00E37SO0E', 'B005HMMC0M', 'B01G4L84I8', 
+          'B01718VCIW', 'B013SEIU9M', 'B0145YNPDA', 'B00FQ5K64O', 'B011HUVDJ8', 'B014D6L104', 'B01LYOTOPA', 'B01BXIYYRC', 'B01BHQ7PLW', 'B014697AYE', 'B00VDNCMCC', 'B00BXVR8FU', 
+          'B012T45N74', 'B000WN67L6', 'B01MQSXNV8', 'B00C6AAO12', 'B01H03FQ44', 'B000J1099M', 'B014D6KF74', 'B010EUBT64', 'B0096JYZMA', 'B00ST81QTY', 'B00FQDFZQK', 'B01LXDUH4X', 
+          'B000050GET', 'B00005BPJ4', 'B00005OULE', 'B00005OULX', 'B00005OUM5', 'B00005OUM6', 'B00005OURY', 'B00005OVIH', 'B00005OVKE', 'B00005OVNM', 'B00005OVNP', 'B00005OVNS', 
+          'B00Y00O3RC', 'B009UQETKM', 'B00YOTLODK', 'B00EJA6P88', 'B003M6AGWQ', 'B00KQIG92Y'
+
         ); 
+
 
         for($i=0; $i<5; $i++) {       
           //企業ロゴ（ダミー) 
@@ -63,12 +74,12 @@ class MerchantTableSeeder extends Seeder
           $merchant->save();       
 
           //Inventory
-          for ($j=0; $j < 10; $j++) {
+          for ($j=0; $j < 20; $j++) {
             echo $j;
           $input=  array(
               'merchant_id' => rand(1,4),
               'photo_id' => 0,
-              'asin' => $asin[$j+$i],
+              'asin' => $asin[$j+$i*10],
               'jan_code' => "",
               'item_code' => "",
               'sku' => "",
@@ -222,6 +233,7 @@ class MerchantTableSeeder extends Seeder
                  $item->category = $item_detail->GetMatchingProductForIdResult->Products->Product->SalesRankings->SalesRank->ProductCategoryId[0];
                  $item->rank = $item_detail->GetMatchingProductForIdResult->Products->Product->SalesRankings->SalesRank->Rank[0];
                  $item->file = $item_detail->GetMatchingProductForIdResult->Products->Product->AttributeSets->ItemAttributes->SmallImage->URL;
+                 $item->item_detail = $item_detail->GetMatchingProductForIdResult->Products->Product->AttributeSets->ItemAttributes->Feature[0];
                  //ssl用にURLを変換
                  $url = 'https://d1ge0kk1l5kms0.cloudfront.net';
                  $html_code = $item->file;

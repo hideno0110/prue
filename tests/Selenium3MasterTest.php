@@ -15,21 +15,26 @@ class SeleniumMasterTest extends SeleniumTestCase
     public function testLoginForm()
     {
         $loginInput = [
-            'email' => 'master@m.com',
+            'email' => 'm@m.com',
             'password' => 'master'
         ];
 
         // Login form test case scenario
         $this->visit('/master/login')
-          ->hold(1)
+          ->hold(2)
           ->submitForm('#login-form', $loginInput)
-          ->seePageIs('/master')
           ->hold(1)
           ->visit('/master/admin-merchant')
+          ->hold(5)
           ->visit('/master/admin-user')
+          ->hold(2)
           ->visit('/master/admin-inventory')
+          ->hold(2)
           ->visit('/master/admin-shop')
+          ->hold(2)
           ->visit('/master/admin-rss')
-          ->visit('/master/shop-user');
+          ->hold(2)
+          ->visit('/master/shop-user')
+          ->hold(2);
     }
 }

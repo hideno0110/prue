@@ -1,7 +1,7 @@
 @extends('vendor.adminlte.layouts.app')
 @section('content_breadcrumb','ダッシュボード')
 @section('contentheader_title')
-    DashBoard
+    ダッシュボード
 @endsection
 
 @section('main-content')
@@ -119,26 +119,6 @@ var complexChartOption = {
         <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="info-box">
                 <!-- Apply any bg-* class to to the icon to color it -->
-                <span class="info-box-icon"><i class="fa fa-yen"></i></span>
-                <div class="info-box-content">
-                    <span class="info-box-text">仕入金額</span>
-                    <span class="info-box-number">{{$inv_month_money}}</span>
-                </div><!-- /.info-box-content -->
-            </div><!-- /.info-box -->
-        </div>
-        <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="info-box">
-                <!-- Apply any bg-* class to to the icon to color it -->
-                <span class="info-box-icon"><i class="fa fa-files-o"></i></span>
-                <div class="info-box-content">
-                    <span class="info-box-text">仕入利益見込み</span>
-                    <span class="info-box-number">{{$inv_expect_profit}}</span>
-                </div><!-- /.info-box-content -->
-            </div><!-- /.info-box -->
-        </div>        
-        <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="info-box">
-                <!-- Apply any bg-* class to to the icon to color it -->
                 <span class="info-box-icon"><i class="fa fa-files-o"></i></span>
                 <div class="info-box-content">
                     <span class="info-box-text">仕入利益見込み</span>
@@ -161,13 +141,10 @@ var complexChartOption = {
                         <th class="yellow">90日以内</th>
                         <th class="red">90日以上</th>
                         <th>合計</th>
-
                     </tr>
                     </thead>
                     <tbody>
                     @foreach($fba_data as $data)
-
-
                         <tr>
                             <td>個数</td>
                             <td class="green"> {{ $data->under30 }} </td>
@@ -175,7 +152,6 @@ var complexChartOption = {
                             <td class="yellow"> {{ $data->under90 }} </td>
                             <td class="red"> {{ $data->over90 }} </td>
                             <td> {{ $data->total_count }} </td>
-
                         </tr>
                         <tr>
                             <td>金額</td>
@@ -184,7 +160,6 @@ var complexChartOption = {
                             <td class="yellow"> {{ $data->under90sum }} </td>
                             <td class="red"> {{ $data->over90sum }} </td>
                             <td> {{ $data->total_sum }} </td>
-
                         </tr>
                     @endforeach
                     </tbody>
@@ -204,10 +179,8 @@ var complexChartOption = {
             <thead>
             <tr>
                 <th>月</th>
-                <th>販売額</th>
-                <th>利益</th>
+                <th>仕入数</th>
                 <th>仕入額</th>
-
             </tr>
             </thead>
             <tbody>
