@@ -127,7 +127,7 @@ var complexChartOption = {
             </div><!-- /.info-box -->
         </div>        
     </div>
-
+{{--
     <div class="row">
         <div class="col-sm-12">
             <h3><a href="{{ url('admin/mws/fba-inv')}}">在庫管理</a></h3>
@@ -169,7 +169,7 @@ var complexChartOption = {
             </div>
         </div>
     </div>
-
+--}}
 
     <div class="row">
         <div class="col-sm-12">
