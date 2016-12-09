@@ -59,7 +59,7 @@
             <th>ランキング(amazon)</th>
             <td>{{ $item->item_master->category }}</br>
                 @if(intval($item->item_master->category) != 0) 
-                  {{ number_format(intval($item->item_master->category))."位" }}
+                  {{ number_format(intval($item->item_master->rank))."位" }}
                 @else
                   {{ "- 位(ランク外)" }}
                 @endif

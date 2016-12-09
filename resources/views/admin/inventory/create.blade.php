@@ -75,7 +75,9 @@
             </div>
             <div class="form-group">
                 {!! Form::label('condition_id',trans('adminlte_lang::message.condition').' :') !!}  <span class='label label-danger'>必須</span>
-                {!! Form::select('condition_id',[''=> trans('adminlte_lang::message.choose').' :'] + $condition,null,['class'=>'form-control']) !!}
+<!-- <input name="condition_id" type="radio" value="1">新品 -->
+<!-- <input name="condition_id" type="radio" value="2">中古 -->
+<input name="condition_id" type="text" value="">新品:1 , ほぼ新品2
             </div>
             <div class="form-group">
                 {!! Form::label('description',trans('adminlte_lang::message.description').' :') !!}
