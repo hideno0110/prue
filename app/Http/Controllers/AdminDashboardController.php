@@ -16,13 +16,16 @@ use Auth;
 use App\Merchant;
 use App\RssNews;
 
-class AdminDashboardController extends Controller
+class AdminDashboardController extends Controller 
 {
-    public function __construct() {
+    public function __construct() 
+    {
+        //adminユーザーのみを通す
         $this->middleware('auth:admin');
     } 
 
-    public function index(Inventory $inventory, Shop $shop, ShopList $shop_list, RssNews $rss_news) {
+    public function index(Inventory $inventory, Shop $shop, ShopList $shop_list, RssNews $rss_news)
+    {
 
         //ユーザー情報を取得
         $admin_id = Auth::guard('admin')->user()->id;

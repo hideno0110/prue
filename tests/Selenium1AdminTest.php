@@ -53,8 +53,16 @@ class SeleniumAdminTest extends SeleniumTestCase
           ->submitForm('#login-form', $loginInput)
           ->seePageIs('/admin')
           ->hold(10)
+          ->visit('/admin/items')
+          ->hold(10)
           ->visit('/admin/inventories/create')
-          ->type('B00DVZS2FG', 'asin')
+          ->hold(3)
+          ->type('B018FWNB1O', 'asin')
+          ->hold(1)
+          ->type('1000', 'buy_price')
+          ->hold(1)
+          ->type('5000', 'sell_price')
+          ->hold(2)
           ->type('3', 'number')
           ->type('1', 'condition_id')
           ->hold(3)
@@ -68,15 +76,19 @@ class SeleniumAdminTest extends SeleniumTestCase
           // ->see('test_asin')
 
           //遷移確認 
+          ->hold(5)         
+          ->visit('/admin/stocks')
+          ->hold(3)         
           ->visit('/admin/shops')
-          ->visit('admin/shop_lists')
-          ->visit('admin/shop_lists')
-          ->visit('admin/shop_lists')
+          ->hold(5)         
+          ->visit('/admin/shops/1/edit')
+          ->hold(5)         
 
           ->visit('/admin/users')
-          ->visit('/admin/users/create')
-          ->visit('/admin/rss-read')
-          ->visit('/tool/maps');
+          ->hold(5)         
+
+          ->visit('/admin/rss-read');
+          // ->visit('/tool/maps')
 
 
     }

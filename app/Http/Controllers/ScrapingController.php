@@ -8,117 +8,44 @@ use Goutte;
 
 class ScrapingController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function __construct()
     {
+        //adminユーザーのみを通す
         $this->middleware('auth:admin');
     }   
       
     public function index()
     {
-      $shop_lists = ShopMap::all();
-      
-      return view('tools.shop_maps.index',compact('shop_lists')); 
+        $shop_lists = ShopMap::all();
+        return view('tools.shop_maps.index',compact('shop_lists')); 
     }
     
-    public function scraping(Request $reauest) {
-
-     //DB削除 
-      ShopMap::truncate();
-
-      for($j=10; $j < 14; $j++) {
-      
-        $crawler = Goutte::request('GET', 'http://www.treasure-f.com/shop/'.$j.'/area.html');
-          
-        $crawler->filter('.inner2 .txtbox')->each(function($node) 
-        {  
-            $list = new ShopMap();
-            $list->shop = 'トレジャーファクトリー'; 
-            $list->shop_category = trim($node->filter('.cap')->text());
-            $list->shop_branch = trim($node->filter('h4')->text());
-            $list->url = trim($node->filter('h4 a')->attr('href'));
-            $list_i[] =  $node->filter('.address li')->each(function($node2) use ($list){
-               return  trim($node2->filter('li')->text());
-            });
-            $list->postal_code = $list_i[0][0];
-            $list->address1 = $list_i[0][1];
-            $list->tel = $list_i[0][2];
-            $list->time = trim($node->filter('.service_time')->text());
-        
-            $list->save();
-        });
-      }
-      return redirect()->back();
-
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function scraping(Request $reauest)
     {
-        //
-    }
+        //DB削除 
+        ShopMap::truncate();
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        for($j=10; $j < 14; $j++) {
+         
+           $crawler = Goutte::request('GET', 'http://www.treasure-f.com/shop/'.$j.'/area.html');
+             
+           $crawler->filter('.inner2 .txtbox')->each(function($node) {  
+               $list = new ShopMap();
+               $list->shop = 'トレジャーファクトリー'; 
+               $list->shop_category = trim($node->filter('.cap')->text());
+               $list->shop_branch = trim($node->filter('h4')->text());
+               $list->url = trim($node->filter('h4 a')->attr('href'));
+               $list_i[] =  $node->filter('.address li')->each(function($node2) use ($list) {
+                  return  trim($node2->filter('li')->text());
+               });
+               $list->postal_code = $list_i[0][0];
+               $list->address1 = $list_i[0][1];
+               $list->tel = $list_i[0][2];
+               $list->time = trim($node->filter('.service_time')->text());
+           
+               $list->save();
+           });
+         }
+         return redirect()->back();
     }
 }

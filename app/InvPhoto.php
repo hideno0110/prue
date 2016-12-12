@@ -12,16 +12,16 @@ class InvPhoto extends Model
         'type',
         'inventory_id',
         'number',
-
     ];
 
-
-    public function getFileAttribute($photo) {
+    public function getFileAttribute($photo)
+    {
         return $this->uploads . $photo;
     }
 
-   public function inventory() {
-       return $this->belongsTo('App\Inventory');
-   }
+    public function inventory()
+    {
+        return $this->belongsTo('App\Inventory');
+    }
 
 }

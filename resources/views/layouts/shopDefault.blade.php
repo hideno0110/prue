@@ -50,14 +50,13 @@
        </ul>
      </div>
    </div>
-   <!-- <div class="header&#45;menu"> -->
-   <!--    <ul> -->
-   <!--      <li><a href="">家電</a></li> -->
-   <!--      <li><a href="">ゲーム</a></li> -->
-   <!--      <li><a href="">本</a></li> -->
-   <!--      <li><a href="">おもちゃ</a></li> -->
-   <!--    </ul> -->
-   <!-- </div> -->
+   <div class="header-menu">
+      <ul>
+        <li><a href="/?category=video_games_display_on_website">ゲーム</a></li>
+        <li><a href="/?category=kitchen_display_on_website">キッチン</a></li>
+        <li><a href="/?category=hobby_display_on_website">おもちゃ</a></li>
+      </ul>
+   </div>
  
  </header>
   {{-- header end --}}

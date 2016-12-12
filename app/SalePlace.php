@@ -8,6 +8,5 @@ class SalePlace extends Model
 {
     protected $fillable = [
         'name'
-
     ];
 }

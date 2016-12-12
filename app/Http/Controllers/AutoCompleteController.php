@@ -6,14 +6,16 @@ use App\Http\Controllers\Controller;
 use App\Inventory;
 use DB;
 use App\Merchant;
-class AutoCompleteController extends Controller {
+class AutoCompleteController extends Controller
+{
 
-    public function index(){
+    public function index() 
+    {
         return view('admin.autocomplete.index');
     }
-    public function autoComplete(Request $request) {
-
-        
+    
+    public function autoComplete(Request $request)
+    {
         //店舗IDを取得
         $merchant_id = Merchant::merchantUserCheck();
         
@@ -36,8 +38,8 @@ class AutoCompleteController extends Controller {
             return ['value'=> trans('adminlte_lang::message.no_result') ,'id'=>''];
     }
 
-    public function search_inventories(Request $request) {
-
+    public function search_inventories(Request $request)
+    {
         //店舗IDを取得
         $merchant_id = Merchant::merchantUserCheck();
         
@@ -57,6 +59,4 @@ class AutoCompleteController extends Controller {
         else
             return ['value'=> trans('adminlte_lang::message.no_result'),'id'=>''];
     }
-
-
 }

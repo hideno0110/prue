@@ -6,15 +6,8 @@ use Illuminate\Http\Request;
 
 class AdminQaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function index() 
     {
-
-      return view('admin.qa.index');
+        return view('admin.qa.index');
     }
-
 }

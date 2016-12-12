@@ -24,14 +24,14 @@ class ShopListsCreateRequest extends Request
     public function rules()
     {
         return [
-            'shop_name'=>'required',
+            'shop_name' => 'required',
 
         ];
     }
     public function attributes()
     {
         return [
-            'shop_name'    => trans('adminlte_lang::message.shop_lists'),
+            'shop_name' => trans('adminlte_lang::message.shop_lists'),
         ];
     }
 }
