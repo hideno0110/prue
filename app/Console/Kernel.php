@@ -34,13 +34,14 @@ class Kernel extends ConsoleKernel
 
         //Rss Urlを取得
         $schedule->call(function () {
+      Log::debug('url');
             RssCron::getRssUrl();
-        })->everyFiveMinutes();
+        })->everyMinute();
 
         //スクレイピング
         $schedule->call(function () {
             ShopMapCron::shop_map();
-        })->everyFiveMinutes();
+        })->everyMinute();
         
         // // スクレイピングしたデータの緯度経度を取得する
         // $schedule->call(function () {
