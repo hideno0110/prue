@@ -16,7 +16,13 @@ class Admin extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','role_id','is_active','photo_id','merchant_id',
+        'name', 
+        'email', 
+        'password',
+        'role_id',
+        'is_active',
+        'photo_id',
+        'merchant_id',
     ];
 
     /**
@@ -25,7 +31,8 @@ class Admin extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 
+        'remember_token',
     ];
 
     /**
@@ -39,30 +46,36 @@ class Admin extends Authenticatable
         $this->notify(new AdminResetPassword($token));
     }
 
-    public function merchant() {
+    public function merchant()
+    {
         return $this->belongsTo('App\Merchant');
     }
     
-    public function role() {
+    public function role()
+    {
         return $this->belongsTo('App\Role');
     }
 
-    public function photo() {
+    public function photo()
+    {
         return $this->belongsTo('App\Photo');
     }
 
-    public function isAdmin() {
+    public function isAdmin()
+    {
        if($this->role->name == "administrator") {
            return true;
        }
        return false;
     }
 
-    public function inventory() {
+    public function inventory()
+    {
         return $this->hasMany('App\Inventory');
     }
 
-    public function rss_urls() {
+    public function rss_urls() 
+    {
       return $this->hasMany('App\RssUrl');
     }
 

@@ -12,48 +12,30 @@ use Illuminate\Support\Facades\Input;
 
 class ShopIndexController extends Controller
 {
+    public function index()
+    {
+        //検索条件を取得
+        $name = Input::get('name');
+        $category = Input::get('category');
+        $query = Inventory::query()->leftJoin('item_masters','inventories.item_master_id', '=', 'item_masters.id');
+        
+        //カテゴリーがある場合
+        if(!empty($category)){
+            $query->where('item_masters.category','like','%'.$category.'%');
+        }
 
-  public function index() {
+        //商品名の検索がある場合
+        if(!empty($name)){
+            $query->where('item_masters.name','like','%'.$name.'%');
+        }
 
-    $name = Input::get('name');
-    $category = Input::get('category');
-    $query = Inventory::query()->leftJoin('item_masters','inventories.item_master_id', '=', 'item_masters.id');
-    
-    //カテゴリーがある場合
-    if(!empty($category)){
-      $query->where('item_masters.category','like','%'.$category.'%');
+        $items = $query->orderBy('item_masters.id','desc')->paginate(20);
+        return view('shop.index',['items'=>$items]);
     }
 
-    //商品名の検索がある場合
-    if(!empty($name)){
-      $query->where('item_masters.name','like','%'.$name.'%');
+    public function show($id)
+    {
+        $item = Inventory::findOrFail($id);
+        return view('shop.show',compact('item'));
     }
-
-    $items = $query->orderBy('item_masters.id','desc')->paginate(20);
-    return view('shop.index',['items'=>$items]);
-  }
-
-
-  public function show($id) {
-    $item = Inventory::findOrFail($id);
-    return view('shop.show',compact('item'));
-  }
-
-
-  public function item_insert(Request $request, $id) {
-
-    //カートに追加する
-    $cart = new Cart();
-    $cart->inventory_id = $id;
-    $cart->amount++;
-
-    $cart->save();
-
-    //在庫をマイナスする
-    // $item = Item::findOrFail($id);
-
-    return redirect()->back()->with('flash_message','カートに追加しました');
-    
-  }
-
 }

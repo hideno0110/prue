@@ -3,11 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-//use Illuminate\Support\Facades\Input;
 use App\Http\Requests;
 use ZipArchive;
 use Chumper\Zipper\Zipper;
-//use Response;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Response;
 use DB;
@@ -15,10 +13,13 @@ use ChromePhp;
 
 class AdminFunctionController extends Controller
 {
-     public function __construct()
+    
+    public function __construct()
     {
+        //adminユーザーのみを通す
         $this->middleware('auth:admin');
     }
+    
     public function postDB(Request $request)
     {
         $id = $request->input('target_id');
@@ -63,13 +64,8 @@ class AdminFunctionController extends Controller
 
     }
 
-    /**
-     * AutoComplete function 
-     *
-     * @param  Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function autocomplete(Request $request){
+    public function autocomplete(Request $request)
+    {
         ChromePhp::log('start autocomlete');
 
         $input = $request->all();
@@ -95,9 +91,8 @@ class AdminFunctionController extends Controller
     }
 
     //画像ダウンロード
-      public function download_file() {
-
-
+    public function download_file()
+    {
         $id = Input::get('id');
         $files = glob('images/'.$id);
         $zipfile = 'pics_'.$id.'.zip';
@@ -156,23 +151,19 @@ class AdminFunctionController extends Controller
     }
 
     //画像を表示
-    public function show_pic() {
-
+    public function show_pic()
+    {
         $path = storage_path().'/images/～～～';  //（目的のパス
         return Response::download($path);
-
-
     }
 
     //画像を表示
-    public function readXML() {
+    public function readXML()
+    {
         $url = "http://hack.dev/images/xml/376847109017031.xml";
         $xml = simplexml_load_file($url);//指定したファイルの中の整形式XMLドキュメントをオブジェクトに変換
 
         return dd($xml);
-
     }
-
-
 }
     

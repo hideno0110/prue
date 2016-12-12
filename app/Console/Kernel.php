@@ -29,12 +29,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-
-      Log::debug('start task schedule!');
-
         //Rss Urlを取得
         $schedule->call(function () {
-      Log::debug('url');
             RssCron::getRssUrl();
         })->everyMinute();
 

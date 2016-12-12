@@ -30,14 +30,10 @@ class AdminInventoriesController extends Controller
 
     public function __construct()
     {
+        //adminユーザーのみを通す
         $this->middleware('auth:admin');
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         //店舗IDを取得
@@ -174,13 +170,6 @@ class AdminInventoriesController extends Controller
         return view('admin.inventory.index',$compacted);
     }
 
-
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         //merchant_idを取得
@@ -215,12 +204,6 @@ class AdminInventoriesController extends Controller
         return view('admin.inventory.create',$compacted);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(InventoriesCreateRequest $request)
     {
         //新規商品登録の際に、商品マスタがない場合、amazonよりデータの取得を行う。
@@ -385,12 +368,6 @@ class AdminInventoriesController extends Controller
     }
 
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $merchant_id = Merchant::merchantUserCheck();
@@ -435,16 +412,9 @@ class AdminInventoriesController extends Controller
     }
 
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */     
     public function update(InventoriesCreateRequest $request, $id)
     {
-      $input = $request->all();
+        $input = $request->all();
 
         try {
           //トランザクション開始
@@ -487,12 +457,6 @@ class AdminInventoriesController extends Controller
     }
 
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         $inventory = Inventory::findOrFail($id);
@@ -502,11 +466,11 @@ class AdminInventoriesController extends Controller
     }
 
 
-/**
- * CSVファイル作成
- *
- */
-     function makeinv_csv($query)
+    /**
+     * CSVファイル作成
+     *
+     */
+    function makeinv_csv($query)
     {
 
         //クエリ実行
@@ -575,11 +539,7 @@ class AdminInventoriesController extends Controller
             'Content-Type' => 'text/tab-separated-values',
             'Content-Disposition' => 'attachment; filename="' . $filename . '"'
         );
-
-        // response
-//             $csv = response($csv,200,$headers);
          $inv =Response::make($csv, 200, $headers);
-
 
         return $inv;
     }
@@ -638,8 +598,7 @@ class AdminInventoriesController extends Controller
 
 
         //loop
-        foreach($inventories_csv as $inventory)
-        {
+        foreach($inventories_csv as $inventory) {
             if($inventory->sku2 !== '') {
                 $sku = $inventory->sku2;
             } else {
@@ -669,8 +628,6 @@ class AdminInventoriesController extends Controller
             'Content-Disposition' => 'attachment; filename="' . $filename . '"'
         );
 
-        // response
-//             $csv = response($csv,200,$headers);
         $fba =Response::make($csv, 200, $headers);
 
 

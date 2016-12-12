@@ -21,7 +21,8 @@ class InventoriesCreateRequest extends Request
      *
      * @return array
      */
-    public function rules() {
+    public function rules()
+    {
         return [
             //'shop_id'=>'required',
             'asin'=>'required_without_all:jan_code,item_code',
@@ -31,7 +32,8 @@ class InventoriesCreateRequest extends Request
             'buy_price' => 'integer|min:0',
           ];
     }
-    public function attributes() {
+    public function attributes()
+    {
         return [
             'asin'    => trans('adminlte_lang::message.asin'),
             'jan_code'    => trans('adminlte_lang::message.jan_code'),

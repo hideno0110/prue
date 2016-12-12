@@ -21,34 +21,39 @@ class Merchant extends Model
   
   ];
 
-  public function admins() {
+  public function admins() 
+  {
       return $this->hasMany('App\Admin');
   }
 
-  public function shop_lists() {
+  public function shop_lists() 
+  {
       return $this->hasMany('App\ShopLists');
   }
-  public function inventories() {
+  public function inventories() 
+  {
       return $this->hasMany('App\Inventory');
   }
-  public function photo() {
+  public function photo() 
+  {
       return $this->belongsTo('App\Photo');
   }
 
-  public function item_masters() {
+  public function item_masters() 
+  {
       return $this->hasMany('App\ItemMaster');
   }
 
-  public static function merchantUserCheck() {
-
+  public static function merchantUserCheck() 
+  {
       $admin_id = Auth::guard('admin')->user()->id;
       $merchant_id = admin::find($admin_id)->merchant_id;
 
       return $merchant_id;
   }
 
-  public static function merchantName() {
-  
+  public static function merchantName()
+  {
       $admin_id = Auth::guard('admin')->user()->id;
       $merchant_name = admin::find($admin_id)->merchant->name;
 

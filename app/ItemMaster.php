@@ -8,26 +8,25 @@ class ItemMaster extends Model
 {
 
   protected $fillable = [
-    'item_code',
-    'asin',
-    'jan_code',
-    'name',
-    'item_detail',
-    'category',
-    'rank',
-    'file',
-    'merchant_id'
-
+      'item_code',
+      'asin',
+      'jan_code',
+      'name',
+      'item_detail',
+      'category',
+      'rank',
+      'file',
+      'merchant_id'
   ];
 
-  public function inventories() {
-
-    return $this->hasMany('App\Inventory');
+  public function inventories() 
+  {
+      return $this->hasMany('App\Inventory');
   }
 
-  public function merchant() {
-
-    return $this->belongsTo('App\merchant');
+  public function merchant() 
+  {
+      return $this->belongsTo('App\merchant');
   }
 
 }

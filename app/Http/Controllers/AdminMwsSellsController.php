@@ -10,13 +10,13 @@ use App\MwsSell;
 
 class AdminMwsSellsController extends Controller
 {
-     public function __construct()
+    public function __construct()
     {
+        //adminユーザーのみを通す
         $this->middleware('auth:admin');
     }
 
-
-  public function index()
+    public function index()
     {
         $this_month = date("Y-m");
 
@@ -26,6 +26,5 @@ class AdminMwsSellsController extends Controller
 //        $mws_sells = MwsSell::all();
 
         return view('admin.mws.sell.index', compact('mws_sells'));
-
     }
 }
