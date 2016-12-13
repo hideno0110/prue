@@ -29,18 +29,15 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-
-      Log::debug('start task schedule!');
-
         //Rss Urlを取得
         $schedule->call(function () {
             RssCron::getRssUrl();
-        })->everyFiveMinutes();
+        })->everyMinute();
 
         //スクレイピング
         $schedule->call(function () {
             ShopMapCron::shop_map();
-        })->everyFiveMinutes();
+        })->everyMinute();
         
         // // スクレイピングしたデータの緯度経度を取得する
         // $schedule->call(function () {

@@ -6,14 +6,14 @@ use Illuminate\Http\Request;
 
 class MasterDashboardController extends Controller
 {
-  public function __construct()
+    public function __construct()
     {
-      $this->middleware('auth:master');
+        //masterユーザーのみを通す
+        $this->middleware('auth:master');
     }
 
-  public function index() {
-  
-  return view('master.index');
-  
-  }
+    public function index()
+    {
+        return view('master.index');
+    }
 }

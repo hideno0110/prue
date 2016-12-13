@@ -19,9 +19,9 @@ class LpRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'email' => 'required|email',
-            'content' => 'required',           //
+            'name'    => 'required',
+            'email'   => 'required|email',
+            'content' => 'required',          
         ];
     }
 

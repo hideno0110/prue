@@ -7,12 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class InvStock extends Model
 {
   protected $fillable = [
-    'stock'
+      'stock'
   ];
 
 
-  public function inventory() {
-    return $this->hasMany('App\Inventory');
+  public function inventory() 
+  {
+      return $this->hasMany('App\Inventory');
   }
 
 

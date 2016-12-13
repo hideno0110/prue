@@ -4,11 +4,9 @@
   {{ trans('adminlte_lang::message.contact_thanks') }}
 @endsection
 @section('main-content')
-
-
-    <div class="col-sm-6 box">
+<div class="col-sm-6 box">
     お問い合わせありがとうございました。<br>
     <br>
     <a href="/admin">トップへ戻る</a>
-  </div>
+</div>
 @stop

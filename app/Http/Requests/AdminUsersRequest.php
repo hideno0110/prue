@@ -24,12 +24,11 @@ class AdminUsersRequest extends Request
     public function rules()
     {
         return [
-            //
-            'name' => 'required',
-            'email'=>'required',
-            'role_id'=>'required',
-            'is_active'=>'required',
-            'password'=>'required'
+            'name'      => 'required',
+            'email'     => 'required',
+            'role_id'   => 'required',
+            'is_active' => 'required',
+            'password'  => 'required'
 
         ];
     }
