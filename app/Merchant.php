@@ -38,12 +38,12 @@ class Merchant extends Model
   {
       return $this->belongsTo('App\Photo');
   }
-
   public function item_masters() 
   {
       return $this->hasMany('App\ItemMaster');
   }
 
+  // ログインユーザーの登録ステータスチェック
   public static function merchantUserCheck() 
   {
       $admin_id = Auth::guard('admin')->user()->id;
@@ -51,14 +51,19 @@ class Merchant extends Model
 
       return $merchant_id;
   }
-
+  
+  // 事業者名取得
   public static function merchantName()
   {
       $admin_id = Auth::guard('admin')->user()->id;
       $merchant_name = admin::find($admin_id)->merchant->name;
-
       return $merchant_name;
-  
   }
+
+  //事業者数
+  public static function merchantNumber() {
+      return Merchant::where('is_active', 1)->count();
+  }
+
 
 }

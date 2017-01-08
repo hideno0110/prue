@@ -29,6 +29,7 @@ class MasterAdminInventoryController extends Controller
     
         //結果を取得
         $inventories = $query->sortable()->orderBy('inventories.id','desc')->paginate(100);
+        //仕入れ数
         $count_inv = $inventories->count();
     
         $compacted = compact(
