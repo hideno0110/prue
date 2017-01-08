@@ -14,6 +14,7 @@ class MasterAdminRssController extends Controller
   
     public function index()
     {
+        //RSS URL一覧
         $rss_lists = RssUrl::all();
         return view('master.admin-rss.index', compact('rss_lists'));
     }

@@ -17,6 +17,7 @@ class MasterAdminShopController extends Controller
   
     public function index()
     {
+        //店舗一覧
         $shops = ShopList::all();
         return view('master.admin-shop.index', compact('shops'));
     }
