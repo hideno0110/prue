@@ -17,6 +17,7 @@ class MasterAdminMerchantController extends Controller
     
     public function index()
     {
+        //merchant 一覧
         $merchants = Merchant::all();
         return view('master.admin-merchant.index', compact('merchants'));
     }

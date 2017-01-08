@@ -14,6 +14,7 @@ class MasterAdminUserController extends Controller
   
     public function index()
     {
+        //admin ユーザーのリスト
         $admin_users = Admin::all();
         return view('master.admin-user.index', compact('admin_users'));
     }

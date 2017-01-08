@@ -21,6 +21,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/password/reset/{token}', 'AdminAuth\ResetPasswordController@showResetForm');
 
     //ダッシュボード
+    Route::get('/', 'AdminDashboardController@index');
     Route::resource('/merchant','AdminMerchantController');
     Route::resource('/users','AdminUsersController', ['except' => ['show']]);
     Route::resource('/shops','AdminShopsController', ['except' => ['show']]);

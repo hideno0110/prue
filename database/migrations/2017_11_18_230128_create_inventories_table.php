@@ -42,6 +42,7 @@ class CreateInventoriesTable extends Migration
             $table->text('sku2')->nullable();
             $table->integer('shipping_type')->default(0);
             $table->integer('is_active')->default(0);
+            $table->integer('admin_id')->default(0);
             $table->integer('update_admin_id')->unsigned()->index();
             $table->timestamps();
             //foreign key
