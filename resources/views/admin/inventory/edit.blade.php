@@ -1,7 +1,7 @@
 @extends('vendor.adminlte.layouts.app')
 @section('content_breadcrumb',trans('adminlte_lang::message.inventories'))
 @section('contentheader_title')
-    {{$inventory->sku }} : {{$inventory->item_master->name }}
+    {{$inventory->sku }} : @if($inventory->item_master_id != 0)$inventory->item_master->name @endif
 @endsection
 @section('main-content')
 
@@ -44,7 +44,12 @@
           </div>
           <div class="form-group">
               {!! Form::label('item_master_id',trans('adminlte_lang::message.item_master_id').' :') !!}
-              <a href="{{ route('items.edit', $inventory->item_master_id) }}" target="_blank">{!! $inventory->item_master_id !!} <i class="fa fa-link" aria-hidden="true"></i></a>
+              @if($inventory->item_master_id != 0)
+                <a href="{{ route('items.edit', $inventory->item_master_id) }}" target="_blank">{!! $inventory->item_master_id !!} <i class="fa fa-link" aria-hidden="true"></i></a>
+                {!! Form::text('item_master_id',null,['class'=>'form-control']) !!}
+              @else
+                {!! Form::text('item_master_id','',null,['class'=>'form-control']) !!}
+              @endif
           </div>
           <div class="form-group">
               {!! Form::label('photos','画像を追加する:') !!}
