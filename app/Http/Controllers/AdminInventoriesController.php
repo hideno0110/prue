@@ -210,8 +210,7 @@ class AdminInventoriesController extends Controller
         //取得に失敗する可能性もあるので、transactionの外に置く
         $amazon_get_flg = 0;
         $item='';
-
-        dd($request);
+        
         //フォームから新規商品入力値を取得
         $input = $request->all();
         
@@ -286,7 +285,7 @@ class AdminInventoriesController extends Controller
             DB::rollBack();
             return Redirect::back();
         }
-        //
+
         // //amazon APIにてamazonデータを取得し格納する
         // if(($inventory->asin != ''|| $inventory->jan_code != '') && $item){ 
         //   try {
@@ -633,12 +632,14 @@ class AdminInventoriesController extends Controller
             return $inventory->item_master_id = $item_master->id;
              
         //商品マスタに存在しない場合、商品マスタを新規作成し、IDを取得
-        } elseif($act_flg == 2) {
+        } elseif($act_flg == 1) {
             $item_input['asin'] = $inventory->asin;
             $item_input['jan_code'] = $inventory->jan_code;
             $item_input['item_code'] = $inventory->item_code;
             $item_input['merchant_id'] = $inventory->merchant_id;
             $item = ItemMaster::create($item_input);
+            //amazonから取得した商品情報を保存
+            Self::get_item_master_info($item);
             //新規作成した商品マスタから商品マスタIDを取得
             return $inventory->item_master_id = $item->id;
         } else {

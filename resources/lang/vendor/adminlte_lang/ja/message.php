@@ -210,7 +210,7 @@ return [
     'ranking' => '商品ランキング',
     'item_detail' => '商品詳細',
     'jan_code' => 'JANコード',
-    'apply_item_masterapply_iteapply_iteapply_item_masterマスタに登録する',
+    'apply_item_master' => 'マスタに登録する',
     
     
     //RSS
