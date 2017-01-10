@@ -212,6 +212,10 @@ return [
     'jan_code' => 'JANコード',
     'apply_item_master' => 'マスタに登録する',
     
+    //商品マスタ
+    'inv_num' => '仕入れ回数',
+    'inv_sum' => '商品数',
+    
     
     //RSS
     'rss_url' => 'RSS URL',

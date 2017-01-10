@@ -22,10 +22,19 @@ class AdminItemMasterController extends Controller
     public function index()
     {
         $merchant_id = Merchant::merchantUserCheck();
-        $items = ItemMaster::where('merchant_id',$merchant_id)
-            ->orderBy('id','desc')
-            ->get();
-        
+        $items = ItemMaster::
+          // join('inventories', 'item_masters.id', '=', 'inventories.item_master_id')
+          where('merchant_id',$merchant_id)
+          ->orderBy('id','desc')
+          ->get();
+
+        // dd($items);
+        // foreach($items as $item) {
+        //   if($item->inventories){
+        //     var_dump(count($item->inventories->name));
+        //   }
+        // }
+
         return view('admin.items.index',compact('items'));
     }
 
