@@ -143,6 +143,13 @@
     <div class="col-sm-6 col-sm-offset-5">
         {{$inventories->render()}}
     </div>
+    
+    <div class="col-sm-6 col-sm-offset-5">
+        {!! Form::open(['method'=>'POST','action'=>'AdminInventoriesController@apply_item_master','class'=>'form-inline']) !!}
+          <button type="submit" class="btn btn-normal" name="clear" value="apply_item_master">{{ trans('adminlte_lang::message.apply_item_master') }}</button>
+        {!! Form::close() !!}
+    </div>
+
 </div>
     <script>
         $(document).ready(function() {
