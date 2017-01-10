@@ -702,9 +702,10 @@ class AdminInventoriesController extends Controller
         foreach($inventories as $inventory) {
           $inventory->item_master_id = Self::get_item_master($inventory, 1);
           $inventory->save();
-          
-          $item = ItemMaster::where('id','=',$inventory->item_master_id)->first();
-          Self::get_item_master_info($item);
+          if($inventory->asin != '') {
+            $item = ItemMaster::where('id','=',$inventory->item_master_id)->first();
+            Self::get_item_master_info($item);
+          }
         }
 
         return redirect('/admin/inventories')->with('flash_message',trans('adminlte_lang::message.updated_msg'));
