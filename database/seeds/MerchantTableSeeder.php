@@ -74,7 +74,7 @@ class MerchantTableSeeder extends Seeder
           $merchant->save();       
 
           //Inventory
-          for ($j=0; $j < 20; $j++) {
+          for ($j=0; $j < 5; $j++) {
             echo $j;
           $input=  array(
               'merchant_id' => rand(1,4),

@@ -27,9 +27,10 @@ Route::group(['prefix' => 'admin'], function () {
     Route::resource('/shops','AdminShopsController', ['except' => ['show']]);
     Route::resource('/shop_lists','AdminShopListController', ['except' => ['show']]);
     Route::resource('/inventories','AdminInventoriesController', ['except' => ['show']]);
+    Route::post('/inventories/master_item', 'AdminInventoriesController@apply_item_master');
     Route::resource('/items','AdminItemMasterController', ['except' => ['show']]);
     Route::resource('/stocks','AdminStockController', ['only' => ['index','update']]);
-     // Route::get('/mws/sell', 'AdminMwsSellsController@index');
+     Route::get('/mws/sell', 'AdminMwsSellsController@index');
     Route::get('/mws/fba-inv', 'AdminFbaInventoriesController@index');
     Route::get('/research-shops', 'AdminResearchShopController@index', ['only' => ['index']]);
     Route::resource('/rss-read','AdminRssController', ['except' => ['show']]);
@@ -38,6 +39,10 @@ Route::group(['prefix' => 'admin'], function () {
     Route::resource('/privacy', 'AdminPrivacyController', ['only' => ['index']]);
     Route::resource('/howto', 'AdminHowtoController', ['only' => ['index']]);
     Route::resource('/qa', 'AdminQaController', ['only' => ['index']]);
+
+    //upload
+    Route::get('/upload', 'AdminUploadController@index');
+    Route::post('/admin/add', 'AdminUploadController@store');
     //jquery INLINE EDIT
     Route::any('/jquerypost', 'AdminFunctionController@postDB'); 
     //autocomplete
