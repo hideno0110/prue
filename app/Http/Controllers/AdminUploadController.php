@@ -237,7 +237,7 @@ class AdminUploadController extends Controller
             $config->setDelimiter("\t")
                 ->setToCharset("UTF-8") // Customize file encoding. Default value is null, no converting.
                 ->setFromCharset("Shift_JIS") // Customize source encoding. Default value is null.
-                ->setIgnoreHeaderLine(false)
+                ->setIgnoreHeaderLine(true)
                 ->setEscape("\\");
 
             $interpreter = new Interpreter();
@@ -281,16 +281,15 @@ class AdminUploadController extends Controller
                         'misc-fee-amount' => $columns[27],
                         'other-fee-amount' => $columns[28],
                         'other-fee-reason-description' => $columns[29],
-
-                        'direct-payment-type' => $columns[30],
-                        'direct-payment-amount' => $columns[31],
-                        'other-amount' => $columns[32],
+                        'promotion-id' => $columns[30],
+                        'promotion-type' => $columns[31],
+                        'promotion-amount' => $columns[33],
+                        'direct-payment-type' => $columns[33],
+                        'direct-payment-amount' => $columns[34],
+                        'other-amount' => $columns[35],
                     ]
                 );
             });
-                        // 'promotion-id' => $columns[30],
-                        // 'promotion-type' => $columns[31],
-                        // 'promotion-amount' => $columns[32],
 
             $lexer = new Lexer($config);
             $lexer->parse($move, $interpreter);
