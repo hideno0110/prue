@@ -19,7 +19,7 @@
             <th>SKU</th>
             <th>FNSKU</th>
             <th>画像</th>
-            <th>商品名</th>
+            <th width="100">商品名</th>
             <th>仕入れ日</th>
             <th>販売日数</th>
             <th>期間</th>
