@@ -174,6 +174,7 @@ return [
     'privacy' => '個人情報について',
     'howto' => 'ご利用ガイド',
     'qa' => 'よくある質問',
+    'upload_list' => 'アップロード',
     'require_asin_jan_itme' => 'ASIN,JAN,商品コードいずれか必須',
 
     //問い合わせ

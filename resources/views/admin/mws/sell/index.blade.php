@@ -6,55 +6,7 @@
 
 @section('main-content')
 
-
-<div class="row">
-
-    <table id="foo-table" class="table  table-hover   table-bordered">
-        <thead>
-        <tr class="active">
-          <th>order id</th>
-          <th>order date</th>
-          <th>status</th>
-          <th>sku</th>
-          <th>name</th>
-          <th>amount</th>
-          <th>price</th>
-        </tr>
-        </thead>
-        <tbody>
-          {{-- @foreach($amz_lists as $list)   --}}
-          {{--   <tr> --}}
-          {{--     <td>{{ $list->getAmazonOrderId() }}</td> --}}
-          {{--     <td>{{ $list->getPurchaseDate() }} </td> --}}
-          {{--     <td>{{ $list->getOrderStatus() }} </td> --}}
-          {{--     <td>{{ $list->getBuyerName() }} </td> --}}
-          {{--   </tr> --}}
-          {{--   @endforeach --}}
-
-        
-          @foreach($orders as $list)  
-            <tr>
-
-              <td>{{ $list['amazonOrderId'] }}</td>
-              <td>{{ $list['purchaseDate'] }}</td>
-              <td>{{ $list['status'] }}</td>
-              <td>{{ $list['orderitems'][0]['productcode'] }}</td>
-              <td>{{ $list['orderitems'][0]['name'] }}</td>
-              <td>{{ $list['orderitems'][0]['amount'] }}</td>
-              <td>{{ $list['orderitems'][0]['price'] }}</td>
-
-            </tr>
-          @endforeach
-
-        
-        
-        
-        </tbody>
-    </table>
-
-
-
-{{--
+<div class="col-sm-12">
     <table id="foo-table" class="table  table-hover   table-bordered">
         <thead>
         <tr class="active">
@@ -109,12 +61,12 @@
         @endforeach
         </tbody>
     </table>
---}}
-    
-    {{--<div class="col-sm-6 col-sm-offset-5">--}}
-            {{--{{$mws_sells->render()}}--}}
-        {{--</div>--}}
 
+   {{--  
+    <div class="col-sm-6 col-sm-offset-5">
+        {{$mws_sells->render()}}
+    </div>
+    --}}
 </div>
 
 @stop

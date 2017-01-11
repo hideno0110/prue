@@ -31,7 +31,7 @@
                     <td><a href="{{ route('items.edit',$item->id) }}">{{ $item->asin }}</a></td>
                     <td><a href="{{ route('items.edit',$item->id) }}">{{ $item->jan_code }}</a></td>
                     <td><a href="{{ route('items.edit',$item->id) }}">{{ $item->item_code }}</a></td>
-                    <td><a href="{{ route('items.edit',$item->id) }}"><img src="{{ $item->file }}" height="100"></a></td>
+                    <td><a href="{{ route('items.edit',$item->id) }}"><img src="{{ $item->file }}" height="80" width="100"></a></td>
                     <td><a href="{{ route('items.edit',$item->id) }}">{{ $item->name }}</a></td>       
                     <td>{{ count($item->inventories) }}</td>
                     <td><?php $sum = 0; 
