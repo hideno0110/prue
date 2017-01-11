@@ -222,50 +222,12 @@ class AdminInventoriesController extends Controller
             $input['update_admin_id'] = Auth::guard('admin')->user()->id;
             //merchant_idを取得
             $input['merchant_id'] = Merchant::merchantUserCheck();
-            //merchantインスタンスを作成
-            // $merchant = Merchant::findOrFail($merchant_id);
-
 
             //新規商品をDBに登録
             $inventory = Inventory::create($input);
-            
-            //ItemMasterにitem_master_idとして商品マスタが登録済みか確認
-            $query = ItemMaster::query();
 
-             if(!empty($inventory->asin)){
-                 $query->where('asin',$inventory->asin);
-             }
-             if(!empty($inventory->jan_code)){
-                 $query->where('jan_code',$inventory->jan_code);
-             }
-             if(!empty($inventory->item_code)){
-                 $query->where('item_code',$inventory->item_code);
-             }
-
-            $merchant_id = Merchant::merchantUserCheck();
-            //結果を取得
-            $item_master = $query
-              ->where('merchant_id', $merchant_id)->first();
-
-            //item master に商品マスタがあるかどうかを確認し、ある場合は、item_master_idをセット
-            //ない場合は、商品マスタをASINをもとに新規作成
-
-             //inventoryのasin or jan or item_codeがマスタに存在するか確認 
-
-              //商品マスタに存在すれば存在すれば既存商品マスタのIDを取得
-            if(isset($item_master->id)) {
-                  $inventory->item_master_id = $item_master->id;
-                //商品マスタに存在しない場合、商品マスタを新規作成し、IDを取得
-                } else {
-                  $item_input['asin'] = $inventory->asin;
-                  $item_input['jan_code'] = $inventory->jan_code;
-                  $item_input['item_code'] = $inventory->item_code;
-                  $item_input['merchant_id'] = $inventory->merchant_id;
-                  $item = ItemMaster::create($item_input);
-                  //新規作成した商品マスタから商品マスタIDを取得
-                  $inventory->item_master_id = $item->id;
-                }
-
+            //ItemMasterに登録済みか確認し、ない場合は作成後、item_master_idを取得
+            $inventory->item_master_id = Self::get_item_master($inventory, 1);
             //SKU（商品番号）を作成
             //SKU = Item_masterID + condition + (usedの場合No.)
             if($inventory->condition->type == 11) {
@@ -324,39 +286,39 @@ class AdminInventoriesController extends Controller
             return Redirect::back();
         }
 
-        //amazon APIにてamazonデータを取得し格納する
-        if(($inventory->asin != ''|| $inventory->jan_code != '') && $item){ 
-          try {
-              $obj = new AmazonProductList("myStore"); //store name matches the array key in the config file
-              $obj->setIdTYpe("ASIN","JAN"); //tells the object to automatically use tokens right away
-              if($inventory->asin != '') { 
-                $obj->setProductIds($item->asin); //tells the object to automatically use tokens right away
-              } else {
-                $obj->setProductIds($item->jan_code); //tells the object to automatically use tokens right away
-              }  
-              $item_detail = $obj->fetchProductList(); //this is what actually sends the request
-              if(isset($item_detail->GetMatchingProductForIdResult->Error->Code)) {
-                 // dont save 
-              } else {  
-                 $item->name = $item_detail->GetMatchingProductForIdResult->Products->Product->AttributeSets->ItemAttributes->Title;
-                 $item->category = $item_detail->GetMatchingProductForIdResult->Products->Product->SalesRankings->SalesRank->ProductCategoryId[0];
-                 $item->rank = $item_detail->GetMatchingProductForIdResult->Products->Product->SalesRankings->SalesRank->Rank[0];
-                 $item->file = $item_detail->GetMatchingProductForIdResult->Products->Product->AttributeSets->ItemAttributes->SmallImage->URL;
-                 $item->item_detail = $item_detail->GetMatchingProductForIdResult->Products->Product->AttributeSets->ItemAttributes->Feature[0];
-
-                 //ssl用にURLを変換
-                 $url = 'https://d1ge0kk1l5kms0.cloudfront.net';
-                 $html_code = $item->file;
-
-                 $html_code = preg_replace("/http:\/\/ecx.images-amazon.com/", $url, $html_code);
-                 $item->file = preg_replace("_SL75_", "_SL300_", $html_code);
-                 $item->save();
-              }
-
-          } catch (Exception $ex) {
-              echo 'There was a problem with the Amazon library. Error: '.$ex->getMessage();
-          }
-        }
+        // //amazon APIにてamazonデータを取得し格納する
+        // if(($inventory->asin != ''|| $inventory->jan_code != '') && $item){ 
+        //   try {
+        //       $obj = new AmazonProductList("myStore"); //store name matches the array key in the config file
+        //       $obj->setIdTYpe("ASIN","JAN"); //tells the object to automatically use tokens right away
+        //       if($inventory->asin != '') { 
+        //         $obj->setProductIds($item->asin); //tells the object to automatically use tokens right away
+        //       } else {
+        //         $obj->setProductIds($item->jan_code); //tells the object to automatically use tokens right away
+        //       }  
+        //       $item_detail = $obj->fetchProductList(); //this is what actually sends the request
+        //       if(isset($item_detail->GetMatchingProductForIdResult->Error->Code)) {
+        //          // dont save 
+        //       } else {  
+        //          $item->name = $item_detail->GetMatchingProductForIdResult->Products->Product->AttributeSets->ItemAttributes->Title;
+        //          $item->category = $item_detail->GetMatchingProductForIdResult->Products->Product->SalesRankings->SalesRank->ProductCategoryId[0];
+        //          $item->rank = $item_detail->GetMatchingProductForIdResult->Products->Product->SalesRankings->SalesRank->Rank[0];
+        //          $item->file = $item_detail->GetMatchingProductForIdResult->Products->Product->AttributeSets->ItemAttributes->SmallImage->URL;
+        //          $item->item_detail = $item_detail->GetMatchingProductForIdResult->Products->Product->AttributeSets->ItemAttributes->Feature[0];
+        //
+        //          //ssl用にURLを変換
+        //          $url = 'https://d1ge0kk1l5kms0.cloudfront.net';
+        //          $html_code = $item->file;
+        //
+        //          $html_code = preg_replace("/http:\/\/ecx.images-amazon.com/", $url, $html_code);
+        //          $item->file = preg_replace("_SL75_", "_SL300_", $html_code);
+        //          $item->save();
+        //       }
+        //
+        //   } catch (Exception $ex) {
+        //       echo 'There was a problem with the Amazon library. Error: '.$ex->getMessage();
+        //   }
+        // }
 
         if (Input::get('new')){
             return redirect('/admin/inventories')->with('flash_message',trans('adminlte_lang::message.created_msg'));
@@ -632,6 +594,121 @@ class AdminInventoriesController extends Controller
 
 
         return $fba;
+    }
+
+
+
+    /**
+     * 商品マスタ取得&作成
+     * $act_flg : 0.get item_master 1.get & make item_master 
+     */
+    function get_item_master($inventory, $act_flg)
+    {
+        //ItemMasterにitem_master_idとして商品マスタが登録済みか確認
+        $query = ItemMaster::query();
+
+         if(!empty($inventory->asin)){
+             $query->where('asin',$inventory->asin);
+         }
+         if(!empty($inventory->jan_code)){
+             $query->where('jan_code',$inventory->jan_code);
+         }
+         if(!empty($inventory->item_code)){
+             $query->where('item_code',$inventory->item_code);
+         }
+
+        $merchant_id = Merchant::merchantUserCheck();
+        //結果を取得
+        $item_master = $query
+          ->where('merchant_id', $merchant_id)->first();
+
+        //item master に商品マスタがあるかどうかを確認し、ある場合は、item_master_idをセット
+        //ない場合は、商品マスタをASINをもとに新規作成
+
+         //inventoryのasin or jan or item_codeがマスタに存在するか確認 
+
+          //商品マスタに存在すれば存在すれば既存商品マスタのIDを取得
+        if(isset($item_master->id)) {
+            return $inventory->item_master_id = $item_master->id;
+             
+        //商品マスタに存在しない場合、商品マスタを新規作成し、IDを取得
+        } elseif($act_flg == 1) {
+            $item_input['asin'] = $inventory->asin;
+            $item_input['jan_code'] = $inventory->jan_code;
+            $item_input['item_code'] = $inventory->item_code;
+            $item_input['merchant_id'] = $inventory->merchant_id;
+            $item = ItemMaster::create($item_input);
+            //amazonから取得した商品情報を保存
+            Self::get_item_master_info($item);
+            //新規作成した商品マスタから商品マスタIDを取得
+            return $inventory->item_master_id = $item->id;
+        } else {
+            return  print "no item_master";
+        }             
+    }                 
+                      
+
+    /**
+     * amazonAPI 商品マスタ情報の追加
+     */
+    function get_item_master_info($item)
+    {
+        //amazon APIにてamazonデータを取得し格納する
+        if(($item->asin != ''|| $item->jan_code != '')  ){ 
+          try {
+              $obj = new AmazonProductList("myStore"); //store name matches the array key in the config file
+              $obj->setIdTYpe("ASIN","JAN"); //tells the object to automatically use tokens right away
+              if($item->asin != '') { 
+                $obj->setProductIds($item->asin); //tells the object to automatically use tokens right away
+              } else {
+                $obj->setProductIds($item->jan_code); //tells the object to automatically use tokens right away
+              }  
+              $item_detail = $obj->fetchProductList(); //this is what actually sends the request
+              if(isset($item_detail->GetMatchingProductForIdResult->Error->Code)) {
+                 // dont save 
+              } else {  
+                 $item->name = $item_detail->GetMatchingProductForIdResult->Products->Product->AttributeSets->ItemAttributes->Title;
+                 $item->category = $item_detail->GetMatchingProductForIdResult->Products->Product->SalesRankings->SalesRank->ProductCategoryId[0];
+                 $item->rank = $item_detail->GetMatchingProductForIdResult->Products->Product->SalesRankings->SalesRank->Rank[0];
+                 $item->file = $item_detail->GetMatchingProductForIdResult->Products->Product->AttributeSets->ItemAttributes->SmallImage->URL;
+                 $item->item_detail = $item_detail->GetMatchingProductForIdResult->Products->Product->AttributeSets->ItemAttributes->Feature[0];
+
+                 //ssl用にURLを変換
+                 $url = 'https://d1ge0kk1l5kms0.cloudfront.net';
+                 $html_code = $item->file;
+
+                 $html_code = preg_replace("/http:\/\/ecx.images-amazon.com/", $url, $html_code);
+                 $item->file = preg_replace("_SL75_", "_SL300_", $html_code);
+                 $item->save();
+              }
+
+          } catch (Exception $ex) {
+              echo 'There was a problem with the Amazon library. Error: '.$ex->getMessage();
+          }
+        }
+    }
+
+                      
+                      
+    public function apply_item_master()
+    {
+        //店舗IDを取得
+        $merchant_id = Merchant::merchantUserCheck();
+        //該当の店舗IDかつ、item_masterが0(なし）のものを抽出
+        $inventories = Inventory::where('merchant_id','=',$merchant_id)
+          ->where('item_master_id','=',0)
+          ->get();
+
+        foreach($inventories as $inventory) {
+          $inventory->item_master_id = Self::get_item_master($inventory, 1);
+          $inventory->save();
+          if($inventory->asin != '') {
+            $item = ItemMaster::where('id','=',$inventory->item_master_id)->first();
+            Self::get_item_master_info($item);
+          }
+        }
+
+        return redirect('/admin/inventories')->with('flash_message',trans('adminlte_lang::message.updated_msg'));
     }
 
 }

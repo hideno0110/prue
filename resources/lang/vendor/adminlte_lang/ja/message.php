@@ -174,6 +174,7 @@ return [
     'privacy' => '個人情報について',
     'howto' => 'ご利用ガイド',
     'qa' => 'よくある質問',
+    'upload_list' => 'アップロード',
     'require_asin_jan_itme' => 'ASIN,JAN,商品コードいずれか必須',
 
     //問い合わせ
@@ -210,6 +211,11 @@ return [
     'ranking' => '商品ランキング',
     'item_detail' => '商品詳細',
     'jan_code' => 'JANコード',
+    'apply_item_master' => 'マスタに登録する',
+    
+    //商品マスタ
+    'inv_num' => '仕入れ回数',
+    'inv_sum' => '商品数',
     
     
     //RSS
