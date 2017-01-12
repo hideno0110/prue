@@ -43,6 +43,10 @@
               {!! Form::text('jan_code',null,['class'=>'form-control']) !!}
           </div>
           <div class="form-group">
+              {!! Form::label('item_code','商品コード:') !!}
+              {!! Form::text('item_code',null,['class'=>'form-control']) !!}
+          </div>
+          <div class="form-group">
               {!! Form::label('item_master_id',trans('adminlte_lang::message.item_master_id').' :') !!}
               @if($inventory->item_master_id != 0)
                 <a href="{{ route('items.edit', $inventory->item_master_id) }}" target="_blank">{!! $inventory->item_master_id !!} <i class="fa fa-link" aria-hidden="true"></i></a>

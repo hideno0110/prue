@@ -13,6 +13,7 @@ class Inventory extends Model
         'asin',
         'jan_code',
         'item_code',
+        'item_master_id',
         'sku',
         'sku2',
         'name',
