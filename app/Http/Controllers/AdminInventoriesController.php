@@ -213,7 +213,17 @@ class AdminInventoriesController extends Controller
         
         //フォームから新規商品入力値を取得
         $input = $request->all();
-        
+
+        if($input["item_master_id"] != "") {
+          if( ItemMaster::find($input["item_master_id"])) {
+              // ok
+          } else {
+              return redirect()->back()->with('error_message', 'error item_message');
+          }
+        }
+
+
+
         try {
             //トランザクション開始
             DB::beginTransaction();
