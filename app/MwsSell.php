@@ -121,7 +121,8 @@ class MwsSell extends Model
             sum(CASE  WHEN ms.`transaction-type`=  \"Refund\" THEN ms.`item-related-fee-amount` END) +  sum(CASE  WHEN ms.`transaction-type`=  \"Order\" THEN ms.`promotion-amount` END) as refund_fee,
             sum(`other-amount`) as merchant_fee,
             sum(`price-amount`) + sum(`item-related-fee-amount`) + sum(`promotion-amount`) + sum(`other-amount`) as sales_profit,
-            sum(CASE  WHEN ms.`price-type`=  \"Principal\" THEN  inventories.buy_price END) as buy_price
+            sum(CASE  WHEN ms.`price-type`=  \"Principal\" THEN  inventories.buy_price END) as buy_price,
+            sum(`price-amount`) + sum(`item-related-fee-amount`) + sum(`promotion-amount`) + sum(`other-amount`) -  sum(CASE  WHEN ms.`price-type`=  \"Principal\" THEN  inventories.buy_price END) as profit
         FROM `mws_sells`  ms
             left join inventories on ms.sku =  (case when inventories.sku2 = '' then inventories.sku else inventories.sku2 end)
         GROUP BY
@@ -131,4 +132,4 @@ class MwsSell extends Model
         return $mws_sums;
     }
 
-}
+} 
