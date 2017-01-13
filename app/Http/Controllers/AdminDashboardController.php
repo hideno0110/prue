@@ -14,6 +14,7 @@ use App\Shop;
 use App\ShopList;
 use Auth;
 use App\Merchant;
+use App\MwsSell;
 use App\RssNews;
 
 class AdminDashboardController extends Controller 
@@ -24,9 +25,14 @@ class AdminDashboardController extends Controller
         $this->middleware('auth:admin');
     } 
 
-    public function index(Inventory $inventory, Shop $shop, ShopList $shop_list, RssNews $rss_news)
+    public function index()
     {
-
+        $inventory =  new Inventory;
+        $shop =  new Shop;
+        $shop_list = new ShopList;
+        $rss_news = new RssNews;
+        $mws_sell = new MwsSell;
+       
         //ユーザー情報を取得
         $admin_id = Auth::guard('admin')->user()->id;
 
@@ -52,9 +58,13 @@ class AdminDashboardController extends Controller
         $monthly_purchase =  $inventory->monthly_purchase_price($merchant_id);
         //月別の仕入れ回数
         $fba_data =  $inventory->monthly_purchase_times();
-
+        //月別の販売
+        $mws_sums = $mws_sell->mws_sums();
+        //rssニュース一覧
         $rss_news = $rss_news->get_rss_lists($admin_id, 5);
-
+        //統計データ
+        $summary_data = $mws_sell->get_summary_data($mws_sums, $monthly_purchase);
+        
         $compacted = compact(
           'this_year',
           'this_month',
@@ -66,7 +76,8 @@ class AdminDashboardController extends Controller
           'inv_expect_profit',
           'monthly_purchase',
           'fba_data',
-          'rss_news'
+          'rss_news',
+          'summary_data'
         );
 
         return view('admin.index', $compacted);

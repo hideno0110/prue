@@ -121,7 +121,7 @@ class MwsSell extends Model
     {
         $mws_sums = DB::select("
         SELECT 
-            DATE_FORMAT(ms.`posted-date`, '%Y-%m') as posted_time,
+            DATE_FORMAT(ms.`posted-date`, '%Y/%m') as month,
             sum(CASE  WHEN ms.`transaction-type`=  \"Order\" THEN ms.`price-amount` END) as sales,
             sum(CASE  WHEN ms.`transaction-type`=  \"Order\" THEN ms.`item-related-fee-amount` END) +  sum(CASE  WHEN ms.`transaction-type`=  \"Order\" THEN ms.`promotion-amount` END) as sales_fee,
             sum(CASE  WHEN ms.`transaction-type`=  \"Refund\" THEN ms.`price-amount` END) as refund,
@@ -135,6 +135,26 @@ class MwsSell extends Model
         GROUP BY
             DATE_FORMAT(ms.`posted-date`, '%Y%m');
         ");
+
+        return $mws_sums;
+    }
+
+    // summary データ
+    static function get_summary_data($mws_sums, $monthly_purchase)
+    {
+      //結合 
+      foreach($mws_sums as $i) {
+          foreach($monthly_purchase as $m) {
+                if($i->month == $m->month) {
+                    $i->inv_num = $m->num;
+                    $i->inv_price = $m->price;
+                    break;
+                } else {
+                    $i->inv_num = 0;
+                    $i->inv_price = 0;
+                }
+            }
+        }
 
         return $mws_sums;
     }
