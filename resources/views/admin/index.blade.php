@@ -135,7 +135,10 @@
                         <th class="green">30日以内</th>
                         <th class="yellow">60日以内</th>
                         <th class="yellow">90日以内</th>
-                        <th class="red">90日以上</th>
+                        <th class="red">120日以内</th>
+                        <th class="red">150日以内</th>
+                        <th class="red">180日以内</th>
+                        <th class="red">180日以上</th>
                         <th>合計</th>
                     </tr>
                     </thead>
@@ -146,7 +149,10 @@
                             <td class="green"> {{ $data->under30 }} </td>
                             <td class="yellow"> {{ $data->under60 }} </td>
                             <td class="yellow"> {{ $data->under90 }} </td>
-                            <td class="red"> {{ $data->over90 }} </td>
+                            <td class="red"> {{ $data->under120 }} </td>
+                            <td class="red"> {{ $data->under150 }} </td>
+                            <td class="red"> {{ $data->under180 }} </td>
+                            <td class="red"> {{ $data->over180 }} </td>
                             <td> {{ $data->total_count }} </td>
                         </tr>
                         <tr>
@@ -154,9 +160,21 @@
                             <td class="green"> {{ $data->under30sum }} </td>
                             <td class="yellow"> {{ $data->under60sum }} </td>
                             <td class="yellow"> {{ $data->under90sum }} </td>
-                            <td class="red"> {{ $data->over90sum }} </td>
+                            <td class="red"> {{ $data->under120sum }} </td>
+                            <td class="red"> {{ $data->under150sum }} </td>
+                            <td class="red"> {{ $data->under180sum }} </td>
+                            <td class="red"> {{ $data->over180sum }} </td>
                             <td> {{ $data->total_sum }} </td>
                         </tr>
+                        <tr>
+                            <td></td>
+                            <td class="green"> </td>
+                            <td class="yellow">  </td>
+                            <td class="yellow">  </td>
+                            <td class="red" colspan="4"> {{ $data->over90 }} ({{ $data->over90sum }})</td>
+                            <td >  </td>
+                        </tr>
+                      
                     @endforeach
                     </tbody>
                 </table>
@@ -169,37 +187,57 @@
     <div class="row">
         <div class="col-sm-12">
         <h3>販売管理</h3>
-        <div class="col-sm-6">
         <table class="table table-striped">
             <thead>
             <tr>
                 <th>月</th>
-                <th>仕入数</th>
-                <th>仕入額</th>
+                <th>売上</th>
+                <th>返金</th>
+                <th>手数料</th>
+                <th>入金</th>
+                <th>当月仕入額</th>
+                <th>先月月末在庫</th>
+                <th>当月月末在庫</th>
+                <th>粗利益</th>
+                <th>経費</th>
+                <th>営業利益</th>
             </tr>
             </thead>
             <tbody>
-            @foreach($monthly_purchase as $each_purchase)
+            @foreach($summary_data as $each_data)
 
-                @if( $each_purchase->month  == '2015/12')
+                @if( $each_data->month  == '2015/12')
                     @break
                 @else
                     <tr>
-                        <td> {{ $each_purchase->month }} </td>
-                        <td> {{ $each_purchase->num }} </td>
-                        <td> {{ $each_purchase->price }} </td>
+                        <td> {{ $each_data->month }} </td>
+                        <td> {{ $each_data->sales }} </td>
+                        <td> {{ $each_data->refund }} </td>
+                        <td> {{ $each_data->merchant_fee }} </td>
+                        <td> {{ $each_data->profit }} </td>
+                        <td> {{ $each_data->inv_price }} </td>
+                        <td>  </td>
+                        <td>  </td>
+                        <td>  </td>
+                        <td>  </td>
+                        <td>  </td>
+
+
+
                     </tr>
                 @endif
             @endforeach
             </tbody>
         </table>
-        </div>
         <!-- end stock table -->
-        <div class="col-sm-6">
-            <canvas id="canvas"></canvas>
-        </div>
-        <!-- end stock graph  -->
     </div>
+
+
+    <div class="col-sm-12">
+        <canvas id="canvas"></canvas>
+    </div>
+    <!-- end stock graph  -->
+
 
     <div class="col-sm-12">
         <h3><a href="{{ url('admin/rss-read')}}">RSSニュース</a></h3>       
