@@ -127,7 +127,7 @@
     <div class="row">
         <div class="col-sm-12">
             <h3><a href="{{ url('admin/mws/fba-inv')}}">在庫管理</a></h3>
-            <div class="col-sm-6">
+            <div class="col-sm-8">
                 <table class="table table-striped stock">
                     <thead>
                     <tr>
@@ -167,12 +167,14 @@
                             <td> {{ $data->total_sum }} </td>
                         </tr>
                         <tr>
-                            <td></td>
-                            <td class="green"> </td>
-                            <td class="yellow">  </td>
-                            <td class="yellow">  </td>
-                            <td class="red" colspan="4"> {{ $data->over90 }} ({{ $data->over90sum }})</td>
-                            <td >  </td>
+                            <td>率</td>
+                            <td> {{round( intval(str_replace(",","",$data->under30sum)) / intval(str_replace(",","",$data->total_sum)) * 100)."%" }} </td>
+                            <td> {{round( intval(str_replace(",","",$data->under60sum)) / intval(str_replace(",","",$data->total_sum)) * 100)."%" }} </td>
+                            <td> {{round( intval(str_replace(",","",$data->under90sum)) / intval(str_replace(",","",$data->total_sum)) * 100)."%" }} </td>
+                            <td> {{round( intval(str_replace(",","",$data->under120sum)) / intval(str_replace(",","",$data->total_sum)) * 100)."%" }} ({{ round( intval(str_replace(",","",$data->over90sum)) / intval(str_replace(",","",$data->total_sum)) * 100)."%" }}  ) </td>
+                            <td> {{round( intval(str_replace(",","",$data->under150sum)) / intval(str_replace(",","",$data->total_sum)) * 100)."%" }} </td>
+                            <td> {{round( intval(str_replace(",","",$data->under180sum)) / intval(str_replace(",","",$data->total_sum)) * 100)."%" }}  </td>
+                            <td> {{round( intval(str_replace(",","",$data->over180sum)) / intval(str_replace(",","",$data->total_sum)) * 100)."%" }} </td>
                         </tr>
                       
                     @endforeach
