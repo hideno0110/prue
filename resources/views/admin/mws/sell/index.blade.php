@@ -1,7 +1,7 @@
 @extends('vendor.adminlte.layouts.app')
 @section('content_breadcrumb',trans('adminlte_lang::message.stocks'))
 @section('contentheader_title')
-    amazon 在庫管理
+    amazon 販売管理
 @endsection
 
 @section('main-content')
@@ -160,17 +160,27 @@
         <table  class="table  table-hover  table-bordered">
             <thead>
             <tr>
-                <th>タイプ</th>
-                <th></th>
-                <th>仕入日</th>
+                <th>月</th>
+                <th>FBA利用料</th>
+                <th>FBA保管手数料</th>
+                <th>FBAパートナーキャリアの配送料</th>
+                <th>FBA在庫の廃棄手数料</th>
+                <th>FBA在庫の返金</th>
+                <th>FBA保管手数料</th>
+                <th>合計</th>
             </tr>
             </thead>
             <tbody>
                 @foreach($mws_fees as $mws_fee)
                   <tr>
-                    <td> {{ $mws_fee->{'transaction-type'} }}</td>
-                    <td> {{ $mws_fee->{'posted-date'} }}</td>
-                    <td> {{ $mws_fee->{'other-amount'} }}</td>
+                    <td> {{ $mws_fee->{'posted_time'} }}</td>
+                    <td> {{ number_format((int)$mws_fee->{'subscription'}) }}</td>
+                    <td> {{ number_format((int)$mws_fee->{'fbainbound'}) }}</td>
+                    <td> {{ number_format((int)$mws_fee->{'removal'}) }}</td>
+                    <td> {{ number_format((int)$mws_fee->{'disposal'}) }}</td>
+                    <td> {{ number_format((int)$mws_fee->{'reversal'}) }}</td>
+                    <td> {{ number_format((int)$mws_fee->{'storage'}) }}</td>
+                    <td> {{ number_format((int)$mws_fee->{'totalfee'}) }}</td>
                   </tr>
                 @endforeach
             </tbody>
