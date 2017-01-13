@@ -84,7 +84,7 @@ class MwsSell extends Model
             sum(CASE  WHEN ms.`item-related-fee-type`=  \"VariableClosingFee\" THEN ms.`item-related-fee-amount` END) as VariableClosingFee,
             sum(CASE  WHEN ms.`promotion-type`=  \"Shipping\" THEN ms.`direct-payment-type` END) as PromotionShipping
         FROM `mws_sells`  ms
-            left join inventories on ms.sku =  (case when inventories.sku2 = '' then inventories.sku else inventories.sku2 end)
+        left join inventories on ms.sku =  (case when inventories.sku2 = '' then inventories.sku else inventories.sku2 end)
         where ms.`transaction-type` = 'Refund'
         group by ms.`order-item-code`
         ORDER BY ms.`price-amount`
@@ -99,11 +99,18 @@ class MwsSell extends Model
     {
         $mws_fees = DB::select("
         SELECT 
-            ms.`transaction-type`,
-            ms.`posted-date`,
-            ms.`other-amount`
+            DATE_FORMAT(ms.`posted-date`, '%Y-%m') as posted_time,
+            sum(CASE  WHEN ms.`transaction-type`=  \"Subscription Fee\" THEN ms.`other-amount` END) as subscription,
+            sum(CASE  WHEN ms.`transaction-type`=  \"FBAInboundTransportationFee\" THEN ms.`other-amount` END) as fbainbound,
+            sum(CASE  WHEN ms.`transaction-type`=  \"RemovalComplete\" THEN ms.`other-amount` END) as removal,
+            sum(CASE  WHEN ms.`transaction-type`=  \"DisposalComplete\" THEN ms.`other-amount` END) as disposal,
+            sum(CASE  WHEN ms.`transaction-type`=  \"REVERSAL_REIMBURSEMENT\" THEN ms.`other-amount` END) as reversal,
+            sum(CASE  WHEN ms.`transaction-type`=  \"Storage Fee\" THEN ms.`other-amount` END) as storage,
+            sum(ms.`other-amount`) as totalfee
         FROM `mws_sells`  ms
-            where ms.`transaction-type` <> 'Order' and ms.`transaction-type` <> 'Refund' and ms.`transaction-type` <> '' 
+        WHERE ms.`transaction-type` <> 'Order' and ms.`transaction-type` <> 'Refund' and ms.`transaction-type` <> '' 
+        GROUP BY
+            DATE_FORMAT(ms.`posted-date`, '%Y%m')
         ");
         return $mws_fees;
     }
@@ -124,9 +131,9 @@ class MwsSell extends Model
             sum(CASE  WHEN ms.`price-type`=  \"Principal\" THEN  inventories.buy_price END) as buy_price,
             sum(`price-amount`) + sum(`item-related-fee-amount`) + sum(`promotion-amount`) + sum(`other-amount`) -  sum(CASE  WHEN ms.`price-type`=  \"Principal\" THEN  inventories.buy_price END) as profit
         FROM `mws_sells`  ms
-            left join inventories on ms.sku =  (case when inventories.sku2 = '' then inventories.sku else inventories.sku2 end)
+        LEFT join inventories on ms.sku =  (case when inventories.sku2 = '' then inventories.sku else inventories.sku2 end)
         GROUP BY
-        DATE_FORMAT(ms.`posted-date`, '%Y%m');
+            DATE_FORMAT(ms.`posted-date`, '%Y%m');
         ");
 
         return $mws_sums;
