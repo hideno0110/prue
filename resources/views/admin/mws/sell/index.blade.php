@@ -33,7 +33,7 @@
                 <tbody>
                 @foreach($mws_sums as $mws_sum)
                     <tr>
-                        <td> {{ $mws_sum->{'posted_time'} }} </td>
+                        <td> {{ $mws_sum->{'month'} }} </td>
                         <td> {{ number_format((int)$mws_sum->{'sales'}) }} </td>
                         <td> {{ number_format((int)$mws_sum->{'buy_price'}) }} </td>
                         <td> {{ number_format((int)$mws_sum->{'sales_fee'}) }} </td>
@@ -173,7 +173,7 @@
             <tbody>
                 @foreach($mws_fees as $mws_fee)
                   <tr>
-                    <td> {{ $mws_fee->{'posted_time'} }}</td>
+                    <td> {{ $mws_fee->{'month'} }}</td>
                     <td> {{ number_format((int)$mws_fee->{'subscription'}) }}</td>
                     <td> {{ number_format((int)$mws_fee->{'fbainbound'}) }}</td>
                     <td> {{ number_format((int)$mws_fee->{'removal'}) }}</td>

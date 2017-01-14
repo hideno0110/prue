@@ -77,18 +77,18 @@
                 type: "linear", 
                 position: "left",
                 ticks: {
-                    max: 50000,
+                    max: 1300000,
                     min: 0,
-                    stepSize: 10000
+                    stepSize: 100000
                 },
             }, {
                 id: "y-axis-2",
                 type: "linear", 
                 position: "right",
                 ticks: {
-                    max: 100,
+                    max: 350,
                     min: 0,
-                    stepSize: 10
+                    stepSize: 51
                 },
                 gridLines: {
                     drawOnChartArea: false, 
