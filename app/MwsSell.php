@@ -99,7 +99,7 @@ class MwsSell extends Model
     {
         $mws_fees = DB::select("
         SELECT 
-            DATE_FORMAT(ms.`posted-date`, '%Y-%m') as posted_time,
+            DATE_FORMAT(ms.`posted-date`, '%Y-%m') as month,
             sum(CASE  WHEN ms.`transaction-type`=  \"Subscription Fee\" THEN ms.`other-amount` END) as subscription,
             sum(CASE  WHEN ms.`transaction-type`=  \"FBAInboundTransportationFee\" THEN ms.`other-amount` END) as fbainbound,
             sum(CASE  WHEN ms.`transaction-type`=  \"RemovalComplete\" THEN ms.`other-amount` END) as removal,
@@ -142,20 +142,21 @@ class MwsSell extends Model
     // summary データ
     static function get_summary_data($mws_sums, $monthly_purchase)
     {
-      //結合 
-      foreach($mws_sums as $i) {
-          foreach($monthly_purchase as $m) {
-                if($i->month == $m->month) {
-                    $i->inv_num = $m->num;
-                    $i->inv_price = $m->price;
-                    break;
-                } else {
-                    $i->inv_num = 0;
-                    $i->inv_price = 0;
-                }
+        //結合 
+        foreach($mws_sums as $i) {
+            foreach($monthly_purchase as $m) {
+                  if($i->month == $m->month) {
+                      $i->inv_num = $m->num;
+                      $i->inv_price = $m->price;
+                      break;
+                  } else {
+                      $i->inv_num = 0;
+                      $i->inv_price = 0;
+                  }
             }
         }
 
+        print_r($mws_sums);
         return $mws_sums;
     }
 
