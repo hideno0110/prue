@@ -213,11 +213,11 @@
                 @else
                     <tr>
                         <td> {{ $each_data->month }} </td>
-                        <td> {{ $each_data->sales }} </td>
-                        <td> {{ $each_data->refund }} </td>
-                        <td> {{ $each_data->merchant_fee }} </td>
-                        <td> {{ $each_data->profit }} </td>
-                        <td> {{ $each_data->inv_price }} </td>
+                        <td> {{  number_format((int)$each_data->sales) }} </td>
+                        <td> {{  number_format((int)$each_data->refund) }} </td>
+                        <td> {{  number_format((int)$each_data->merchant_fee) }} </td>
+                        <td> {{  number_format((int)$each_data->profit) }} </td>
+                        <td> {{  number_format((int)$each_data->inv_price) }} </td>
                         <td>  </td>
                         <td>  </td>
                         <td>  </td>

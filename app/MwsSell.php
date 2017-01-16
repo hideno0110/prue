@@ -156,7 +156,6 @@ class MwsSell extends Model
             }
         }
 
-        print_r($mws_sums);
         return $mws_sums;
     }
 
