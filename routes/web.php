@@ -7,8 +7,8 @@ Route::get('sitemap', array('uses' => 'AdminSitemapController@getIndex', 'as' =>
 
 Route::group(['prefix' => 'admin'], function () {
     //lp
-    Route::get('/lp', 'LpController@index');
-    Route::post('/lp', 'LpController@store');
+//    Route::get('/lp', 'LpController@index');
+//    Route::post('/lp', 'LpController@store');
     //ログイン    
     Route::get('/login', 'AdminAuth\LoginController@showLoginForm');
     Route::post('/login', 'AdminAuth\LoginController@login');
@@ -30,7 +30,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('/inventories/master_item', 'AdminInventoriesController@apply_item_master');
     Route::resource('/items','AdminItemMasterController', ['except' => ['show']]);
     Route::resource('/stocks','AdminStockController', ['only' => ['index','update']]);
-     Route::get('/mws/sell', 'AdminMwsSellsController@index');
+    Route::get('/mws/sell', 'AdminMwsSellsController@index');
     Route::get('/mws/fba-inv', 'AdminFbaInventoriesController@index');
     Route::get('/research-shops', 'AdminResearchShopController@index', ['only' => ['index']]);
     Route::resource('/rss-read','AdminRssController', ['except' => ['show']]);
@@ -62,38 +62,38 @@ Route::post('/tool/maps','ScrapingController@scraping');
 //////////////////////////////////////////
 // Master Route
 //////////////////////////////////////////
-
-Route::group(['prefix' => 'master'], function () {
-    //ログイン
-    Route::get('/login', 'MasterAuth\LoginController@showLoginForm');
-    Route::post('/login', 'MasterAuth\LoginController@login');
-    Route::post('/logout', 'MasterAuth\LoginController@logout');
-    Route::get('/register', 'MasterAuth\RegisterController@showRegistrationForm');
-    Route::post('/register', 'MasterAuth\RegisterController@register');
-    Route::post('/password/email', 'MasterAuth\ForgotPasswordController@sendResetLinkEmail');
-    Route::post('/password/reset', 'MasterAuth\ResetPasswordController@reset');
-    Route::get('/password/reset', 'MasterAuth\ForgotPasswordController@showLinkRequestForm');
-    Route::get('/password/reset/{token}', 'MasterAuth\ResetPasswordController@showResetForm');
-
-    Route::get('/', 'MasterDashboardController@index');
-    Route::resource('/admin-merchant', 'MasterAdminMerchantController');
-    Route::resource('/admin-user', 'MasterAdminUserController');
-    Route::resource('/admin-inventory', 'MasterAdminInventoryController');
-    Route::resource('/admin-shop', 'MasterAdminShopController');
-    Route::resource('/admin-rss', 'MasterAdminRssController');
-    Route::resource('/admin-contact', 'MasterAdminContactController');
-    Route::resource('/shop-user', 'MasterShopUserController');
-});
+# master 用のrouting  graneedsようには不要
+//Route::group(['prefix' => 'master'], function () {
+//    //ログイン
+//    Route::get('/login', 'MasterAuth\LoginController@showLoginForm');
+//    Route::post('/login', 'MasterAuth\LoginController@login');
+//    Route::post('/logout', 'MasterAuth\LoginController@logout');
+//    Route::get('/register', 'MasterAuth\RegisterController@showRegistrationForm');
+//    Route::post('/register', 'MasterAuth\RegisterController@register');
+//    Route::post('/password/email', 'MasterAuth\ForgotPasswordController@sendResetLinkEmail');
+//    Route::post('/password/reset', 'MasterAuth\ResetPasswordController@reset');
+//    Route::get('/password/reset', 'MasterAuth\ForgotPasswordController@showLinkRequestForm');
+//    Route::get('/password/reset/{token}', 'MasterAuth\ResetPasswordController@showResetForm');
+//
+//    Route::get('/', 'MasterDashboardController@index');
+//    Route::resource('/admin-merchant', 'MasterAdminMerchantController');
+//    Route::resource('/admin-user', 'MasterAdminUserController');
+//    Route::resource('/admin-inventory', 'MasterAdminInventoryController');
+//    Route::resource('/admin-shop', 'MasterAdminShopController');
+//    Route::resource('/admin-rss', 'MasterAdminRssController');
+//    Route::resource('/admin-contact', 'MasterAdminContactController');
+//    Route::resource('/shop-user', 'MasterShopUserController');
+//});
 
 
 //////////////////////////////////////////
 // Shopping Route
 //////////////////////////////////////////
-Auth::routes();
-Route::get('/home', 'HomeController@index');
-Route::get('/', 'ShopIndexController@index');
-Route::get('/{id}', 'ShopIndexController@show');
-Route::get('/shop/cart/{id}','ShopCartController@index');
-Route::post('/shop/cart/complete/{id}', 'ShopCartController@store');
+//Auth::routes();
+//Route::get('/home', 'HomeController@index');
+//Route::get('/', 'ShopIndexController@index');
+//Route::get('/{id}', 'ShopIndexController@show');
+//Route::get('/shop/cart/{id}','ShopCartController@index');
+//Route::post('/shop/cart/complete/{id}', 'ShopCartController@store');
 
 
