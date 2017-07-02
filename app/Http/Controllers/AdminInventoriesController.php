@@ -702,6 +702,7 @@ class AdminInventoriesController extends Controller
                       
     public function apply_item_master()
     {
+
         //店舗IDを取得
         $merchant_id = Merchant::merchantUserCheck();
         //該当の店舗IDかつ、item_masterが0(なし）のものを抽出
@@ -714,7 +715,7 @@ class AdminInventoriesController extends Controller
           $inventory->save();
           if($inventory->asin != '') {
             $item = ItemMaster::where('id','=',$inventory->item_master_id)->first();
-            Self::get_item_master_info($item);
+//            Self::get_item_master_info($item);
           }
         }
 
