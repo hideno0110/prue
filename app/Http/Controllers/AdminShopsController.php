@@ -38,7 +38,7 @@ class AdminShopsController extends Controller
             ->join('shop_lists', 'shops.shop_list_id', '=', 'shop_lists.id')
             ->where('shops.is_active', '1')
             ->where('shop_lists.merchant_id', $merchant_id)
-            ->paginate(20);
+            ->get();
         
         
         $shop_list = ShopList::where('merchant_id', $merchant_id)->pluck('shop_name','id')->all();

@@ -57,6 +57,7 @@
         {!! Form::close() !!}
 
         <h4>店舗新規作成</h4>
+          <a href="{{ url('/admin/shop_lists') }}">店舗一覧へ</a>
         {!! Form::open(['method'=>'POST', 'action'=>'AdminShopListController@store']) !!}
         <div class="form-group">
             {!! Form::label('shop_name',trans('adminlte_lang::message.shop_lists').' :' ) !!}
