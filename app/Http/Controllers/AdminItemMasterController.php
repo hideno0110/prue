@@ -10,6 +10,7 @@ use Auth;
 use DB;
 use App\Http\Requests\ItemCreateRequest;
 use Illuminate\Support\Facades\Input;
+use Peron\AmazonMws\AmazonProductList;
 
 class AdminItemMasterController extends Controller
 {
@@ -28,14 +29,12 @@ class AdminItemMasterController extends Controller
           ->orderBy('id','desc')
           ->get();
 
-        // dd($items);
-        // foreach($items as $item) {
-        //   if($item->inventories){
-        //     var_dump(count($item->inventories->name));
-        //   }
-        // }
-
         return view('admin.items.index',compact('items'));
+
+//    $items = ItemMaster::where('id', '>=',3129 )->where('id', '<=',3171 )->get();
+//    foreach($items as $item){
+//        Self::get_item_master_info($item);
+//    }
     }
 
     public function create()
@@ -108,4 +107,43 @@ class AdminItemMasterController extends Controller
 
         return redirect('/admin/items')->with('flash_message',trans('adminlte_lang::message.updated_msg'));
     }
+
+    function get_item_master_info($item)
+    {
+        //amazon APIにてamazonデータを取得し格納する
+        if(($item->asin != ''|| $item->jan_code != '')  ){
+            try {
+                $obj = new AmazonProductList("myStore"); //store name matches the array key in the config file
+                $obj->setIdTYpe("ASIN","JAN"); //tells the object to automatically use tokens right away
+                if($item->asin != '') {
+                    $obj->setProductIds($item->asin); //tells the object to automatically use tokens right away
+                } else {
+                    $obj->setProductIds($item->jan_code); //tells the object to automatically use tokens right away
+                }
+                $item_detail = $obj->fetchProductList(); //this is what actually sends the request
+                if(isset($item_detail->GetMatchingProductForIdResult->Error->Code)) {
+                    // dont save
+                } else {
+                    $item->name = $item_detail->GetMatchingProductForIdResult->Products->Product->AttributeSets->ItemAttributes->Title;
+                    $item->category = $item_detail->GetMatchingProductForIdResult->Products->Product->SalesRankings->SalesRank->ProductCategoryId[0];
+                    $item->rank = $item_detail->GetMatchingProductForIdResult->Products->Product->SalesRankings->SalesRank->Rank[0];
+                    $item->file = $item_detail->GetMatchingProductForIdResult->Products->Product->AttributeSets->ItemAttributes->SmallImage->URL;
+                    $item->item_detail = $item_detail->GetMatchingProductForIdResult->Products->Product->AttributeSets->ItemAttributes->Feature[0];
+
+                    //ssl用にURLを変換
+                    $url = 'https://d1ge0kk1l5kms0.cloudfront.net';
+                    $html_code = $item->file;
+
+                    $html_code = preg_replace("/http:\/\/ecx.images-amazon.com/", $url, $html_code);
+                    $item->file = preg_replace("_SL75_", "_SL300_", $html_code);
+                    $item->save();
+                }
+
+            } catch (Exception $ex) {
+                echo 'There was a problem with the Amazon library. Error: '.$ex->getMessage();
+            }
+        }
+    }
+
+
 }
