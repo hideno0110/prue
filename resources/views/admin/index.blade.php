@@ -205,31 +205,31 @@
                 <th>営業利益</th>
             </tr>
             </thead>
-            <tbody>
-            @foreach($summary_data as $each_data)
+            {{--<tbody>--}}
+            {{--@foreach($summary_data as $each_data)--}}
 
-                @if( $each_data->month  == '2015/12')
-                    @break
-                @else
-                    <tr>
-                        <td> {{ $each_data->month }} </td>
-                        <td> {{  number_format((int)$each_data->sales) }} </td>
-                        <td> {{  number_format((int)$each_data->refund) }} </td>
-                        <td> {{  number_format((int)$each_data->merchant_fee) }} </td>
-                        <td> {{  number_format((int)$each_data->profit) }} </td>
-                        <td> {{  number_format((int)$each_data->inv_price) }} </td>
-                        <td>  </td>
-                        <td>  </td>
-                        <td>  </td>
-                        <td>  </td>
-                        <td>  </td>
+                {{--@if( $each_data->month  == '2015/12')--}}
+                    {{--@break--}}
+                {{--@else--}}
+                    {{--<tr>--}}
+                        {{--<td> {{ $each_data->month }} </td>--}}
+                        {{--<td> {{  number_format((int)$each_data->sales) }} </td>--}}
+                        {{--<td> {{  number_format((int)$each_data->refund) }} </td>--}}
+                        {{--<td> {{  number_format((int)$each_data->merchant_fee) }} </td>--}}
+                        {{--<td> {{  number_format((int)$each_data->profit) }} </td>--}}
+                        {{--<td> {{  number_format((int)$each_data->inv_price) }} </td>--}}
+                        {{--<td>  </td>--}}
+                        {{--<td>  </td>--}}
+                        {{--<td>  </td>--}}
+                        {{--<td>  </td>--}}
+                        {{--<td>  </td>--}}
 
 
 
-                    </tr>
-                @endif
-            @endforeach
-            </tbody>
+                    {{--</tr>--}}
+                {{--@endif--}}
+            {{--@endforeach--}}
+            {{--</tbody>--}}
         </table>
         <!-- end stock table -->
     </div>
