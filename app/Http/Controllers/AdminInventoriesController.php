@@ -141,7 +141,7 @@ class AdminInventoriesController extends Controller
             $inv = Self::makeinv_csv($query);
             return  $inv;
         } elseif(Input::get('download')=='fba') {
-            $fba = Self::makefba_csv($query);
+            $fba = Self::makefba_csv($query, $merchant_id);
             return  $fba;
         }
         
@@ -523,8 +523,9 @@ class AdminInventoriesController extends Controller
      * CSVファイル作成
      *
      */
-    function makefba_csv($query)
+    function makefba_csv($query, $merchant_id)
     {
+        $merchant = Merchant::findOrFail($merchant_id);
 
         //クエリ実行
         $inventories_csv = $query->get();
@@ -538,19 +539,19 @@ class AdminInventoriesController extends Controller
         ],"\t");
         fputcsv($stream,[
             'AddressName',
-            '会社名',
+            $merchant->name,
         ],"\t");
         fputcsv($stream,[
             'AddressFieldOne',
-            '代々木A-1',
+            $merchant->address,
         ],"\t");
         fputcsv($stream,[
             'AddressFieldTwo',
-            'ABCビル２F',
+            $merchant->address2,
         ],"\t");
         fputcsv($stream,[
             'AddressCity',
-            '新宿区',
+            $merchant->city,
         ],"\t");
         fputcsv($stream,[
             'AddressCountryCode',
@@ -558,11 +559,11 @@ class AdminInventoriesController extends Controller
         ],"\t");
         fputcsv($stream,[
             'AddressStateOrRegion',
-            '東京都',
+            $merchant->prefecture,
         ],"\t");
         fputcsv($stream,[
             'AddressPostalCode',
-            '1010000',
+            $merchant->postal_code,
         ],"\t");
         fputcsv($stream,[
             '',
