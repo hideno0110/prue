@@ -649,7 +649,7 @@ class AdminInventoriesController extends Controller
             $item_input['merchant_id'] = $inventory->merchant_id;
             $item = ItemMaster::create($item_input);
             //amazonから取得した商品情報を保存
-            Self::get_item_master_info($item);
+//            Self::get_item_master_info($item);
             //新規作成した商品マスタから商品マスタIDを取得
             return $inventory->item_master_id = $item->id;
         } else {
