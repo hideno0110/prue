@@ -64,7 +64,7 @@
             <th>{{ trans('adminlte_lang::message.item_name') }}</th>
             <th>{{ trans('adminlte_lang::message.item_master_id') }}</th>
             <th>{{ trans('adminlte_lang::message.item_pic') }} </th>
-            <th>{{ trans('adminlte_lang::message.item_pic') }} </th>
+            {{--<th>{{ trans('adminlte_lang::message.item_pic') }} </th>--}}
             <th>{{ trans('adminlte_lang::message.shops') }}</th>
             <th>{{ trans('adminlte_lang::message.buy_date') }}</th>
             <th>{{ trans('adminlte_lang::message.buy_item_num') }}</th>
@@ -91,17 +91,17 @@
             <td class="id">{{ $inventory->id }}</td>
             <td> @if($inventory->sku2) {{$inventory->sku2 }}<br>(旧:{{$inventory->sku }}) @else {{$inventory->sku }} @endif</td>
             <td> <a href="{{ route('inventories.edit',$inventory->id)}}" alt="">{{ $inventory->asin }}</a></td>
-            <td> @if($inventory->item_master_id != 0)<a href="{{ route('inventories.edit',$inventory->id)}}" alt="">{{ $inventory->item_master->name }}</a>@else @endif</td>
+            <td> @if($inventory->item_master_id != 0)<a href="{{ route('inventories.edit',$inventory->id)}}" alt="">{{ $inventory->item_master->name }}</a>@else @endif {{$inventory->name }}</td>
             <td> @if($inventory->item_master_id != 0)<a href="{{ route('items.edit',$inventory->item_master_id)}}" alt="" target="_blank">{{ $inventory->item_master_id }}</a>@else @endif</td>
             <td align="center">@if($inventory->item_master_id != 0) <a href="{{ route('inventories.edit',$inventory->id)}}" alt=""><img src="{{ $inventory->item_master->file }}" height="50"></a>@else @endif</td>
-            <td align="center">
-              @foreach($inventory->inv_photo as $photo)
-                @if($photo->number == 1)
-                  <a href="{{ route('inventories.edit',$inventory->id)}}" alt=""><img height="50" src="{{ $photo->file ? $photo->file : 'http://placehold.it/50x50' }}" alt="" class="img-rounded"></a>
-                @else
-                @endif
-              @endforeach
-            </td>
+            {{--<td align="center">--}}
+              {{--@foreach($inventory->inv_photo as $photo)--}}
+                {{--@if($photo->number == 1)--}}
+                  {{--<a href="{{ route('inventories.edit',$inventory->id)}}" alt=""><img height="50" src="{{ $photo->file ? $photo->file : 'http://placehold.it/50x50' }}" alt="" class="img-rounded"></a>--}}
+                {{--@else--}}
+                {{--@endif--}}
+              {{--@endforeach--}}
+            {{--</td>--}}
             <td>{{ $inventory->shop_id ? $inventory->shop->shop_list->shop_name : '' }} {{ $inventory->shop_id ? $inventory->shop->shop_branch_name : '' }}</td>
             <td>{{ $inventory->buy_date }}</td>
             <td>{{ $inventory->number }}</td>
