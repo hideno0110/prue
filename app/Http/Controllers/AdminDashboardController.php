@@ -59,11 +59,11 @@ class AdminDashboardController extends Controller
         //月別の仕入れ回数
         $fba_data =  $inventory->monthly_purchase_times();
         //月別の販売
-        $mws_sums = $mws_sell->mws_sums();
+//        $mws_sums = $mws_sell->mws_sums();
         //rssニュース一覧
         $rss_news = $rss_news->get_rss_lists($admin_id, 5);
         //統計データ
-        $summary_data = $mws_sell->get_summary_data($mws_sums, $monthly_purchase);
+//        $summary_data = $mws_sell->get_summary_data($mws_sums, $monthly_purchase);
         
         $compacted = compact(
           'this_year',
@@ -76,8 +76,8 @@ class AdminDashboardController extends Controller
           'inv_expect_profit',
           'monthly_purchase',
           'fba_data',
-          'rss_news',
-          'summary_data'
+          'rss_news'
+//          'summary_data'
         );
 
         return view('admin.index', $compacted);
