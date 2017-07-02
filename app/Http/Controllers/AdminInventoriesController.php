@@ -213,6 +213,10 @@ class AdminInventoriesController extends Controller
         
         //フォームから新規商品入力値を取得
         $input = $request->all();
+        // trim
+        $input["asin"] = trim($input["asin"]);
+        $input["jan_code"] = trim($input["jan_code"]);
+        $input["item_code"] = trim($input["item_code"]);
 
         if($input["item_master_id"] != "") {
           if( ItemMaster::find($input["item_master_id"])) {
