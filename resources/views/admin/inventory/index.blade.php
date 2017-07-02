@@ -70,10 +70,12 @@
             <th>{{ trans('adminlte_lang::message.buy_item_num') }}</th>
             <th>{{ trans('adminlte_lang::message.buy_price') }}</th>
             <th>{{ trans('adminlte_lang::message.sell_price') }}</th>
-            <th>{{ trans('adminlte_lang::message.payment') }}</th>
+            {{--<th>{{ trans('adminlte_lang::message.payment') }}</th>--}}
             <!-- <th>{{ trans('adminlte_lang::message.sale_place') }}</th> -->
             <th>{{ trans('adminlte_lang::message.condition') }}</th>
             <!-- <th>{{ trans('adminlte_lang::message.description') }}</th> -->
+            <th>{{ trans('adminlte_lang::message.sale_place') }}</th>
+            <th>{{ trans('adminlte_lang::message.freee') }}</th>
             <th>{{ trans('adminlte_lang::message.memo') }}</th>
             <!-- <th>@sortablelink ('free')</th> -->
             <th>{{ trans('adminlte_lang::message.created_at') }}</th>
@@ -109,8 +111,8 @@
                 @endif
             </td>
             <td>{{ $inventory->sell_price }}</td>
-            <td>{{ $inventory->payment_id ? $inventory->payment->name : '' }}</td>
-            {{-- <td>{{ $inventory->sale_place_id ? $inventory->sale_place->name : '' }}</td> --}}
+{{--            <td>{{ $inventory->payment_id ? $inventory->payment->name : '' }}</td>--}}
+
             <td>@if ($inventory->condition_id == 11)
                     <span class="label label-success">{{ $inventory->condition->name}}</span>
                 @elseif ($inventory->condition_id == 1)
@@ -126,6 +128,8 @@
                 @endif
             </td>
             {{-- <td>{{ $inventory->description }}</td> --}}
+            <td>{{ $inventory->sale_place_id ? $inventory->sale_place->name : '' }}</td>
+            <td>{{ $inventory->free }}</td>
             <td class="memo">{{ $inventory->memo }}</td>
             {{-- <td class="free">{{ $inventory->free }}</td> --}}
             <td>{{ $inventory->created_at->diffForHumans() }}</td>
