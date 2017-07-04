@@ -141,7 +141,6 @@ class AdminInventoriesController extends Controller
         if(Input::get('download')=='inv') {
 
             $inv = Self::makeinv_csv($query);
-            eval(\Psy\sh());
             return  $inv;
         } elseif(Input::get('download')=='fba') {
             $fba = Self::makefba_csv($query, $merchant_id);
