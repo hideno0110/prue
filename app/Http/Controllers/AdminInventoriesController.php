@@ -136,9 +136,12 @@ class AdminInventoriesController extends Controller
         $condition = Condition::pluck('name','type')->all();
         $sale_place = SalePlace::pluck('name','id')->all();
 
+
         //amazon用出荷CSVダウンロード
         if(Input::get('download')=='inv') {
+
             $inv = Self::makeinv_csv($query);
+            eval(\Psy\sh());
             return  $inv;
         } elseif(Input::get('download')=='fba') {
             $fba = Self::makefba_csv($query, $merchant_id);
@@ -476,7 +479,7 @@ class AdminInventoriesController extends Controller
 
         foreach($inventories_csv as $inventory)
         {
-            if($inventory->sku2 !=="") {
+            if($inventory->sku2 !=="" and $inventory->sku2 !== null) {
                 $sku = $inventory->sku2;
             } else {
                 $sku = $inventory->sku;
@@ -578,7 +581,7 @@ class AdminInventoriesController extends Controller
 
         //loop
         foreach($inventories_csv as $inventory) {
-            if($inventory->sku2 !== '') {
+            if($inventory->sku2 !== '' and $inventory->sku2 !== null) {
                 $sku = $inventory->sku2;
             } else {
                 $sku =  $inventory->sku;
