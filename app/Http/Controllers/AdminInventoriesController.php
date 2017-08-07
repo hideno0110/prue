@@ -623,7 +623,7 @@ class AdminInventoriesController extends Controller
     public function item_all()
     {
         //クエリ実行
-        $inventories_csv = InventoryItemMaster::
+        $inventories_csv = Inventory::
         where('merchant_id',1)
             ->orderBy('id','desc')
             ->get();
