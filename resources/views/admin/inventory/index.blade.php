@@ -153,7 +153,11 @@
           <button type="submit" class="btn btn-normal" name="clear" value="apply_item_master">{{ trans('adminlte_lang::message.apply_item_master') }}</button>
         {!! Form::close() !!}
     </div>
-
+    <div class="col-sm-6 col-sm-offset-5">
+        {!! Form::open(['method'=>'POST','action'=>'AdminInventoriesController@item_all','class'=>'form-inline']) !!}
+        <button type="submit" class="btn btn-normal" name="clear" value="item_all">item_all</button>
+        {!! Form::close() !!}
+    </div>
 </div>
     <script>
         $(document).ready(function() {

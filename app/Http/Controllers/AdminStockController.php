@@ -27,4 +27,6 @@ class AdminStockController extends Controller
 
         return view('admin.stock.index', compact('stocks'));
     }
+
+
 }

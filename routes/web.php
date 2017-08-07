@@ -28,6 +28,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::resource('/shop_lists','AdminShopListController', ['except' => ['show']]);
     Route::resource('/inventories','AdminInventoriesController', ['except' => ['show']]);
     Route::post('/inventories/master_item', 'AdminInventoriesController@apply_item_master');
+    Route::post('/inventories/item_all', 'AdminInventoriesController@item_all');
     Route::resource('/items','AdminItemMasterController', ['except' => ['show']]);
     Route::resource('/stocks','AdminStockController', ['only' => ['index','update']]);
     Route::get('/mws/sell', 'AdminMwsSellsController@index');

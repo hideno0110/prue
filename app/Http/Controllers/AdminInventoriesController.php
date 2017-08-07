@@ -146,7 +146,7 @@ class AdminInventoriesController extends Controller
             $fba = Self::makefba_csv($query, $merchant_id);
             return  $fba;
         }
-        
+
 
         $compacted = compact(
           'inventories',
@@ -616,6 +616,68 @@ class AdminInventoriesController extends Controller
     }
 
 
+    /**
+     * CSVファイル作成(all item)
+     *
+     */
+    public function item_all()
+    {
+        //クエリ実行
+        $inventories_csv = InventoryItemMaster::
+        where('merchant_id',1)
+            ->orderBy('id','desc')
+            ->get();
+
+        //仮ファイルOpen
+        $stream = fopen('php://temp','w');
+
+        fputcsv($stream,[
+            'sku',
+            'sku2',
+            'asin',
+            'name',
+            'buy_date',
+            'num',
+            'buy price'
+
+        ],"\t");
+        //loop
+
+        foreach($inventories_csv as $inventory)
+        {
+            //カラムを選択
+            fputcsv($stream,[
+                $inventory->sku,
+                $inventory->sku2,
+                $inventory->asin,
+                $inventory->name,
+                $inventory->buy_date,
+                $inventory->number,
+                $inventory->buy_price
+
+            ],"\t");
+            //全カラムの場合はtoArray()を使えば良い
+            //fputcsv($stream,$user->toArray());
+        }
+
+        //ポインタの先頭へ
+        rewind($stream);
+
+        //いろいろ変換
+        $csv = mb_convert_encoding(str_replace(PHP_EOL, "\r\n", stream_get_contents($stream)), 'SJIS', 'UTF-8');
+
+        //file名
+        $filename = "inv_".date('Ymd').".txt";
+
+        //header
+        $headers = array(
+            'Content-Type' => 'text/tab-separated-values',
+            'Content-Disposition' => 'attachment; filename="' . $filename . '"'
+        );
+        $inv =Response::make($csv, 200, $headers);
+
+        return $inv;
+    }
 
     /**
      * 商品マスタ取得&作成
