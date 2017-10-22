@@ -127,7 +127,7 @@
     <div class="row">
         <div class="col-sm-12">
             <h3><a href="{{ url('admin/mws/fba-inv')}}">在庫管理</a></h3>
-            <div class="col-sm-8">
+            <div class="col-sm-7">
                 <table class="table table-striped stock">
                     <thead>
                     <tr>
@@ -181,30 +181,29 @@
                     </tbody>
                 </table>
             </div>
-            <div class="col-sm-6">
-            </div>
+
         </div>
     </div>
     <!-- end stock status -->
-    <div class="row">
-        <div class="col-sm-12">
-        <h3>販売管理</h3>
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th>月</th>
-                <th>売上</th>
-                <th>返金</th>
-                <th>手数料</th>
-                <th>入金</th>
-                <th>当月仕入額</th>
-                <th>先月月末在庫</th>
-                <th>当月月末在庫</th>
-                <th>粗利益</th>
-                <th>経費</th>
-                <th>営業利益</th>
-            </tr>
-            </thead>
+    {{--<div class="row">--}}
+        {{--<div class="col-sm-12">--}}
+        {{--<h3>販売管理</h3>--}}
+        {{--<table class="table table-striped">--}}
+            {{--<thead>--}}
+            {{--<tr>--}}
+                {{--<th>月</th>--}}
+                {{--<th>売上</th>--}}
+                {{--<th>返金</th>--}}
+                {{--<th>手数料</th>--}}
+                {{--<th>入金</th>--}}
+                {{--<th>当月仕入額</th>--}}
+                {{--<th>先月月末在庫</th>--}}
+                {{--<th>当月月末在庫</th>--}}
+                {{--<th>粗利益</th>--}}
+                {{--<th>経費</th>--}}
+                {{--<th>営業利益</th>--}}
+            {{--</tr>--}}
+            {{--</thead>--}}
             {{--<tbody>--}}
             {{--@foreach($summary_data as $each_data)--}}
 
@@ -230,37 +229,44 @@
                 {{--@endif--}}
             {{--@endforeach--}}
             {{--</tbody>--}}
-        </table>
-        <!-- end stock table -->
-    </div>
+        {{--</table>--}}
+        {{--<!-- end stock table -->--}}
+    {{--</div>--}}
 
 
-    <div class="col-sm-12">
-        <canvas id="canvas"></canvas>
-    </div>
-    <!-- end stock graph  -->
+
 
 
     <div class="col-sm-12">
-        <h3><a href="{{ url('admin/rss-read')}}">RSSニュース</a></h3>       
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>date</th>
-                    <th>title</th>
-                    <th>site</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($rss_news as $news)
+
+        <div class="col-sm-7">
+            <h3>販売履歴</h3>
+            <canvas id="canvas"></canvas>
+        </div>
+        <!-- end stock graph  -->
+
+        <div class="col-sm-5">
+            <h3><a href="{{ url('admin/rss-read')}}">RSSニュース</a></h3>
+            <table class="table table-striped">
+                <thead>
                     <tr>
-                        <td> {{ $news->created_at }} </td>
-                        <td> <a href="{{ $news->url }}" target="_blank">{{ $news->title }}</a></td>
-                        <td> {{ $news->site }} </td>
+                        <th>date</th>
+                        <th>title</th>
+                        <th>site</th>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach($rss_news as $news)
+                        <tr>
+                            <td> {{ $news->created_at }} </td>
+                            <td> <a href="{{ $news->url }}" target="_blank">{{ $news->title }}</a></td>
+                            <td> {{ $news->site }} </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+        <!-- end rss news -->
     </div>
     <!-- end rss news -->
 </div>
