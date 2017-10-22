@@ -1,0 +1,11 @@
+# bundle exec ridgepole -c database.yml --export -o Schemafile
+# bundle exec ridgepole -c database.yml --apply -f Schemafile --dry-run
+# bundle exec ridgepole -c database.yml --apply -f Schemafile
+
+adapter: mysql2
+encoding: utf8
+host: 127.0.0.1
+database: graneeds_prue
+username: root
+password: ''
+port: 3306
