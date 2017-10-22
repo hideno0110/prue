@@ -61,7 +61,7 @@ class AdminDashboardController extends Controller
         //月別の販売
 //        $mws_sums = $mws_sell->mws_sums();
         //rssニュース一覧
-        $rss_news = $rss_news->get_rss_lists($admin_id, 5);
+        $rss_news = $rss_news->get_rss_lists($admin_id, 10);
         //統計データ
 //        $summary_data = $mws_sell->get_summary_data($mws_sums, $monthly_purchase);
         
