@@ -1,0 +1,345 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+create_table "admin_contacts", id: :integer, unsigned: true, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  t.integer "merchant_id", null: false
+  t.integer "admin_id", null: false
+  t.string "name", null: false
+  t.string "email", null: false
+  t.string "subject", null: false
+  t.text "content", null: false
+  t.timestamp "created_at"
+  t.timestamp "updated_at"
+end
+
+create_table "admins", id: :integer, unsigned: true, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  t.string "name", null: false
+  t.integer "merchant_id", null: false, unsigned: true
+  t.integer "role_id", default: 1, null: false, unsigned: true
+  t.string "email", null: false
+  t.string "password", null: false
+  t.string "remember_token", limit: 100
+  t.integer "is_active", default: 1, null: false
+  t.string "photo_id"
+  t.timestamp "created_at"
+  t.timestamp "updated_at"
+  t.index ["email"], name: "admins_email_unique", unique: true
+  t.index ["merchant_id"], name: "admins_merchant_id_index"
+  t.index ["photo_id"], name: "admins_photo_id_index"
+  t.index ["role_id"], name: "admins_role_id_index"
+end
+
+create_table "amazon_order_items", id: :integer, unsigned: true, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  t.integer "amazon_order_table_id", null: false
+  t.string "sku", null: false
+  t.string "item_name", null: false
+  t.integer "amount", null: false
+  t.integer "price", null: false
+  t.timestamp "created_at"
+  t.timestamp "updated_at"
+end
+
+create_table "amazon_orders", id: :integer, unsigned: true, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  t.string "amz_order_id", null: false
+  t.string "purchase_date", null: false
+  t.string "status", null: false
+  t.timestamp "created_at"
+  t.timestamp "updated_at"
+  t.index ["amz_order_id"], name: "amazon_orders_amz_order_id_index"
+end
+
+create_table "carts", id: :integer, unsigned: true, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  t.integer "inventory_id", null: false, unsigned: true
+  t.integer "amount", null: false
+  t.timestamp "created_at"
+  t.timestamp "updated_at"
+end
+
+create_table "conditions", id: :integer, unsigned: true, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  t.integer "type", null: false
+  t.text "name", null: false
+  t.text "explain", null: false
+  t.integer "is_active", default: 0, null: false
+  t.timestamp "created_at"
+  t.timestamp "updated_at"
+  t.index ["type"], name: "conditions_type_index"
+end
+
+create_table "fba_inventories", id: :integer, unsigned: true, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  t.date "date", null: false
+  t.text "fnsku", null: false
+  t.text "sku", null: false
+  t.text "name"
+  t.integer "number", default: 0, null: false
+  t.text "fc", null: false
+  t.text "status", null: false
+  t.text "country", null: false
+  t.timestamp "created_at"
+  t.timestamp "updated_at"
+end
+
+create_table "inv_photos", id: :integer, unsigned: true, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  t.string "file", null: false
+  t.integer "type", default: 0, null: false
+  t.integer "inventory_id", default: 0, null: false
+  t.integer "number", default: 0, null: false
+  t.timestamp "created_at"
+  t.timestamp "updated_at"
+end
+
+create_table "inv_stocks", id: :integer, unsigned: true, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  t.string "sku", null: false
+  t.integer "stock", null: false
+  t.integer "merchant_id", null: false
+  t.timestamp "created_at"
+  t.timestamp "updated_at"
+end
+
+create_table "inventories", id: :integer, unsigned: true, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  t.integer "merchant_id", default: 1, null: false, unsigned: true
+  t.integer "item_master_id", default: 0, null: false, unsigned: true
+  t.integer "photo_id", default: 0, unsigned: true
+  t.string "asin", default: ""
+  t.string "jan_code", default: ""
+  t.string "item_code", default: ""
+  t.string "sku", default: "", null: false
+  t.string "name"
+  t.integer "shop_id", unsigned: true
+  t.date "buy_date"
+  t.integer "number", default: 0, null: false
+  t.integer "buy_price", default: 0, null: false
+  t.integer "sell_price", default: 0, null: false
+  t.integer "payment_id", unsigned: true
+  t.integer "condition_id", unsigned: true
+  t.integer "sale_place_id", unsigned: true
+  t.integer "inv_stock_id", unsigned: true
+  t.text "description"
+  t.text "description_1"
+  t.text "description_2"
+  t.text "memo"
+  t.text "ebay_id"
+  t.text "ebay_memo"
+  t.integer "free"
+  t.text "free_memo"
+  t.text "sku2"
+  t.integer "shipping_type", default: 0, null: false
+  t.integer "is_active", default: 0, null: false
+  t.integer "update_admin_id", unsigned: true
+  t.timestamp "created_at"
+  t.timestamp "updated_at"
+  t.integer "admin_id"
+  t.integer "user_id"
+  t.index ["condition_id"], name: "inventories_condition_id_index"
+  t.index ["inv_stock_id"], name: "inventories_inv_stock_id_index"
+  t.index ["item_master_id"], name: "inventories_item_master_id_index"
+  t.index ["merchant_id"], name: "inventories_merchant_id_index"
+  t.index ["payment_id"], name: "inventories_payment_id_index"
+  t.index ["photo_id"], name: "inventories_photo_id_index"
+  t.index ["sale_place_id"], name: "inventories_sale_place_id_index"
+  t.index ["shop_id"], name: "inventories_shop_id_index"
+  t.index ["update_admin_id"], name: "inventories_update_admin_id_index"
+end
+
+create_table "item_masters", id: :integer, unsigned: true, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  t.string "item_code", null: false
+  t.string "asin", null: false
+  t.string "jan_code", null: false
+  t.string "name", null: false
+  t.text "item_detail", null: false
+  t.string "category", null: false
+  t.string "rank", null: false
+  t.string "file", null: false
+  t.integer "merchant_id", null: false, unsigned: true
+  t.timestamp "created_at"
+  t.timestamp "updated_at"
+  t.index ["merchant_id"], name: "item_masters_merchant_id_index"
+end
+
+create_table "masters", id: :integer, unsigned: true, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  t.string "name", null: false
+  t.string "email", null: false
+  t.string "password", null: false
+  t.integer "is_active", null: false
+  t.string "remember_token", limit: 100
+  t.timestamp "created_at"
+  t.timestamp "updated_at"
+  t.index ["email"], name: "masters_email_unique", unique: true
+end
+
+create_table "merchants", id: :integer, unsigned: true, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  t.text "name", null: false
+  t.text "tel", null: false
+  t.text "mail", null: false
+  t.text "postal_code", null: false
+  t.text "prefecture", null: false
+  t.text "city", null: false
+  t.text "address", null: false
+  t.text "address2", null: false
+  t.string "photo_id"
+  t.integer "is_active", default: 0, null: false
+  t.timestamp "created_at"
+  t.timestamp "updated_at"
+  t.index ["photo_id"], name: "merchants_photo_id_index"
+end
+
+create_table "migrations", id: :integer, unsigned: true, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  t.string "migration", null: false
+  t.integer "batch", null: false
+end
+
+create_table "mws_sells", id: :integer, unsigned: true, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  t.integer "settlement-id", null: false
+  t.text "settlement-start-date", null: false
+  t.text "settlement-end-date", null: false
+  t.text "deposit-date", null: false
+  t.text "total-amount", null: false
+  t.text "currency", null: false
+  t.text "transaction-type", null: false
+  t.text "order-id", null: false
+  t.text "merchant-order-id", null: false
+  t.text "adjustment-id", null: false
+  t.text "shipment-id", null: false
+  t.text "marketplace-name", null: false
+  t.text "shipment-fee-type", null: false
+  t.text "shipment-fee-amount", null: false
+  t.text "order-fee-type", null: false
+  t.text "order-fee-amount", null: false
+  t.text "fulfillment-id", null: false
+  t.text "posted-date", null: false
+  t.text "order-item-code", null: false
+  t.text "merchant-order-item-id", null: false
+  t.text "merchant-adjustment-item-id", null: false
+  t.text "sku", null: false
+  t.text "quantity-purchased", null: false
+  t.text "price-type", null: false
+  t.text "price-amount", null: false
+  t.text "item-related-fee-type", null: false
+  t.text "item-related-fee-amount", null: false
+  t.text "misc-fee-amount", null: false
+  t.text "other-fee-amount", null: false
+  t.text "other-fee-reason-description", null: false
+  t.text "promotion-id", null: false
+  t.text "promotion-type", null: false
+  t.text "promotion-amount", null: false
+  t.text "direct-payment-type", null: false
+  t.text "direct-payment-amount", null: false
+  t.text "other-amount", null: false
+  t.timestamp "created_at"
+  t.timestamp "updated_at"
+end
+
+create_table "password_resets", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  t.string "email", null: false
+  t.string "token", null: false
+  t.timestamp "created_at"
+  t.index ["email"], name: "password_resets_email_index"
+  t.index ["token"], name: "password_resets_token_index"
+end
+
+create_table "payments", id: :integer, unsigned: true, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  t.text "name", null: false
+  t.integer "is_active", default: 0, null: false
+  t.timestamp "created_at"
+  t.timestamp "updated_at"
+end
+
+create_table "photos", id: :integer, unsigned: true, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  t.string "file", null: false
+  t.timestamp "created_at"
+  t.timestamp "updated_at"
+end
+
+create_table "roles", id: :integer, unsigned: true, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  t.string "name", null: false
+  t.timestamp "created_at"
+  t.timestamp "updated_at"
+end
+
+create_table "rss_news", id: :integer, unsigned: true, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  t.integer "admin_id", null: false
+  t.string "site", null: false
+  t.string "title", null: false
+  t.timestamp "date", default: -> { "CURRENT_TIMESTAMP" }, null: false
+  t.string "url", null: false
+  t.timestamp "created_at"
+  t.timestamp "updated_at"
+  t.index ["admin_id"], name: "rss_news_admin_id_index"
+end
+
+create_table "rss_urls", id: :integer, unsigned: true, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  t.integer "admin_id", null: false
+  t.string "url", null: false
+  t.timestamp "created_at"
+  t.timestamp "updated_at"
+  t.index ["admin_id"], name: "rss_urls_admin_id_index"
+end
+
+create_table "sale_places", id: :integer, unsigned: true, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  t.text "name", null: false
+  t.timestamp "created_at"
+  t.timestamp "updated_at"
+end
+
+create_table "shop_lists", id: :integer, unsigned: true, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  t.text "shop_name", null: false
+  t.integer "merchant_id", null: false
+  t.integer "is_active", default: 0, null: false
+  t.timestamp "created_at"
+  t.timestamp "updated_at"
+  t.index ["merchant_id"], name: "shop_lists_merchant_id_index"
+end
+
+create_table "shop_maps", id: :integer, unsigned: true, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  t.integer "shop_id", null: false
+  t.string "shop", null: false
+  t.string "shop_category", null: false
+  t.string "shop_branch", null: false
+  t.string "postal_code", null: false
+  t.string "prefecture", null: false
+  t.string "address1", null: false
+  t.string "address2", null: false
+  t.string "tel", null: false
+  t.string "url", null: false
+  t.string "time", null: false
+  t.float "lat", limit: 53, default: 0.0, null: false
+  t.float "lng", limit: 53, default: 0.0, null: false
+  t.timestamp "created_at"
+  t.timestamp "updated_at"
+end
+
+create_table "shops", id: :integer, unsigned: true, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  t.integer "shop_list_id", null: false, unsigned: true
+  t.text "shop_branch_name", null: false
+  t.text "postal_code", null: false
+  t.text "prefecture", null: false
+  t.text "city", null: false
+  t.text "address", null: false
+  t.text "address2", null: false
+  t.integer "is_active", default: 0, null: false
+  t.timestamp "created_at"
+  t.timestamp "updated_at"
+  t.index ["shop_list_id"], name: "shops_shop_list_id_index"
+end
+
+create_table "tags", id: :integer, unsigned: true, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  t.string "slug", null: false
+  t.timestamp "created_at"
+  t.timestamp "updated_at"
+end
+
+create_table "user_purchase_histories", id: :integer, unsigned: true, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  t.timestamp "created_at"
+  t.timestamp "updated_at"
+end
+
+create_table "users", id: :integer, unsigned: true, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  t.integer "is_active", default: 0, null: false
+  t.string "name", null: false
+  t.string "email", null: false
+  t.string "password", null: false
+  t.string "remember_token", limit: 100
+  t.timestamp "created_at"
+  t.timestamp "updated_at"
+  t.index ["email"], name: "users_email_unique", unique: true
+end
+
+add_foreign_key "admins", "roles", name: "admins_role_id_foreign", on_delete: :cascade
