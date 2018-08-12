@@ -212,6 +212,7 @@ return [
     'item_detail' => '商品詳細',
     'jan_code' => 'JANコード',
     'apply_item_master' => 'マスタに登録する',
+    'batteries_required' => '電池の有無',
     
     //商品マスタ
     'inv_num' => '仕入れ回数',

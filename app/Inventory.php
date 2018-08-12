@@ -37,7 +37,8 @@ class Inventory extends Model
         'ebay_memo',
         'is_active',
         'merchant_id',
-        'update_admin_id'
+        'update_admin_id',
+        'batteries_required'
       ];
 
     protected $sortable = [

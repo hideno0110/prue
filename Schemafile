@@ -137,6 +137,17 @@ create_table "inventories", id: :integer, unsigned: true, force: :cascade, optio
   t.index ["sale_place_id"], name: "inventories_sale_place_id_index"
   t.index ["shop_id"], name: "inventories_shop_id_index"
   t.index ["update_admin_id"], name: "inventories_update_admin_id_index"
+  t.integer "batteries_required"
+  t.integer "are_batteries_included"
+  t.text "battery_cell_composition"
+  t.text "battery_type"
+  t.integer "number_of_batteries"
+  t.integer "battery_weight"
+  t.integer "number_of_lithium_ion_cells"
+  t.integer "number_of_lithium_metal_cells"
+  t.text "lithium_battery_packaging"
+  t.integer "lithium_battery_energy_content"
+  t.integer "lithium_battery_weight"
 end
 
 create_table "item_masters", id: :integer, unsigned: true, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|

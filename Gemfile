@@ -3,5 +3,5 @@ source "https://rubygems.org"
 
 gem "ridgepole"
 gem 'dotenv'
-gem "mysql2" # MySQLを利用する場合
+gem 'mysql2', '>= 0.4.4', '< 0.6.0'
 gem 'dotenv-rails'

@@ -132,6 +132,10 @@
               {!! Form::textarea('description',null,['class'=>'form-control', 'rows'=>3]) !!}
           </div>
           <div class="form-group">
+              {!! Form::label('batteries_required',trans('adminlte_lang::message.batteries_required').' :') !!}
+              {!! Form::select('batteries_required',[0 => 'False', 1 => 'True' ]) !!}
+          </div>
+          <div class="form-group">
               <input class="btn btn-primary  col-sm-4 " type="submit" name="list" value="{{ trans('adminlte_lang::message.update_list') }}">
           </div>
           <div class="form-group">
