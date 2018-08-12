@@ -464,7 +464,9 @@ class AdminInventoriesController extends Controller
             'product-id',
             'product-id-type',
             'optional-payment-type-exclusion',
+            'merchant_shipping_group_name', # 201808 new
             'price',
+            'standard-price-points',# 201808 new
             'minimum-seller-allowed-price',
             'maximum-seller-allowed-price',
             'item-condition',
@@ -472,7 +474,36 @@ class AdminInventoriesController extends Controller
             'add-delete',
             'will-ship-internationally',
             'item-note',
-            'fulfillment-center-id'
+            'fulfillment-center-id',
+            'handling-time', # 201808 new ↓
+            'batteries_required',
+            'are_batteries_included',
+            'battery_cell_composition',
+            'battery_type',
+            'number_of_batteriesbattery_weight',
+            'number_of_lithium_ion_cells',
+            'number_of_lithium_metal_cells',
+            'lithium_battery_packaging',
+            'lithium_battery_energy_content',
+            'lithium_battery_weight',
+            'supplier_declared_dg_hz_regulation1',
+            'upplier_declared_dg_hz_regulation2',
+            'supplier_declared_dg_hz_regulation3',
+            'supplier_declared_dg_hz_regulation4',
+            'supplier_declared_dg_hz_regulation5',
+            'hazmat_united_nations_regulatory_id',
+            'safety_data_sheet_url',
+            'item_weight',
+            'item_volume',
+            'flash_point',
+            'ghs_classification_class1',
+            'ghs_classification_class2',
+            'ghs_classification_class3',
+            'item_weight_unit_of_measure',
+            'item_volume_unit_of_measure',
+            'lithium_battery_energy_content_unit_of_measure',
+            'lithium_battery_weight_unit_of_measure',
+            'battery_weight_unit_of_measure'
         ],"\t");
         //loop
 
@@ -490,7 +521,9 @@ class AdminInventoriesController extends Controller
                 $inventory->asin,
                 '1',
                 'exclude cod, cvs',
+                '',
                 $inventory->sell_price,
+                '',
                 '',
                 '',
                 $inventory->condition->type,
@@ -498,7 +531,36 @@ class AdminInventoriesController extends Controller
                 'a',
                 '11',
                 $description,
-                'AMAZON_JP'
+                'AMAZON_JP',
+                '', #handling-time
+                'FALSE', #batteries_required TRUE / FALSE
+                '', #are_batteries_included
+                '', #battery_cell_composition
+                '', #battery_type
+                '', #number_of_batteriesbattery_weight
+                '', #number_of_lithium_ion_cells
+                '', #number_of_lithium_metal_cells
+                '', #lithium_battery_packaging
+                '', #lithium_battery_energy_content
+                '', #lithium_battery_weight
+                '該当なし', #supplier_declared_dg_hz_regulation1
+                '', #upplier_declared_dg_hz_regulation2
+                '', #supplier_declared_dg_hz_regulation3
+                '', #supplier_declared_dg_hz_regulation4
+                '', #supplier_declared_dg_hz_regulation5
+                '', #hazmat_united_nations_regulatory_id
+                '', #safety_data_sheet_url
+                '', #item_weight
+                '', #item_volume
+                '', #flash_point
+                '', #ghs_classification_class1
+                '', #ghs_classification_class2
+                '', #ghs_classification_class3
+                '', #item_weight_unit_of_measure
+                '', #item_volume_unit_of_measure
+                '', #lithium_battery_energy_content_unit_of_measure
+                '', #lithium_battery_weight_unit_of_measure
+                '' #battery_weight_unit_of_measur
 
             ],"\t");
             //全カラムの場合はtoArray()を使えば良い
