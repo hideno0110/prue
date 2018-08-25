@@ -480,14 +480,15 @@ class AdminInventoriesController extends Controller
             'are_batteries_included',
             'battery_cell_composition',
             'battery_type',
-            'number_of_batteriesbattery_weight',
+            'number_of_batteries',
+            'battery_weight',
             'number_of_lithium_ion_cells',
             'number_of_lithium_metal_cells',
             'lithium_battery_packaging',
             'lithium_battery_energy_content',
             'lithium_battery_weight',
             'supplier_declared_dg_hz_regulation1',
-            'upplier_declared_dg_hz_regulation2',
+            'supplier_declared_dg_hz_regulation2',
             'supplier_declared_dg_hz_regulation3',
             'supplier_declared_dg_hz_regulation4',
             'supplier_declared_dg_hz_regulation5',
@@ -572,7 +573,7 @@ class AdminInventoriesController extends Controller
                 $lithium_battery_energy_content, #lithium_battery_energy_content
                 $lithium_battery_weight, #lithium_battery_weight
                 '該当なし', #supplier_declared_dg_hz_regulation1
-                '', #upplier_declared_dg_hz_regulation2
+                '', #supplier_declared_dg_hz_regulation2
                 '', #supplier_declared_dg_hz_regulation3
                 '', #supplier_declared_dg_hz_regulation4
                 '', #supplier_declared_dg_hz_regulation5
