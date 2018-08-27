@@ -76,7 +76,7 @@
                 <tbody>
                 @foreach($mws_sells as $mws_sell)
                     @if($mws_sell->profit >= 3000 )<tr class="success">@elseif ($mws_sell->profit < 0 )<tr class="danger">@else <tr class="active">  @endif
-                        <td> {{ $mws_sell->{'posted-date'} }} </td>
+                        <td> {{ ltrim($mws_sell->{'posted-date'}, '+00:00') }} </td>
                         <td> {{ $mws_sell->buy_date }} </td>
                     @if($mws_sell->date >= 90 )<td class="danger">@elseif ($mws_sell->date < 30 )<td class="info">@else <td class="active"> @endif {{ $mws_sell->date }} </td>
                         <td>{{ $mws_sell->{'order-id'} }}</td>
@@ -130,7 +130,7 @@
             <tbody>
             @foreach($mws_refunds as $mws_refund)
                 @if($mws_refund->profit >= 3000 )<tr class="success">@elseif ($mws_refund->profit < 0 )<tr class="danger">@else <tr class="active">  @endif
-                    <td> {{ $mws_refund->{'posted-date'} }} </td>
+                    <td> {{ ltrim($mws_refund->{'posted-date'}, '+00:00')}} </td>
                     <td> {{ $mws_refund->buy_date }} </td>
                 @if($mws_refund->date >= 90 )<td class="danger">@elseif ($mws_refund->date < 30 )<td class="info">@else <td class="active"> @endif {{ $mws_refund->date }} </td>
                     <td>{{ $mws_refund->{'order-id'} }}</td>
