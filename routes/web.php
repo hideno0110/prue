@@ -40,7 +40,8 @@ Route::group(['prefix' => 'admin'], function () {
     Route::resource('/privacy', 'AdminPrivacyController', ['only' => ['index']]);
     Route::resource('/howto', 'AdminHowtoController', ['only' => ['index']]);
     Route::resource('/qa', 'AdminQaController', ['only' => ['index']]);
-
+    Route::get('/tepdon', 'AdminTepdonController@index', ['only' => ['index']]);
+    Route::post('/tepdon', 'AdminTepdonController@index', ['only' => ['index']]);
     //upload
     Route::get('/upload', 'AdminUploadController@index');
     Route::post('/admin/add', 'AdminUploadController@store');

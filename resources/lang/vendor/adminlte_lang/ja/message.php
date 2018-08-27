@@ -217,7 +217,9 @@ return [
     //商品マスタ
     'inv_num' => '仕入れ回数',
     'inv_sum' => '商品数',
-    
+
+    // tepdon
+    'tepdon'  => 'URLカット',
     
     //RSS
     'rss_url' => 'RSS URL',
