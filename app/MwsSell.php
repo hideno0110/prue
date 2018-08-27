@@ -47,7 +47,7 @@ class MwsSell extends Model
             left join item_masters on inventories.item_master_id = item_masters.id
         where ms.`transaction-type` = 'Order'
         group by ms.`order-item-code`
-        ORDER BY ms.`price-amount`
+        ORDER BY ms.`posted-date` DESC
         ");
 
         return $mws_sells;
@@ -89,7 +89,7 @@ class MwsSell extends Model
             left join item_masters on inventories.item_master_id = item_masters.id
         where ms.`transaction-type` = 'Refund'
         group by ms.`order-item-code`
-        ORDER BY ms.`price-amount`
+        ORDER BY ms.`posted-date` DESC
         ");
     
         return $mws_refunds;
@@ -113,6 +113,7 @@ class MwsSell extends Model
         WHERE ms.`transaction-type` <> 'Order' and ms.`transaction-type` <> 'Refund' and ms.`transaction-type` <> '' 
         GROUP BY
             DATE_FORMAT(ms.`posted-date`, '%Y%m')
+        ORDER BY ms.`posted-date` DESC
         ");
         return $mws_fees;
     }
@@ -137,6 +138,7 @@ class MwsSell extends Model
             left join item_masters on inventories.item_master_id = item_masters.id
         GROUP BY
             DATE_FORMAT(ms.`posted-date`, '%Y%m');
+        ORDER BY ms.`posted-date` DESC
         ");
 
         return $mws_sums;
