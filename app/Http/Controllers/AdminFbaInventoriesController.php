@@ -6,10 +6,10 @@ use Illuminate\Http\Request;
 use DB;
 use App\Http\Requests;
 
-class AdminFbaInventoriesController extends Controller 
+class AdminFbaInventoriesController extends Controller
 {
 
-    public function __construct() 
+    public function __construct()
     {
         //adminユーザーのみを通す
         $this->middleware('auth:admin');
@@ -19,11 +19,11 @@ class AdminFbaInventoriesController extends Controller
     {
         $this_month = date("Y-m");
 
-        $fba_invs =DB::select("
+        $fba_invs = DB::select("
                 SELECT  
                     fi.sku as sku,
                     inventories.asin as asin,
-                    inventories.name as name,
+                    item_masters.name,
                     fi.fnsku as fnsku,
 
                     fi.number as number,
@@ -43,7 +43,8 @@ class AdminFbaInventoriesController extends Controller
                     DATEDIFF(DATE(NOW()),inventories.buy_date)  as diffdate,
                     inventories.buy_price as buy_price
                 from fba_inventories fi
-                left join inventories on fi.sku =  (case when inventories.sku2 = '' then inventories.sku else inventories.sku2 end)
+                left join inventories on fi.sku =  (case when inventories.sku2 != '' then inventories.sku2 else inventories.sku end)
+                left join item_masters on inventories.item_master_id = item_masters.id
                 ");
 
         return view('admin.mws.fba_inv.index', compact('fba_invs'));
