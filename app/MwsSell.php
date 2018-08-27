@@ -21,7 +21,7 @@ class MwsSell extends Model
             ms.`sku`,
             inventories.id  as inv_id,
             inventories.asin  as asin,
-            inventories.name as name,
+            item_masters.name,
             ms.`quantity-purchased`,
             ms.`price-type`,
             ms.`order-item-code`,
@@ -43,7 +43,8 @@ class MwsSell extends Model
             sum(CASE  WHEN ms.`item-related-fee-type`=  \"VariableClosingFee\" THEN ms.`item-related-fee-amount` END) as VariableClosingFee,
             sum(CASE  WHEN ms.`promotion-type`=  \"Shipping\" THEN ms.`direct-payment-type` END) as PromotionShipping
         FROM `mws_sells`  ms
-            left join inventories on ms.sku =  (case when inventories.sku2 = '' then inventories.sku else inventories.sku2 end)
+            left join inventories on ms.sku =  (case when inventories.sku2 != '' then inventories.sku2 else inventories.sku end)
+            left join item_masters on inventories.item_master_id = item_masters.id
         where ms.`transaction-type` = 'Order'
         group by ms.`order-item-code`
         ORDER BY ms.`price-amount`
@@ -62,7 +63,7 @@ class MwsSell extends Model
             ms.`sku`,
             inventories.id  as inv_id,
             inventories.asin  as asin,
-            inventories.name as name,
+            item_masters.name,
             ms.`quantity-purchased`,
             ms.`price-type`,
             ms.`order-item-code`,
@@ -84,7 +85,8 @@ class MwsSell extends Model
             sum(CASE  WHEN ms.`item-related-fee-type`=  \"VariableClosingFee\" THEN ms.`item-related-fee-amount` END) as VariableClosingFee,
             sum(CASE  WHEN ms.`promotion-type`=  \"Shipping\" THEN ms.`direct-payment-type` END) as PromotionShipping
         FROM `mws_sells`  ms
-        left join inventories on ms.sku =  (case when inventories.sku2 = '' then inventories.sku else inventories.sku2 end)
+            left join inventories on ms.sku =  (case when inventories.sku2 != '' then inventories.sku2 else inventories.sku end)
+            left join item_masters on inventories.item_master_id = item_masters.id
         where ms.`transaction-type` = 'Refund'
         group by ms.`order-item-code`
         ORDER BY ms.`price-amount`
@@ -131,7 +133,8 @@ class MwsSell extends Model
             sum(CASE  WHEN ms.`price-type`=  \"Principal\" THEN  inventories.buy_price END) as buy_price,
             sum(`price-amount`) + sum(`item-related-fee-amount`) + sum(`promotion-amount`) + sum(`other-amount`) -  sum(CASE  WHEN ms.`price-type`=  \"Principal\" THEN  inventories.buy_price END) as profit
         FROM `mws_sells`  ms
-        LEFT join inventories on ms.sku =  (case when inventories.sku2 = '' then inventories.sku else inventories.sku2 end)
+            left join inventories on ms.sku =  (case when inventories.sku2 != '' then inventories.sku2 else inventories.sku end)
+            left join item_masters on inventories.item_master_id = item_masters.id
         GROUP BY
             DATE_FORMAT(ms.`posted-date`, '%Y%m');
         ");
