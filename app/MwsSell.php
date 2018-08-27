@@ -137,7 +137,7 @@ class MwsSell extends Model
             left join inventories on ms.sku =  (case when inventories.sku2 != '' then inventories.sku2 else inventories.sku end)
             left join item_masters on inventories.item_master_id = item_masters.id
         GROUP BY
-            DATE_FORMAT(ms.`posted-date`, '%Y%m');
+            DATE_FORMAT(ms.`posted-date`, '%Y%m')
         ORDER BY ms.`posted-date` DESC
         ");
 
