@@ -41,7 +41,7 @@ class AdminShopsController extends Controller
             ->get();
         
         
-        $shop_list = ShopList::where('merchant_id', $merchant_id)->pluck('shop_name','id')->all();
+        $shop_list = ShopList::where('merchant_id', $merchant_id)->where('is_active', 1)->orderBy('shop_name')->pluck('shop_name','id')->all();
 
         $compacted = compact(
           'shops',

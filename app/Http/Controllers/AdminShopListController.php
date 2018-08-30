@@ -40,6 +40,7 @@ class AdminShopListController extends Controller {
             $merchant_id = admin::find($admin_id)->merchant_id;
 
             $shop_list->merchant_id = $merchant_id;
+            $shop_list->is_active =1;
             $shop_list->save();
             
             //コミット
@@ -48,7 +49,7 @@ class AdminShopListController extends Controller {
             DB::rollBack();
             return Redirect::back();
         }
-        return redirect('/admin/shop_lists')->with('flash_message',trans('adminlte_lang::message.created_msg'));
+        return redirect('/admin/shops')->with('flash_message',trans('adminlte_lang::message.created_msg'));
     }
     
     
