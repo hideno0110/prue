@@ -1,7 +1,7 @@
 @extends('vendor.adminlte.layouts.app')
 @section('content_breadcrumb',trans('adminlte_lang::message.inventories'))
 @section('contentheader_title')
-    {{$inventory->sku }} : @if($inventory->item_master_id != 0)$inventory->item_master->name @endif
+    {{$inventory->sku }} : @if($inventory->item_master_id != 0){{ $inventory->item_master->name }} @endif
 @endsection
 @section('main-content')
 
@@ -103,17 +103,17 @@
           </div>
           <div class="form-group">
               {!! Form::label('number',trans('adminlte_lang::message.buy_item_num').' :') !!}
-              {{Form::select('number', [0, 1, 2,3,4,5,6,7,8,9,10], null,['class'=>'form-control'])}}
+              {{Form::select('number', [0, 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24], null,['class'=>'form-control'])}}
           </div>
           <div class="form-group">
               {!! Form::label('buy_price',trans('adminlte_lang::message.buy_price').' :') !!}
-              {!! Form::text('buy_price',null,array('class'=>'form-control','id'=>'buy_price','onfocus'=>'price()','onkeyup'=>'price()')) !!}
+              {!! Form::text('buy_price',null,array('class'=>'form-control','id'=>'buy_price','onfocus'=>'price()','onkeyup'=>'price()', 'onBlur'=>'num_only()')) !!}
               {{--<input type="text" value="0" name="buy_price" size="10" id="buy_price" onfocus="price()" onkeyup="price()" />--}}
               {{--{!! Form::text('search_text', null, array('placeholder' => 'Search Shops','class' => 'form-control','id'=>'search_text')) !!}--}}
           </div>
           <div class="form-group">
               {!! Form::label('sell_price',trans('adminlte_lang::message.sell_price').' :') !!}
-              {!! Form::text('sell_price',null,array('class'=>'form-control','id'=>'sell_price','onfocus'=>'price()','onkeyup'=>'price()')) !!} 差額：    <span id="ans"></span>円     見込み利益：    <span id="est_profit"></span>円（15% + 300円    ）
+              {!! Form::text('sell_price',null,array('class'=>'form-control','id'=>'sell_price','onfocus'=>'price()','onkeyup'=>'price()' ,'onBlur'=>'num_only()')) !!} 差額：    <span id="ans"></span>円     見込み利益：    <span id="est_profit"></span>円（15% + 300円    ）
           </div>
           <div class="form-group">
               {!! Form::label('payment_id',trans('adminlte_lang::message.payment').' :') !!}
@@ -196,6 +196,14 @@
         }
     }
 
+    function num_only(){
+      var buy_price = document.getElementById('buy_price').value;
+      // 数値以外の入力消去
+      document.getElementById('buy_price').value=buy_price.replace(/[^\d-.]/g,'');
+
+      var sell_price = document.getElementById('sell_price').value;
+      document.getElementById('sell_price').value=sell_price.replace(/[^\d-.]/g,'');
+    }
 
 </script>
 @stop

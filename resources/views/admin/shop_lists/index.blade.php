@@ -36,6 +36,7 @@
             <thead>
                 <th>id</th>
                 <th>shop_name</th>
+                <th>active</th>
 
             </thead>
             <tbody>
@@ -43,6 +44,7 @@
                  <tr>
                     <td>{{ $shop_list->id }}</td>
                     <td><a href="{{ route('shop_lists.edit',$shop_list->id) }}" alt="">{{ $shop_list->shop_name }}</a></td>
+                     <td>{{ $shop_list->is_active==1 ? 'active' : '' }}</td>
                  </tr>
 
              @endforeach
