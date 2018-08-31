@@ -67,8 +67,8 @@
                 {!! Form::text('name',null,['class'=>'form-control']) !!}
             </div>
             {{--<div class="form-group">--}}
-                {{--{!! Form::label('shop_id',trans('adminlte_lang::message.shops').' :') !!}--}}
-                {{--{!! Form::select('shop_id',[''=>trans('adminlte_lang::message.choose')] + $shops,null,['class'=>'form-control']) !!}--}}
+            {{--{!! Form::label('shop_id',trans('adminlte_lang::message.shops').' :') !!}--}}
+            {{--{!! Form::select('shop_id',[''=>trans('adminlte_lang::message.choose')] + $shops,null,['class'=>'form-control']) !!}--}}
             {{--</div>--}}
 
             <div class="form-group">
@@ -140,6 +140,19 @@
         </div>
         <!-- end form -->
     </div>
+
+
+    <select id="項目A">
+        <option selected>歯科名</option>
+        <option value="00">A歯科</option>
+        <option value="01">B歯科</option>
+        <option value="02">C歯科</option>
+    </select>
+
+    <input id="項目B" type="text" value="" placeholder="所在地">
+
+
+
     <!-- 支店リスト -->
     <script type="text/javascript">
       $(function () {
@@ -165,35 +178,52 @@
         });
       });
 
-
-    <!-- 仕入商品の予想利益計算 -->
-
+      <!-- 仕入商品の予想利益計算 -->
       function price() {
         var buy_price = document.getElementById('buy_price').value;
         var sell_price = document.getElementById('sell_price').value;
         var ans = parseInt(sell_price) - parseInt(buy_price);
         document.getElementById('ans').innerHTML = ans;
 
-        var est_profit = parseInt(sell_price) *0.85 - parseInt(buy_price) - 300;
+        var est_profit = parseInt(sell_price) * 0.85 - parseInt(buy_price) - 300;
         document.getElementById('est_profit').innerHTML = est_profit;
 
-        if(ans < 0){
+        if (ans < 0) {
           document.getElementById('ans').style.color = "red";
           document.getElementById('est_profit').style.color = "red";
-        }else{
+        } else {
           document.getElementById('ans').style.color = "black";
           document.getElementById('est_profit').style.color = "black";
         }
       }
 
-      function num_only(){
+      function num_only() {
         var buy_price = document.getElementById('buy_price').value;
         // 数値以外の入力消去
-        document.getElementById('buy_price').value=buy_price.replace(/[^\d-.]/g,'');
+        document.getElementById('buy_price').value = buy_price.replace(/[^\d-.]/g, '');
 
         var sell_price = document.getElementById('sell_price').value;
-        document.getElementById('sell_price').value=sell_price.replace(/[^\d-.]/g,'');
+        document.getElementById('sell_price').value = sell_price.replace(/[^\d-.]/g, '');
       }
+
+      <!-- 商品説明 -->
+
+      ( function () {
+        var description = {
+          'condition': [
+            '',
+            '【特別特価】新品未使用品となります。'
+          ]
+        };
+
+        document.getElementById('condition_id').addEventListener('change', select_action, false);
+        function select_action() {
+          var selected_value = document.getElementById('condition_id').selectedIndex;
+          if (document.getElementById('condition_id').selectedIndex == 1) {
+            document.getElementById('description').value = description['condition'][selected_value];
+          }
+        }
+      }());
     </script>
 
 @stop
