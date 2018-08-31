@@ -66,10 +66,6 @@
                 {!! Form::label('name',trans('adminlte_lang::message.item_name').'(中古説明用) :') !!}
                 {!! Form::text('name',null,['class'=>'form-control']) !!}
             </div>
-            {{--<div class="form-group">--}}
-            {{--{!! Form::label('shop_id',trans('adminlte_lang::message.shops').' :') !!}--}}
-            {{--{!! Form::select('shop_id',[''=>trans('adminlte_lang::message.choose')] + $shops,null,['class'=>'form-control']) !!}--}}
-            {{--</div>--}}
 
             <div class="form-group">
                 {!! Form::label('shop_list',trans('adminlte_lang::message.shops').' :') !!}
@@ -140,18 +136,6 @@
         </div>
         <!-- end form -->
     </div>
-
-
-    <select id="項目A">
-        <option selected>歯科名</option>
-        <option value="00">A歯科</option>
-        <option value="01">B歯科</option>
-        <option value="02">C歯科</option>
-    </select>
-
-    <input id="項目B" type="text" value="" placeholder="所在地">
-
-
 
     <!-- 支店リスト -->
     <script type="text/javascript">
