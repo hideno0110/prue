@@ -182,6 +182,9 @@ class AdminInventoriesController extends Controller
         $condition = Condition::pluck('name', 'id')->all();
         $sale_place = SalePlace::pluck('name', 'id')->all();
 
+        $shop_list = ShopList::where('merchant_id', $merchant_id)->where('is_active', 1)->orderBy('shop_name')->get();
+        $shop_branch_list = Shop::where('is_active', 1)->orderBy('shop_branch_name')->get();
+
         $shops_objs = DB::select('select 
                         shops.id as id, 
                         CONCAT(shop_lists.shop_name,shops.shop_branch_name) as shop 
@@ -190,12 +193,16 @@ class AdminInventoriesController extends Controller
                         where shop_lists.merchant_id =' . $merchant_id . '
                         ORDER BY  shop_lists.shop_name ASC');
 
+
         $shops = array();
         foreach ($shops_objs as $shops_obj) {
             $shops[$shops_obj->id] = $shops_obj->shop;
         }
 
         $compacted = compact(
+            'shop_branch_list',
+            'shop_list',
+
             'shops',
             'shop_lists',
             'payment',
@@ -361,6 +368,10 @@ class AdminInventoriesController extends Controller
             $sale_place = SalePlace::pluck('name', 'id')->all();
 
 
+
+            $shop_list = ShopList::where('merchant_id', $merchant_id)->where('is_active', 1)->orderBy('shop_name')->get();
+            $shop_branch_list = Shop::where('is_active', 1)->orderBy('shop_branch_name')->get();
+
             $shops_objs = DB::select('select 
                           shops.id as id, 
                           CONCAT(shop_lists.shop_name,shops.shop_branch_name) as shop 
@@ -376,6 +387,8 @@ class AdminInventoriesController extends Controller
             $invphotos = DB::table('inv_photos')->where('inventory_id', $id)->get();
 
             $compacted = compact(
+                'shop_list',
+                'shop_branch_list',
                 'inventory',
                 'shops',
                 'condition',

@@ -66,48 +66,67 @@
                 {!! Form::label('name',trans('adminlte_lang::message.item_name').'(中古説明用) :') !!}
                 {!! Form::text('name',null,['class'=>'form-control']) !!}
             </div>
+            {{--<div class="form-group">--}}
+                {{--{!! Form::label('shop_id',trans('adminlte_lang::message.shops').' :') !!}--}}
+                {{--{!! Form::select('shop_id',[''=>trans('adminlte_lang::message.choose')] + $shops,null,['class'=>'form-control']) !!}--}}
+            {{--</div>--}}
+
             <div class="form-group">
-                {!! Form::label('shop_id',trans('adminlte_lang::message.shops').' :') !!}
-                {!! Form::select('shop_id',[''=>trans('adminlte_lang::message.choose')] + $shops,null,['class'=>'form-control']) !!}
+                {!! Form::label('shop_list',trans('adminlte_lang::message.shops').' :') !!}
+                <select class="parent form-control" name="日付" required id="shop_list">
+                    <option value="" class="msg" disabled selected>-----店を選択-----</option>
+                    @foreach($shop_list as $shop)
+                        <option value="{{ $shop->id  }}">{{ $shop->shop_name }}</option>
+                    @endforeach
+                </select>
+
+                <select class="children form-control" id="shop_id" name="shop_id">
+                    <option value="" class="msg" disabled selected>-----支店を選択-----</option>
+                    @foreach($shop_branch_list as $branch_list)
+                        <option value="{{ $branch_list->id  }}"
+                                data-val="{{ $branch_list->shop_list_id }}">{{ $branch_list->shop_branch_name }}</option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="form-group">
+                {!! form::label('buy_date', trans('adminlte_lang::message.buy_date').' :', ['class' => 'control-label']) !!}
+                {!! form::text('buy_date',null, ['id' => 'datepicker'],['class' => 'control-label']) !!}
             </div>
             <div class="form-group">
-                {!! Form::label('buy_date', trans('adminlte_lang::message.buy_date').' :', ['class' => 'control-label']) !!}
-                {!! Form::text('buy_date',null, ['id' => 'datepicker'],['class' => 'control-label']) !!}
+                {!! form::label('number',trans('adminlte_lang::message.buy_item_num').' :') !!}
+                {{form::select('number', [0, 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24], null,['class'=>'form-control'])}}
             </div>
             <div class="form-group">
-                {!! Form::label('number',trans('adminlte_lang::message.buy_item_num').' :') !!}
-                {{Form::select('number', [0, 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24], null,['class'=>'form-control'])}}
-            </div>
-            <div class="form-group">
-                {!! Form::label('buy_price',trans('adminlte_lang::message.buy_price').' :') !!}
-                {!! Form::text('buy_price',null,array('class'=>'form-control','id'=>'buy_price','onfocus'=>'price()','onkeyup'=>'price()','onBlur'=>'num_only()')) !!}
+                {!! form::label('buy_price',trans('adminlte_lang::message.buy_price').' :') !!}
+                {!! form::text('buy_price',null,array('class'=>'form-control','id'=>'buy_price','onfocus'=>'price()','onkeyup'=>'price()','onblur'=>'num_only()')) !!}
                 {{--<input type="text" value="0" name="buy_price" size="10" id="buy_price" onfocus="price()" onkeyup="price()" />--}}
-                {{--{!! Form::text('search_text', null, array('placeholder' => 'Search Shops','class' => 'form-control','id'=>'search_text')) !!}--}}
+                {{--{!! form::text('search_text', null, array('placeholder' => 'search shops','class' => 'form-control','id'=>'search_text')) !!}--}}
             </div>
             <div class="form-group">
-                {!! Form::label('sell_price',trans('adminlte_lang::message.sell_price').' :') !!}
-                {!! Form::text('sell_price',null,array('class'=>'form-control','id'=>'sell_price','onfocus'=>'price()','onkeyup'=>'price()','onBlur'=>'num_only()')) !!}
+                {!! form::label('sell_price',trans('adminlte_lang::message.sell_price').' :') !!}
+                {!! form::text('sell_price',null,array('class'=>'form-control','id'=>'sell_price','onfocus'=>'price()','onkeyup'=>'price()','onblur'=>'num_only()')) !!}
                 差額： <span id="ans"></span>円 見込み利益： <span id="est_profit"></span>円（15% + 300円 ）
             </div>
             <div class="form-group">
-                {!! Form::label('payment_id',trans('adminlte_lang::message.payment').' :') !!}
-                {!! Form::select('payment_id',[''=>trans('adminlte_lang::message.choose')] + $payment,null,['class'=>'form-control']) !!}
+                {!! form::label('payment_id',trans('adminlte_lang::message.payment').' :') !!}
+                {!! form::select('payment_id',[''=>trans('adminlte_lang::message.choose')] + $payment,null,['class'=>'form-control']) !!}
             </div>
             <div class="form-group">
-                {!! Form::label('sale_place_id',trans('adminlte_lang::message.sale_place').' :') !!}
-                {!! Form::select('sale_place_id',[''=>trans('adminlte_lang::message.choose')] + $sale_place,null,['class'=>'form-control']) !!}
+                {!! form::label('sale_place_id',trans('adminlte_lang::message.sale_place').' :') !!}
+                {!! form::select('sale_place_id',[''=>trans('adminlte_lang::message.choose')] + $sale_place,null,['class'=>'form-control']) !!}
             </div>
             <div class="form-group">
-                {!! Form::label('condition_id',trans('adminlte_lang::message.condition').' :') !!}
-                {!! Form::select('condition_id',[''=>'Choose Condition'] + $condition,null,['class'=>'form-control']) !!}
+                {!! form::label('condition_id',trans('adminlte_lang::message.condition').' :') !!}
+                {!! form::select('condition_id',[''=>'choose condition'] + $condition,null,['class'=>'form-control']) !!}
             </div>
             <div class="form-group">
-                {!! Form::label('description',trans('adminlte_lang::message.description').' :') !!}
-                {!! Form::textarea('description',null,['class'=>'form-control', 'rows'=>3]) !!}
+                {!! form::label('description',trans('adminlte_lang::message.description').' :') !!}
+                {!! form::textarea('description',null,['class'=>'form-control', 'rows'=>3]) !!}
             </div>
             <div class="form-group">
-                {!! Form::label('batteries_required',trans('adminlte_lang::message.batteries_required').' :') !!}
-                {!! Form::select('batteries_required',[0 => 'False', 1 => 'True' ]) !!}
+                {!! form::label('batteries_required',trans('adminlte_lang::message.batteries_required').' :') !!}
+                {!! form::select('batteries_required',[0 => 'false', 1 => 'true' ]) !!}
             </div>
             <div class="form-group">
                 <input class="btn btn-primary col-sm-6" type="submit" name="new"
@@ -117,29 +136,56 @@
                 <input class="btn btn-success  col-sm-6 " type="submit" name="continue"
                        value="{{ trans('adminlte_lang::message.create_continue') }}">
             </div>
-            {!! Form::close() !!}
+            {!! form::close() !!}
         </div>
         <!-- end form -->
     </div>
-    <!-- 仕入商品の予想利益計算 -->
+    <!-- 支店リスト -->
     <script type="text/javascript">
+      $(function () {
+        var $children = $('.children');
+        var original = $children.html();
+
+        $('.parent').change(function () {
+          var val1 = $(this).val();
+
+          $children.html(original).find('option').each(function () {
+            var val2 = $(this).data('val');
+            if (val1 != val2) {
+              $(this).not('optgroup,.msg').remove();
+            }
+          });
+
+          if ($(this).val() === '') {
+            $children.attr('disabled', 'disabled');
+          } else {
+            $children.removeAttr('disabled');
+          }
+
+        });
+      });
+
+
+    <!-- 仕入商品の予想利益計算 -->
+
       function price() {
         var buy_price = document.getElementById('buy_price').value;
         var sell_price = document.getElementById('sell_price').value;
         var ans = parseInt(sell_price) - parseInt(buy_price);
         document.getElementById('ans').innerHTML = ans;
 
-        var est_profit = parseInt(sell_price) * 0.85 - parseInt(buy_price) - 300;
+        var est_profit = parseInt(sell_price) *0.85 - parseInt(buy_price) - 300;
         document.getElementById('est_profit').innerHTML = est_profit;
 
-        if (ans < 0) {
+        if(ans < 0){
           document.getElementById('ans').style.color = "red";
           document.getElementById('est_profit').style.color = "red";
-        } else {
+        }else{
           document.getElementById('ans').style.color = "black";
           document.getElementById('est_profit').style.color = "black";
         }
       }
+
       function num_only(){
         var buy_price = document.getElementById('buy_price').value;
         // 数値以外の入力消去
@@ -148,6 +194,6 @@
         var sell_price = document.getElementById('sell_price').value;
         document.getElementById('sell_price').value=sell_price.replace(/[^\d-.]/g,'');
       }
-
     </script>
+
 @stop
